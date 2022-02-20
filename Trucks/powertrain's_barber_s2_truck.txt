@@ -1,0 +1,739 @@
+@name PowerTrain's Barber S2 Truck
+@persist [Truck]:entity Roll VeIL
+@trigger none
+@model models/magtrains/trucks/barber_s2_rsg.mdl
+
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#     /$$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ /$$$$$$$  /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$ /$$   /$$       #
+#    | $$__  $$ /$$__  $$| $$  /$ | $$| $$_____/| $$__  $$|__  $$__/| $$__  $$ /$$__  $$|_  $$_/| $$$ | $$       #
+#    | $$  \ $$| $$  \ $$| $$ /$$$| $$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  \ $$  | $$  | $$$$| $$       #
+#    | $$$$$$$/| $$  | $$| $$/$$ $$ $$| $$$$$   | $$$$$$$/   | $$   | $$$$$$$/| $$$$$$$$  | $$  | $$ $$ $$       #
+#    | $$____/ | $$  | $$| $$$$_  $$$$| $$__/   | $$__  $$   | $$   | $$__  $$| $$__  $$  | $$  | $$  $$$$       #
+#    | $$      | $$  | $$| $$$/ \  $$$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  | $$  | $$  | $$\  $$$       #
+#    | $$      |  $$$$$$/| $$/   \  $$| $$$$$$$$| $$  | $$   | $$   | $$  | $$| $$  | $$ /$$$$$$| $$ \  $$       #
+#    |__/       \______/ |__/     \__/|________/|__/  |__/   |__/   |__/  |__/|__/  |__/|______/|__/  \__/       #
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+
+# This shit has been slapped together and brought to you by PowerTrain, 2022.
+# -----------------------------------------------------------------------------------------------------------
+# "I'm not a professional coder."
+# -----------------------------------------------------------------------------------------------------------
+# Yhanks to Jazzie for the original basis and for being one of my biggest inspirations in trainbuild.
+# -----------------------------------------------------------------------------------------------------------
+# 2/19/2022 - Original creation, V1.0.
+# -----------------------------------------------------------------------------------------------------------
+
+# *********************************************************************************************************************
+# I don't really give a damn what you do with this. If you modify it in a way that makes it better though, 
+# I would appreciate a heads up and a "How It's Done" tutorial. I'm always looking for new ideas.
+# If you'd like to contribute, complain, or say thanks feel free to rach out. Credit will be given where credit is due.
+# Let's bask in the glory of being kings of the fuckin' train nerds together!
+# *********************************************************************************************************************
+
+
+
+if(first() | duped())
+{
+
+
+    Truck = entity()  #Makes the E2 recognise "Truck" as the base and E2 chip
+    Truck:setAlpha(0) #Makes the base model invisible.
+    Truck:removeNoCollideAll()  #This gives the truck collisions automatically since it's an E2 (For switches). 
+    # May not work on some servers.
+    # In the event that the server doesn't have the required addon to allow this code, you can simply comment it out and enable 
+    # collisions manually from the context menu by holding C and right clicking on the model, then selecting "Enable Collisions".
+
+
+# One configgy boi
+
+# Feel free to customize to your heart's content!
+
+    BolsterExtender = 0
+    BolsterExtenderSize = 1
+    
+    TruckMat = "models/proppertextures/enamel_cast"           # The material for the truck frame.
+    TruckColor = vec(22,22,22)                                # The color of the truck frame.
+    
+    BearingType = 3                                           # Changes the style of the roller bearing caps. Valid values are 1 - 3.
+    BearingMat1 = "models/proppertextures/enamel_cast"        # Changes the material of the bearing cap base.
+    BearingMat2 = "models/proppertextures/enamel_black_rust3" # Changes the material of the bearing cap locking nuts.
+    BearingMat3 = "models/proppertextures/aluminum"           # Changes the material of the bearing cap locking nut center plate.
+    BearingMat4 = "models/proppertextures/enamel_darkgray"    # Changes the material of the bearing cap master locking nut.
+    BearingColor = vec(25,25,25)                              # Changes the color of the roller bearing caps.
+    
+    SpringMat = "models/proppertextures/enamel_black_rust3"   # Changes the material of the suspension springs.
+    SpringColor = vec(60,50,40) # The color of the springs.   # Changes the color of the suspension springs.
+
+    WheelMat1 = "models/proppertextures/enamel_darkgray"      # Wheel tread material.
+    WheelMat2 = "models/proppertextures/enamel_cast"          # Wheel hub material.
+    WheelMat3 = "models/proppertextures/enamel_cast"          # Axle material.
+    WheelColor = vec(60,50,40)                                # The color of the wheels.
+    
+    BrakeMat1 = "models/proppertextures/wheel"                # Brake shoe material.
+    BrakeMat2 = "models/proppertextures/enamel_cast"          # Brake shoe base material.
+    BrakeMat3 = "models/proppertextures/enamel_darkgray"      # Brake shoe tread material.
+    BrakeShoeColor = vec(25,25,25)                            # The color of the brake shoes.
+    
+    RollerMat = "models/proppertextures/enamel_cast"          # Material for the rollers on the bolster.
+    RollerColor = vec(60,50,40)                               # Color for the rollers on the bolster.
+
+    BrakeRiggingMat = "models/proppertextures/enamel_cast"    # Material for the brake rigging.
+    BrakeRiggingColor = vec(60,50,40)                         # Color for the brake rigging.
+    
+# Configgy Boi has left the chat.
+
+# Here comes the holo train! Choo choo, motherfuckers! 
+
+# (Edit at your own risk! And if you do and make it better, feel free to let me know and I'll add your revisions with credit.)
+
+
+#Truck Frame
+    A = 0
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/magtrains/trucks/barber_s2_rsg.mdl")
+    holoPos(A,Truck:toWorld(vec(0,0,0)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,TruckColor)
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,TruckMat)
+    holoEntity(A):setSubMaterial(2,TruckMat)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(5,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(6,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(8,"models/proppertextures/invisible")
+
+
+#Wheels
+    A = 1
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck:toWorld(vec(0,35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1,0.85,0.85))
+    holoColor(A,WheelColor)
+    holoEntity(A):setSubMaterial(1,WheelMat1)
+    holoEntity(A):setSubMaterial(2,WheelMat2)
+    holoEntity(A):setSubMaterial(3,WheelMat3)
+    A = 2
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck:toWorld(vec(0,-35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1,0.85,0.85))
+    holoColor(A,WheelColor)
+    holoEntity(A):setSubMaterial(1,WheelMat1)
+    holoEntity(A):setSubMaterial(2,WheelMat2)
+    holoEntity(A):setSubMaterial(3,WheelMat3)
+
+
+#Bearing Caps R    
+    A = 3
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,Truck:toWorld(vec(40,35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1.5))
+    holoColor(A,BearingColor)
+    holoBodygroup(A,1,BearingType-1)
+    holoEntity(A):setSubMaterial(1,BearingMat1)
+    holoEntity(A):setSubMaterial(2,BearingMat2)
+    holoEntity(A):setSubMaterial(3,BearingMat3)
+    holoEntity(A):setSubMaterial(4,BearingMat4)
+    A = 4
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,Truck:toWorld(vec(40,-35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1.5))
+    holoColor(A,BearingColor) 
+    holoBodygroup(A,1,BearingType-1)
+    holoEntity(A):setSubMaterial(1,BearingMat1)
+    holoEntity(A):setSubMaterial(2,BearingMat2)
+    holoEntity(A):setSubMaterial(3,BearingMat3)
+    holoEntity(A):setSubMaterial(4,BearingMat4)
+    
+    
+#Bearing Caps L
+    A = 5
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,Truck:toWorld(vec(-40,35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1.5))
+    holoColor(A,BearingColor)
+    holoBodygroup(A,1,BearingType-1)
+    holoEntity(A):setSubMaterial(1,BearingMat1)
+    holoEntity(A):setSubMaterial(2,BearingMat2)
+    holoEntity(A):setSubMaterial(3,BearingMat3)
+    holoEntity(A):setSubMaterial(4,BearingMat4)
+    A = 6
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A, "models/wam98_trainparts/wheel_bearings/timken/timken_ap2.mdl")
+    holoPos(A,Truck:toWorld(vec(-40,-35,-9.5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoScale(A,vec(1.5))
+    holoColor(A,BearingColor)   
+    holoBodygroup(A,1,BearingType-1)    
+    holoEntity(A):setSubMaterial(1,BearingMat1)
+    holoEntity(A):setSubMaterial(2,BearingMat2)
+    holoEntity(A):setSubMaterial(3,BearingMat3)
+    holoEntity(A):setSubMaterial(4,BearingMat4) 
+    
+
+#Springs R
+    A = 7
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(44,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 8
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(44,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 9
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(44,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 10
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(38,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 11
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(38,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 12
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(38,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 13
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(32,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 14
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(32,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 15
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(32,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat) 
+    
+    
+#Springs L
+    A = 16
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-44,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 17
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-44,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 18
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-44,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 19
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-38,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 20
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-38,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 21
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-38,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 22
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-32,6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 23
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-32,0,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+    A = 24
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/bobsters_trains/uk/bogies/class20_mechanical/spring.mdl")
+    holoPos(A,Truck:toWorld(vec(-32,-6,-11)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,SpringColor)
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,SpringMat)
+
+
+#Brake Shoes  
+    A = 25
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/anytrains/props/detail/brakeshoe.mdl")
+    holoPos(A,Truck:toWorld(vec(-29,-11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,BrakeShoeColor)
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,BrakeMat1)
+    holoEntity(A):setSubMaterial(2,BrakeMat2)
+    holoEntity(A):setSubMaterial(3,BrakeMat3)
+    A = 26
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/anytrains/props/detail/brakeshoe.mdl")
+    holoPos(A,Truck:toWorld(vec(-29,11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,180,0)))
+    holoColor(A,BrakeShoeColor)
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,BrakeMat1)
+    holoEntity(A):setSubMaterial(2,BrakeMat2)
+    holoEntity(A):setSubMaterial(3,BrakeMat3)
+    A = 27
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/anytrains/props/detail/brakeshoe.mdl")
+    holoPos(A,Truck:toWorld(vec(29,-11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,BrakeShoeColor)
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,BrakeMat1)
+    holoEntity(A):setSubMaterial(2,BrakeMat2)
+    holoEntity(A):setSubMaterial(3,BrakeMat3)
+    A = 28
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/anytrains/props/detail/brakeshoe.mdl")
+    holoPos(A,Truck:toWorld(vec(29,11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,180,0)))
+    holoColor(A,BrakeShoeColor)
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,BrakeMat1)
+    holoEntity(A):setSubMaterial(2,BrakeMat2)
+    holoEntity(A):setSubMaterial(3,BrakeMat3)
+
+
+#Rollers R
+    A = 29
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(20,-5,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+    A = 30
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(20,0,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+    A = 31
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(20,5,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+
+
+#Rollers L
+    A = 32
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-20,-5,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+    A = 33
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-20,0,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+    A = 34
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-20,5,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,90,90)))
+    holoColor(A,RollerColor)
+    holoScale(A,vec(1.25,1.25,1.65))
+    holoEntity(A):setSubMaterial(1,RollerMat)
+
+
+#Brake Rigging F
+    A = 36
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x60x3.mdl")
+    holoPos(A,Truck:toWorld(vec(0,11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)   
+
+    A = 37
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x30x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-15,18.5,-14)))
+    holoAng(A,Truck:toWorld(ang(0,30,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)
+    A = 38
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x30x3.mdl")
+    holoPos(A,Truck:toWorld(vec(15,18.5,-14)))
+    holoAng(A,Truck:toWorld(ang(0,-30,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat) 
+    A = 39
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_3/cylinder_6x18.mdl ")
+    holoPos(A,Truck:toWorld(vec(0,18.75,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,90)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)     
+
+    A = 40
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x30x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-11,22,0)))
+    holoAng(A,Truck:toWorld(ang(50,0,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)  
+
+    A = 41
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_2/cylinder_3x42.mdl")
+    holoPos(A,Truck:toWorld(vec(-12,1,2.5)))
+    holoAng(A,Truck:toWorld(ang(0,3,90)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)  
+
+#Brake Rigging R
+    A = 42
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x60x3.mdl")
+    holoPos(A,Truck:toWorld(vec(0,-11,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)   
+
+    A = 43
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x30x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-15,-18.5,-14)))
+    holoAng(A,Truck:toWorld(ang(0,-30,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)
+    A = 44
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x30x3.mdl")
+    holoPos(A,Truck:toWorld(vec(15,-18.5,-14)))
+    holoAng(A,Truck:toWorld(ang(0,30,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat) 
+    A = 45
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_3/cylinder_6x18.mdl")
+    holoPos(A,Truck:toWorld(vec(0,-18.75,-14)))
+    holoAng(A,Truck:toWorld(ang(0,0,90)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)     
+
+    A = 46
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/rectangles/size_1/rect_3x24x3.mdl")
+    holoPos(A,Truck:toWorld(vec(-6,-20,-4.5)))
+    holoAng(A,Truck:toWorld(ang(55,0,0)))
+    holoColor(A,BrakeRiggingColor)
+    holoScale(A,vec(1,1,1))
+    holoEntity(A):setSubMaterial(1,BrakeRiggingMat)  
+ 
+    
+#Bolster Extender 9000
+if(BolsterExtender == 1){
+    A = 35
+    holoCreate(A)
+    holoParent(A,Truck)
+    holoModel(A,"models/sprops/cylinders/size_5/cylinder_12x12.mdl")
+    holoPos(A,Truck:toWorld(vec(0,0,5)))
+    holoAng(A,Truck:toWorld(ang(0,0,0)))
+    holoColor(A,TruckColor)
+    holoScale(A,vec(1.66,1.66,BolsterExtenderSize))
+    holoEntity(A):setSubMaterial(1,TruckMat)
+    
+}elseif(BolsterExtender == 0){
+}
+
+}
+interval(100)
+
+VelL = Truck:velL():y()/-4.25    
+
+Roll+=VelL
+    
+holoAng(1,Truck:toWorld(ang(0,0,25+Roll)))
+holoAng(2,Truck:toWorld(ang(0,0,73+Roll)))
+
+     
+holoAng(3,Truck:toWorld(ang(0,0,91+Roll)))
+holoAng(4,Truck:toWorld(ang(0,0,27+Roll)))   
+holoAng(5,Truck:toWorld(ang(0,180,25-Roll)))
+holoAng(6,Truck:toWorld(ang(0,180,-66-Roll)))
+
+# This shit has been slapped together and brought to you by PowerTrain, 2022.
+# -----------------------------------------------------------------------------------------------------------
+# "I'm not a professional coder."
+# -----------------------------------------------------------------------------------------------------------
+# Yhanks to Jazzie for the original basis and for being one of my biggest inspirations in trainbuild.
+# -----------------------------------------------------------------------------------------------------------
+# 2/19/2022 - Original creation, V1.0.
+# -----------------------------------------------------------------------------------------------------------
+
+# *********************************************************************************************************************
+# I don't really give a damn what you do with this. If you modify it in a way that makes it better though, 
+# I would appreciate a heads up and a "How It's Done" tutorial. I'm always looking for new ideas.
+# If you'd like to contribute, complain, or say thanks feel free to rach out. Credit will be given where credit is due.
+# Let's bask in the glory of being kings of the fuckin' train nerds together!
+# *********************************************************************************************************************
+
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#     /$$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ /$$$$$$$  /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$ /$$   /$$       #
+#    | $$__  $$ /$$__  $$| $$  /$ | $$| $$_____/| $$__  $$|__  $$__/| $$__  $$ /$$__  $$|_  $$_/| $$$ | $$       #
+#    | $$  \ $$| $$  \ $$| $$ /$$$| $$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  \ $$  | $$  | $$$$| $$       #
+#    | $$$$$$$/| $$  | $$| $$/$$ $$ $$| $$$$$   | $$$$$$$/   | $$   | $$$$$$$/| $$$$$$$$  | $$  | $$ $$ $$       #
+#    | $$____/ | $$  | $$| $$$$_  $$$$| $$__/   | $$__  $$   | $$   | $$__  $$| $$__  $$  | $$  | $$  $$$$       #
+#    | $$      | $$  | $$| $$$/ \  $$$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  | $$  | $$  | $$\  $$$       #
+#    | $$      |  $$$$$$/| $$/   \  $$| $$$$$$$$| $$  | $$   | $$   | $$  | $$| $$  | $$ /$$$$$$| $$ \  $$       #
+#    |__/       \______/ |__/     \__/|________/|__/  |__/   |__/   |__/  |__/|__/  |__/|______/|__/  \__/       #
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+
+entity():setName("PowerTrain's Barber S2 Truck Version 1.0 (Magical Movin' Mechanical Miscellany)")

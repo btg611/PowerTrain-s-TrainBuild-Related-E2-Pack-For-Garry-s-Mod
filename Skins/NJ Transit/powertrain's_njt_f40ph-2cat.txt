@@ -1,0 +1,296 @@
+@name PowerTrain's NJT F40PH-2CAT
+@inputs [Entity]:entity 
+@persist A
+@model models/woozie/e2/dash2_module.mdl
+if(first()|dupefinished()){
+StripeColor1 = vec(218,218,218)    #----Color 1
+StripeColor2 = vec(30,30,30) #----Color 2
+StripeColor3 = vec(30,30,30)    #----Color 3
+CarModel = "models/unionslocos/f40ph.mdl"  
+AirTankModel = "models/unionsparts/tube_2.mdl"             
+ClipAngle = 80
+Entity:setAlpha(0) 
+
+
+
+Size = vec(2.5,10,10)
+Size2 = vec(7,12,12) 
+Size3 = vec(0.7)
+
+Decal1 = "logos/reallogos/njtlogo" 
+Decal2 = "logos/reallogos/njtstrip" 
+
+
+#----Top
+    A = A+1
+    holoCreate(A)
+    holoParent(A,Entity)
+    holoModel(A, CarModel)
+    holoColor(A,StripeColor1)
+    holoAng(A,Entity:toWorld(ang(0,0,0)))
+    holoPos(A,Entity:toWorld(vec(0,0,0))) 
+    holoClipEnabled(A,1,1)    
+    holoClipEnabled(A,2,1)      
+    holoClip(A,1,vec(0,0,150),vec(0,0,1),0)
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,3,4)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,2) 
+    holoBodygroup(A,6,1)  
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,1)   
+    holoBodygroup(A,10,9)  
+    holoEntity(A):setSubMaterial(1,"icegt/loco/ice_trainmetal_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+    holoEntity(A):setSubMaterial(3,"jazzie/trains/cab_wall01")
+    holoEntity(A):setSubMaterial(7,"decals/textures/colors/orange")
+    holoEntity(A):setSubMaterial(9,"invisible")
+    
+    #----middle 
+    A = 7
+    holoCreate(A)
+    holoParent(A,Entity)
+    holoModel(A, CarModel)
+    holoColor(A,StripeColor2)
+    holoAng(A,Entity:toWorld(ang(0,0,0)))
+    holoPos(A,Entity:toWorld(vec(0,0,0)))                
+    holoClipEnabled(A, 1, 1)
+    holoClip(A, 1, vec(0,0,48), vec(0,0,1), 0)
+    holoClipEnabled(A,2,1)
+    holoClip(A,2,vec(0,-900,0),vec(0,1,0),0)
+    holoClipEnabled(A, 3, 1)
+    holoClip(A,2,vec(0,498,0),vec(0,-1,0),0)
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,3,4)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,2) 
+    holoBodygroup(A,6,1)  
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,1)  
+    holoBodygroup(A,10,9)   
+    holoEntity(A):setSubMaterial(1,"icegt/loco/ice_trainmetal_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+    holoEntity(A):setSubMaterial(3,"jazzie/trains/cab_wall01")
+    holoEntity(A):setSubMaterial(7,"decals/textures/colors/orange")
+    holoEntity(A):setSubMaterial(9,"invisible")
+
+    #----middle curved part
+    A = 1
+    holoCreate(A)
+    holoParent(A,Entity)
+    holoModel(A, CarModel)
+    holoColor(A,StripeColor2)
+    holoAng(A,Entity:toWorld(ang(0,0,0)))
+    holoPos(A,Entity:toWorld(vec(0,0,0)))                
+    holoClipEnabled(A, 1, 1)
+    holoClip(A, 1, vec(0,0,26), vec(0,0,1), 0)
+    holoClipEnabled(A,2,1)
+    holoClip(A,2,vec(0,0,0),vec(0,1,0.3),0)
+    holoClipEnabled(A, 3, 1)
+    holoClip(A,2,vec(0,-238,0),vec(0,-1,0.3),0)
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,3,4)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,2) 
+    holoBodygroup(A,6,1)  
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,1)  
+    holoBodygroup(A,10,9)   
+    holoEntity(A):setSubMaterial(1,"icegt/loco/ice_trainmetal_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+    holoEntity(A):setSubMaterial(3,"jazzie/trains/cab_wall01")
+    holoEntity(A):setSubMaterial(7,"decals/textures/colors/orange")
+    holoEntity(A):setSubMaterial(9,"invisible")
+#----bottom
+    A = 2
+    holoCreate(A)
+    holoParent(A,Entity)
+    holoModel(A, CarModel)
+    holoColor(A,StripeColor1)
+    holoAng(A,Entity:toWorld(ang(0,0,0)))
+    holoPos(A,Entity:toWorld(vec(0,0,0)))
+    holoClipEnabled(A,1,1)     
+    holoClip(A,1,vec(0,0,26),vec(0,0,-1),0) 
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,3,4)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,2) 
+    holoBodygroup(A,6,1)  
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,1) 
+    holoBodygroup(A,10,9)       
+    holoEntity(A):setSubMaterial(1,"icegt/loco/ice_trainmetal_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+    holoEntity(A):setSubMaterial(3,"jazzie/trains/cab_wall01")
+    holoEntity(A):setSubMaterial(7,"decals/textures/colors/orange")
+    holoEntity(A):setSubMaterial(9,"invisible")
+    #the curved thing
+    A = 8
+    holoCreate(A)
+    holoParent(A,Entity)
+    holoModel(A, CarModel)
+    holoColor(A,StripeColor1)
+    holoAng(A,Entity:toWorld(ang(0,0,0)))
+    holoPos(A,Entity:toWorld(vec(0,0,0)))
+    holoClipEnabled(A, 1, 1)
+    holoClip(A, 1, vec(0,0,26), vec(0,0,1), 0)
+    holoClipEnabled(A,2,1)
+    holoClip(A,2,vec(0,-238,0),vec(0,1,-0.3),0)
+    holoClipEnabled(A, 3, 1)
+    holoClip(A,3,vec(0,508,0),vec(0,-1,0.3),0)
+    holoClipEnabled(A, 4, 1)
+    holoClip(A, 4, vec(0,0,48), vec(0,0,-1), 0)
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,3,4)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,2) 
+    holoBodygroup(A,6,1)  
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,1)
+    holoBodygroup(A,10,9)        
+    holoEntity(A):setSubMaterial(1,"icegt/loco/ice_trainmetal_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+    holoEntity(A):setSubMaterial(3,"jazzie/trains/cab_wall01")
+    holoEntity(A):setSubMaterial(7,"decals/textures/colors/orange")
+    holoEntity(A):setSubMaterial(9,"invisible") 
+
+#-------------air tanks---------------------  
+
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(0,75,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,0)) )
+    holoColor(A, vec(25))
+    holoModel(A, AirTankModel)
+    holoScale(A, Size3)
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(0,100,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,0)) )
+    holoColor(A, vec(25))
+    holoModel(A, AirTankModel)
+    holoScale(A, Size3)
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(0,125,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,0)) )
+    holoColor(A, vec(25))
+    holoModel(A, AirTankModel)
+    holoScale(A, Size3)
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")
+    
+    
+    
+#[    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(58.5,119,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,90)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")    
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(-58.5,125,-38)))
+    holoAng(A,Entity:toWorld(ang(0,180,180)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")  
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(58.5,87.5,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,90)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")    
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(-60.5,87.5,-57)))
+    holoAng(A,Entity:toWorld(ang(0,0,90)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")    
+    A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(61.75,138.5,-38.5)))
+    holoAng(A,Entity:toWorld(ang(180,-90,0)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")  
+     A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(-58.5,127.5,-38.5)))
+    holoAng(A,Entity:toWorld(ang(180,-90,0)) )
+    holoColor(A, vec(25))
+    holoModel(A, "models/nseven/gaspipes006a.mdl")
+    holoScale(A, vec(0.75,0.75,0.75))
+    holoParent(A, entity()) 
+    holoMaterial(A,"models/proppertextures/acrylic_grimey")  ]#
+     
+    
+#------------side logos---------------------
+
+
+   A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(65,190,15)))
+    holoAng(A,Entity:toWorld(ang(90,0,0)) )
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoScale(A, Size)
+    holoParent(A, entity()) 
+    holoMaterial(A,Decal1) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+
+   A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(-65,190,15)))
+    holoAng(A,Entity:toWorld(ang(90,0,180)) )
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoScale(A, Size)
+    holoParent(A, entity()) 
+    holoMaterial(A,Decal1) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+    
+    
+   A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(65,-10,5.75)))
+    holoAng(A,Entity:toWorld(ang(90,0,0)) )
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoScale(A, Size2)
+    holoParent(A, entity()) 
+    holoMaterial(A,Decal2) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+
+   A++
+    holoCreate(A)
+    holoPos(A,Entity:toWorld(vec(-65,-10,5.75)))
+    holoAng(A,Entity:toWorld(ang(-90,0,360)) )
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoScale(A, Size2)
+    holoParent(A, entity()) 
+    holoMaterial(A,Decal2) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+}

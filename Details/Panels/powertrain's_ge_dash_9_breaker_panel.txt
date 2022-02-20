@@ -1,0 +1,504 @@
+@name PowerTrain's GE Dash 9 Breaker Panel
+@inputs Locomotive:entity Isolation Shutdown1 S1 S2 S3 S4 S5 S6 S7 S8 S9 S10 S11 S12 S13 S14 S15 S16 S17 S18
+@outputs
+
+#Breakers
+Breaker = "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl"
+DualBreaker = "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_dual.mdl"
+
+Button = "models/titus's_propper_model_pack_2.4/propper/buttons/pushbutton.mdl"
+Button2 = "models/anytrains/props/detail/buttons/button_mushroomtop.mdl"
+Switch1 = "models/magtrainslocos/rotaryswitches/headlight_ge.mdl"
+Switch2 = "models/bull/buttons/toggle_switch.mdl"
+Switch3 = "models/sps_pack/misc/controlpanel_button.mdl"
+
+Speedo = "models/parts/gevo_speedo.mdl"
+
+Rectangle = "models/sprops/rectangles_superthin/size_0/rect_1_5x18.mdl"
+Square = "models/sprops/rectangles/size_1_5/rect_6x6x3.mdl"
+Bolt = "models/anytrains/props/bean/screw_m5.mdl"
+
+#Breaker Labels
+Plane = "plane"
+AutoStopOverride  = "cubics_pack/breakers/auto_stop_override"
+LeadUnitOps = "cubics_pack/breakers/lead_unit_operations"
+LocomotiveOps = "cubics_pack/breakers/locomotive_operations"
+AirConditioner = "cubics_pack/breakers/air_conditioner"
+Cab = "titus/cab"
+Fan = "titus/fan"
+Leader = "cubics_pack/breakers/leader"
+LocalControl = "cubics_pack/breakers/local_control"
+LEB = "cubics_pack/breakers/leb_computer"
+AutoDrain = "cubics_pack/breakers/auto_water_drain"
+AutoDrainWarning = "cubics_pack/breakers/water_drain_warning"
+WarningDevices = "cubics_pack/breakers/warning_devices"
+RadioHOTD = "cubics_pack/breakers/radio_and_hotd"
+Radio = "cubics_pack/breakers/radio"
+Headlights = "cubics_pack/breakers/short_long_hood_headlights"
+CabSignal = "cubics_pack/breakers/cab_signal"
+BatteryCharge = "cubics_pack/breakers/batt_charge_and_computer"
+BatteryChargeWarning = "cubics_pack/breakers/batt_charge_and_computer_warning"
+Alerter = "cubics_pack/breakers/alertness_equipment"
+AirDryer = "cubics_pack/breakers/air_dryer"
+BrakeTransControl = "cubics_pack/breakers/brake_trans_control"
+AuxGen = "cubics_pack/breakers/auxiliary_generator"
+FuelPump = "cubics_pack/breakers/fuel_pump"
+FuelMonitor = "cubics_pack/breakers/fuel_monitor"
+GenField = "cubics_pack/breakers/generator_field"
+Lts = "cubics_pack/breakers/lights"
+TMCBN = "cubics_pack/breakers/tmc_obn_leader"
+ModuleControl = "cubics_pack/breakers/module_control"
+WindowHeater = "cubics_pack/breakers/window_heater"
+RoadCrossingLights = "cubics_pack/breakers/road_crossing_lights"
+AirBrakeComputer = "cubics_pack/breakers/air_brake_computer"
+EngineStop = "cubics_pack/breakers/engine_stop"
+AirDryerWarning = "cubics_pack/breakers/air_dryer_warning"
+RunningLights = "cubics_pack/breakers/running_lights"
+ParkingBrake = "cubics_pack/breakers/parking_brake"
+ParkingBrakeWarning = "cubics_pack/breakers/parking_brake_warning"
+EFCO = "cubics_pack/breakers/emergency_fuel_trip"
+EngineerHeater = "cubics_pack/breakers/engineers_wall_heater"
+HelperHeater = "cubics_pack/breakers/helpers_wall_heater"
+
+ECSMat = "cubics_pack/ge_junk/ge_ec_switch"
+HCSMat = "cubics_pack/ge_junk/ge_hdlt_setup"
+SwitchesMat = "cubics_pack/ge_junk/ge_misc_switches"
+SidewallSwitchMat = "cubics_pack/ge_junk/ge_sidewall_switches"
+
+BlackMat = "models/proppertextures/enamel_black"
+Aluminum = "models/proppertextures/aluminum"
+RedMat = "models/proppertextures/plastic_red"
+Invisible = "models/proppertextures/invisible"
+
+LocalAng1 = ang(0,0,0)
+LocalAng2 = ang(90,0,-90)
+LocalAng3 = ang(180,0,-90)
+LocalAng4 = ang(0,-90,0)
+
+Scale = vec(1)
+Scale2 = vec(0.8,0.8,0.1)
+Scale3 = vec(0.5,0.68,0.1)
+Scale4 = vec(0.75)
+Scale5 = vec(0.05)
+Scale6 = vec(1.1)
+Scale7 = vec(0.6,3.35,0.5)
+Scale8 = vec(0.3)
+
+White = vec(255)
+Gray = vec(50)
+Black = vec(25)
+
+Alpha = 255
+
+
+
+E = entity()
+
+if(first() | duped()){
+
+}
+E:setAlpha(255)
+#Breaker Labels and label panels
+holoCreate(0,Locomotive:toWorld(vec(23,247.5,117)),vec(1.15,0.75,2),Locomotive:toWorld(LocalAng1),White,Rectangle)
+holoMaterial(0,Aluminum)
+
+holoCreate(1,Locomotive:toWorld(vec(27.5,248.25,117)),vec(0.08,0.85,1),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(1,LocomotiveOps)
+
+holoCreate(2,Locomotive:toWorld(vec(18,248.25,117)),vec(0.1,0.9,1),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(2,LeadUnitOps)
+
+holoCreate(3,Locomotive:toWorld(vec(23,247.5,113.5)),vec(1.15,0.8,2),Locomotive:toWorld(LocalAng1),White,Rectangle)
+holoMaterial(3,Aluminum)
+
+holoCreate(4,Locomotive:toWorld(vec(31.5,248.25,113.5)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(4,AutoStopOverride)
+holoCreate(5,Locomotive:toWorld(vec(29.9,248.25,113.35)),vec(0.75),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(5,Cab)
+holoCreate(105,Locomotive:toWorld(vec(29.1,248.25,113.53)),vec(0.75),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(105,Fan)
+holoCreate(6,Locomotive:toWorld(vec(27.5,249.1,115)),vec(0.15),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(6,TMCBN)
+holoCreate(7,Locomotive:toWorld(vec(25.5,248.25,113.5)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(7,LEB)
+holoCreate(9,Locomotive:toWorld(vec(23.5,248.25,113.5)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(9,CabSignal)
+holoCreate(10,Locomotive:toWorld(vec(21.5,248.25,113.5)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(10,WindowHeater)
+holoCreate(11,Locomotive:toWorld(vec(19.5,248.25,113.5)),vec(0.25),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(11,RoadCrossingLights)
+holoCreate(12,Locomotive:toWorld(vec(17.5,248.25,113.5)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(12,Radio)
+holoCreate(13,Locomotive:toWorld(vec(15,248.25,113.5)),vec(0.5),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(13,Headlights)
+
+#Breakers
+
+holoCreate(14,Locomotive:toWorld(vec(31.5,247.25,115.25)),vec(1.5),Locomotive:toWorld(LocalAng2),Black,Button)
+
+holoCreate(15,Locomotive:toWorld(vec(29.5,247.25,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(15,BlackMat)
+holoCreate(16,Locomotive:toWorld(vec(27.5,247.25,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(16,BlackMat)
+holoEntity(16):setBodygroup(2,2)
+holoCreate(17,Locomotive:toWorld(vec(25.5,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(17,BlackMat)
+holoEntity(17):setBodygroup(2,2)
+holoCreate(18,Locomotive:toWorld(vec(23.5,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(18,BlackMat)
+holoCreate(19,Locomotive:toWorld(vec(21.5,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(19,BlackMat)
+holoCreate(20,Locomotive:toWorld(vec(19.5,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(20,BlackMat)
+holoCreate(21,Locomotive:toWorld(vec(17.5,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(21,BlackMat)
+holoCreate(22,Locomotive:toWorld(vec(15.75,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,Breaker)
+holoMaterial(22,BlackMat)
+holoCreate(23,Locomotive:toWorld(vec(14,247.5,115.25)),vec(1),Locomotive:toWorld(LocalAng1),White,Breaker)
+holoMaterial(23,BlackMat)
+
+#Breakers Row 2
+
+holoCreate(40,Locomotive:toWorld(vec(31.5,247.5,110.5)),vec(0.5),Locomotive:toWorld(LocalAng2),White,Button2)
+holoEntity(40):setSubMaterial(2,RedMat)
+
+holoCreate(41,Locomotive:toWorld(vec(29.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(41,BlackMat)
+holoEntity(41):setBodygroup(2,2)
+
+holoCreate(42,Locomotive:toWorld(vec(27.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(42,BlackMat)
+
+holoCreate(43,Locomotive:toWorld(vec(25.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(43,BlackMat)
+holoEntity(43):setBodygroup(2,2)
+
+holoCreate(44,Locomotive:toWorld(vec(23.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(44,BlackMat)
+holoCreate(45,Locomotive:toWorld(vec(21.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(45,BlackMat)
+holoEntity(45):setBodygroup(2,2)
+holoCreate(46,Locomotive:toWorld(vec(19.5,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(46,BlackMat)
+holoEntity(46):setBodygroup(2,2)
+holoCreate(47,Locomotive:toWorld(vec(17.25,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(47,BlackMat)
+holoCreate(48,Locomotive:toWorld(vec(14.75,247.5,110.5)),vec(1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(48,BlackMat)
+holoEntity(48):setBodygroup(2,2)
+
+#Second Breaker Label Panel
+
+holoCreate(24,Locomotive:toWorld(vec(23,247.5,112)),vec(1.15,0.75,2),Locomotive:toWorld(ang(0,0,0)),White,Rectangle)
+holoMaterial(24,Aluminum)
+holoCreate(25,Locomotive:toWorld(vec(22,248.25,112)),vec(0.07,1.25,1),Locomotive:toWorld(ang(90,0,-90)),Black,Plane)
+holoMaterial(25,LocomotiveOps)
+
+holoCreate(26,Locomotive:toWorld(vec(23,247.5,109)),vec(1.15,0.75,2),Locomotive:toWorld(ang(0,0,0)),White,Rectangle)
+holoMaterial(26,Aluminum)
+
+holoCreate(27,Locomotive:toWorld(vec(31.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(27,EngineStop)
+holoCreate(28,Locomotive:toWorld(vec(29.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(28,AirBrakeComputer)
+holoCreate(29,Locomotive:toWorld(vec(27.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(29,FuelMonitor)
+holoCreate(30,Locomotive:toWorld(vec(25.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(30,AirDryer)
+holoCreate(31,Locomotive:toWorld(vec(25.5,249.1,110.25)),vec(0.15),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(31,AirDryerWarning)
+
+holoCreate(33,Locomotive:toWorld(vec(23.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(33,RunningLights)
+holoCreate(34,Locomotive:toWorld(vec(21.5,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(34,ParkingBrake)
+holoCreate(35,Locomotive:toWorld(vec(21.5,249.1,110.25)),vec(0.15),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(35,ParkingBrakeWarning)
+holoCreate(36,Locomotive:toWorld(vec(19.5,248.25,109)),vec(0.08),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(36,FuelPump)
+holoCreate(37,Locomotive:toWorld(vec(17.25,248.25,109)),vec(0.15),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(37,LocalControl)
+holoCreate(38,Locomotive:toWorld(vec(14.75,248.25,109)),vec(0.25),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(38,BatteryCharge)
+holoCreate(39,Locomotive:toWorld(vec(14.75,249.1,110.25)),vec(0.15),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(39,BatteryChargeWarning)
+
+holoCreate(49,Locomotive:toWorld(vec(31.5,248.25,112)),vec(0.3),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(49,EFCO)
+
+
+
+holoCreate(50,Locomotive:toWorld(vec(30,247.25,96.5)),vec(1),Locomotive:toWorld(LocalAng2),White,Switch1)
+holoEntity(50):setSubMaterial(1,Invisible)
+holoEntity(50):setBodygroup(2,1)
+
+holoCreate(51,Locomotive:toWorld(vec(30,247.5,95.6)),vec(0.75),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(51,ECSMat)
+
+holoCreate(52,Locomotive:toWorld(vec(25,247.25,96.5)),vec(1),Locomotive:toWorld(LocalAng2),White,Switch1)
+holoEntity(52):setSubMaterial(1,Invisible)
+holoEntity(52):setBodygroup(2,1)
+
+holoCreate(53,Locomotive:toWorld(vec(25,247.5,95.6)),vec(0.75),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(53,HCSMat)
+
+holoCreate(54,Locomotive:toWorld(vec(18,247.5,96.6)),vec(1),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(54,SwitchesMat)
+
+holoCreate(55,Locomotive:toWorld(vec(21.85,247.5,98)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(55,Aluminum)
+
+holoCreate(56,Locomotive:toWorld(vec(20.35,247.5,98)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(56,Aluminum)
+holoCreate(57,Locomotive:toWorld(vec(21.85,247.5,96.65)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(57,Aluminum)
+holoCreate(58,Locomotive:toWorld(vec(20.35,247.5,96.65)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(58,Aluminum)
+holoCreate(59,Locomotive:toWorld(vec(21.85,247.5,95.3)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(59,Aluminum)
+holoCreate(60,Locomotive:toWorld(vec(20.35,247.5,95.3)),vec(0.25),Locomotive:toWorld(LocalAng2),White,Switch2)
+holoMaterial(60,Aluminum)
+
+
+holoCreate(61,Locomotive:toWorld(vec(17.15,247.5,98)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(61,Aluminum)
+holoCreate(62,Locomotive:toWorld(vec(17.15,247.5,96.65)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(62,Aluminum)
+holoCreate(63,Locomotive:toWorld(vec(17.15,247.5,95.25)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(63,Aluminum)
+holoCreate(64,Locomotive:toWorld(vec(15.6,247.5,98)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(64,Aluminum)
+holoCreate(65,Locomotive:toWorld(vec(15.6,247.5,96.65)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(65,Aluminum)
+holoCreate(66,Locomotive:toWorld(vec(15.6,247.5,95.25)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(66,Aluminum)
+holoCreate(67,Locomotive:toWorld(vec(14.1,247.5,98)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(67,Aluminum)
+holoCreate(68,Locomotive:toWorld(vec(14.1,247.5,96.65)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(68,Aluminum)
+holoCreate(69,Locomotive:toWorld(vec(14.1,247.5,95.25)),vec(0.35),Locomotive:toWorld(LocalAng4),White,Switch3)
+holoMaterial(69,Aluminum)
+
+holoCreate(70,Locomotive:toWorld(vec(21,247.5,86)),vec(1),Locomotive:toWorld(LocalAng2),White,Plane)
+holoMaterial(70,SidewallSwitchMat)
+
+holoCreate(71,Locomotive:toWorld(vec(23.75,247,86)),vec(1),Locomotive:toWorld(LocalAng3),White,Switch1)
+holoEntity(71):setSubMaterial(1,Invisible)
+holoEntity(81):setBodygroup(2,1)
+
+holoCreate(72,Locomotive:toWorld(vec(18,247,86)),vec(1),Locomotive:toWorld(LocalAng3),White,Switch1)
+holoEntity(72):setSubMaterial(1,Invisible)
+holoEntity(72):setBodygroup(2,1)
+
+holoCreate(73,Locomotive:toWorld(vec(20,248,80)),vec(0.65,1,1),Locomotive:toWorld(LocalAng3),White,Rectangle)
+holoMaterial(73,Aluminum)
+
+holoCreate(74,Locomotive:toWorld(vec(24,247,82.25)),vec(1,1,1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(74,BlackMat)
+holoCreate(75,Locomotive:toWorld(vec(20.5,247,82.25)),vec(1,1,1),Locomotive:toWorld(LocalAng1),White,DualBreaker)
+holoMaterial(75,BlackMat)
+holoCreate(76,Locomotive:toWorld(vec(17,247,82.25)),vec(1,1,1),Locomotive:toWorld(LocalAng1),White,Breaker)
+holoMaterial(76,BlackMat)
+
+holoCreate(77,Locomotive:toWorld(vec(29.5,247,84)),vec(1,1,1),Locomotive:toWorld(LocalAng4),White,Speedo)
+holoEntity(77):setSubMaterial(3,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(11,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(12,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(13,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(14,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(15,"models/proppertextures/bulb_red_unlit")
+holoEntity(77):setSubMaterial(16,"models/proppertextures/bulb_red_unlit")
+
+holoCreate(78,Locomotive:toWorld(vec(24,248.5,80)),vec(0.3),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(78,EngineerHeater)
+
+holoCreate(79,Locomotive:toWorld(vec(21,248.5,80)),vec(0.3),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(79,HelperHeater)
+
+holoCreate(80,Locomotive:toWorld(vec(17,248.5,80)),vec(0.3),Locomotive:toWorld(LocalAng2),Black,Plane)
+holoMaterial(80,AirConditioner)
+
+
+if(Isolation==1){
+holoAng(50,Locomotive:toWorld(LocalAng2))}
+elseif(Isolation==0){
+holoAng(50,Locomotive:toWorld(LocalAng3))}
+ 
+if(S1){
+holoBodygroup(14,1,1) }
+elseif(!S1){
+holoBodygroup(14,1,0) }
+
+if(S2){
+holoBodygroup(15,1,1) }
+elseif(!S2){
+holoBodygroup(15,1,0) }
+
+if(S3){
+holoBodygroup(16,1,1) }
+elseif(!S3){
+holoBodygroup(16,1,0) }
+
+if(S4){
+holoBodygroup(17,1,1) }
+elseif(!S4){
+holoBodygroup(17,1,0) }
+
+if(S5){
+holoBodygroup(18,1,1) }
+elseif(!S5){
+holoBodygroup(18,1,0) }
+
+if(S6){
+holoBodygroup(19,1,1) }
+elseif(!S6){
+holoBodygroup(19,1,0) }
+
+if(S7){
+holoBodygroup(20,1,1) }
+elseif(!S7){
+holoBodygroup(20,1,0) }
+
+
+if(S8){
+holoBodygroup(21,1,1) }
+elseif(!S8){
+holoBodygroup(21,1,0) }
+
+if(S9){
+holoBodygroup(22,1,1) }
+elseif(!S9){
+holoBodygroup(22,1,0) }
+
+if(S10){
+holoBodygroup(23,1,1) }
+elseif(!S10){
+holoBodygroup(23,1,0) }
+
+if(S11){
+holoBodygroup(41,1,1) }
+elseif(!S11){
+holoBodygroup(41,1,0) }
+
+if(S12){
+holoBodygroup(42,1,1) }
+elseif(!S12){
+holoBodygroup(42,1,0) }
+
+if(S13){
+holoBodygroup(43,1,1) }
+elseif(!S13){
+holoBodygroup(43,1,0) }
+
+if(S14){
+holoBodygroup(44,1,1) }
+elseif(!S14){
+holoBodygroup(44,1,0) }
+
+if(S15){
+holoBodygroup(45,1,1) }
+elseif(!S15){
+holoBodygroup(45,1,0) }
+
+if(S16){
+holoBodygroup(46,1,1) }
+elseif(!S16){
+holoBodygroup(46,1,0) }
+
+if(S17){
+holoBodygroup(47,1,1) }
+elseif(!S17){
+holoBodygroup(47,1,0) }
+
+if(S18){
+holoBodygroup(48,1,1) }
+elseif(!S18){
+holoBodygroup(48,1,0) }
+
+
+if(Shutdown1==1){
+holoBodygroup(40,1,1) }
+if(Shutdown1==0){
+holoBodygroup(40,1,0) }
+ 
+holoParent(0,Locomotive)
+holoParent(1,Locomotive)
+holoParent(2,Locomotive)
+holoParent(3,Locomotive)
+holoParent(4,Locomotive)
+holoParent(5,Locomotive)
+holoParent(6,Locomotive)
+holoParent(7,Locomotive)
+holoParent(8,Locomotive)
+holoParent(9,Locomotive)
+holoParent(10,Locomotive)
+holoParent(11,Locomotive)
+holoParent(12,Locomotive)
+holoParent(13,Locomotive)
+holoParent(14,Locomotive)
+holoParent(15,Locomotive)
+holoParent(16,Locomotive)
+holoParent(17,Locomotive)
+holoParent(18,Locomotive)
+holoParent(19,Locomotive)
+holoParent(20,Locomotive)
+holoParent(21,Locomotive)
+holoParent(22,Locomotive)
+holoParent(23,Locomotive)
+holoParent(24,Locomotive)
+holoParent(25,Locomotive)
+holoParent(26,Locomotive)
+holoParent(27,Locomotive)
+holoParent(28,Locomotive)
+holoParent(29,Locomotive)
+holoParent(30,Locomotive)
+holoParent(31,Locomotive)
+holoParent(32,Locomotive)
+holoParent(33,Locomotive)
+holoParent(34,Locomotive)
+holoParent(35,Locomotive)
+holoParent(36,Locomotive)
+holoParent(37,Locomotive)
+holoParent(38,Locomotive)
+holoParent(39,Locomotive)
+holoParent(40,Locomotive)
+holoParent(41,Locomotive)
+holoParent(42,Locomotive)
+holoParent(43,Locomotive)
+holoParent(44,Locomotive)
+holoParent(45,Locomotive)
+holoParent(46,Locomotive)
+holoParent(47,Locomotive)
+holoParent(48,Locomotive)
+holoParent(49,Locomotive)
+holoParent(50,Locomotive)
+holoParent(51,Locomotive)
+holoParent(52,Locomotive)
+holoParent(53,Locomotive)
+holoParent(54,Locomotive)
+holoParent(55,Locomotive)
+holoParent(56,Locomotive)
+holoParent(57,Locomotive)
+holoParent(58,Locomotive)
+holoParent(59,Locomotive)
+holoParent(60,Locomotive)
+holoParent(61,Locomotive)
+holoParent(62,Locomotive)
+holoParent(63,Locomotive)
+holoParent(64,Locomotive)
+holoParent(65,Locomotive)
+holoParent(66,Locomotive)
+holoParent(67,Locomotive)
+holoParent(68,Locomotive)
+holoParent(69,Locomotive)
+holoParent(70,Locomotive)
+holoParent(71,Locomotive)
+holoParent(72,Locomotive)
+holoParent(73,Locomotive)
+holoParent(74,Locomotive)
+holoParent(75,Locomotive)
+holoParent(76,Locomotive)
+holoParent(77,Locomotive)
+holoParent(78,Locomotive)
+holoParent(79,Locomotive)
+holoParent(80,Locomotive)

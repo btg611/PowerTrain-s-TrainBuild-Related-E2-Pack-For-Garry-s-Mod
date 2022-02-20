@@ -1,0 +1,41 @@
+@name PowerTrain's Animated Ratchet Handbrake E2
+@inputs Apply
+@outputs Handbrake
+@persist Handbrake
+
+#To use, wire Apply to a button, and HandbrakeOverride on your main PT2 chip to Handbrake.
+
+E = entity()
+E:setAlpha(0)
+
+
+Speed = 1.17
+Color = vec(35,100,225)
+
+if(first() | dupefinished()){
+
+
+    holoCreate(1)
+    holoParent(1,E)
+    holoColor(1,Color)
+    holoScale(1,vec(1))
+    holoModel(1, "models/anytrains/props/detail/ratchetbrake.mdl")
+    holoPos(1,E:toWorld(vec(0,5,0)))
+    holoAng(1,E:toWorld(ang(0,0,90)))
+    holoEntity(1):setSubMaterial(1,"models/proppertextures/acrylic_grimey")
+    
+}
+
+if(Apply==1){
+holoAnim(1,1,0,Speed)
+soundPlay(1,3.5,"opencontrol/handbrakes/handbrake-ratchet.wav")
+Handbrake == 100
+}
+if(!Apply){
+holoAnim(1,3,0,Speed)
+Handbrake == 0
+soundStop(1,0)
+soundPlay(2,2,"opencontrol/handbrakes/handbrake-wheel-release.wav")
+}
+
+

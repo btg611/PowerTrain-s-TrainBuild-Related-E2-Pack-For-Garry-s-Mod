@@ -1,0 +1,90 @@
+@name EMD Seats
+@inputs SeatL:entity SeatR:entity
+@outputs 
+@persist E:entity
+@trigger 
+
+#For use with the pan seat model, so you can use butons when they're parented!
+
+if(first()|dupefinished()){
+    
+E:setAlpha(0)
+
+SeatL:setAlpha(0)
+
+SeatR:setAlpha(0)
+
+A=0
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/cabseat_emd.mdl")
+holoPos(A,SeatL:toWorld(vec(0,0,-14.25)))
+holoAng(A, SeatL:toWorld(ang(0,0,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1))
+holoParent(A,SeatL)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+holoEntity(A):setSubMaterial(2,"models/proppertextures/rubber")
+holoBodygroup(A,1,1)
+holoBodygroup(A,2,2)
+
+A=1
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/railmount.mdl")
+holoPos(A,SeatL:toWorld(vec(2.5,0,-14.25)))
+holoAng(A, SeatL:toWorld(ang(0,0,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1,0.52,1))
+holoParent(A,SeatL)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+
+A=2
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/railmount.mdl")
+holoPos(A,SeatL:toWorld(vec(2.5,0,-19)))
+holoAng(A, SeatL:toWorld(ang(0,0,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1,0.265,1))
+holoParent(A,SeatL)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+
+
+A=3
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/cabseat_emd.mdl")
+holoPos(A,SeatR:toWorld(vec(0,0,-14.25)))
+holoAng(A, SeatR:toWorld(ang(0,0,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1))
+holoParent(A,SeatR)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+holoEntity(A):setSubMaterial(2,"models/proppertextures/rubber")
+holoBodygroup(A,1,1)
+holoBodygroup(A,2,3)
+
+A=4
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/railmount.mdl")
+holoPos(A,SeatR:toWorld(vec(-2.5,0,-14.25)))
+holoAng(A, SeatR:toWorld(ang(0,180,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1,0.52,1))
+holoParent(A,SeatR)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+
+A=5
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/cabseats/railmount.mdl")
+holoPos(A,SeatR:toWorld(vec(-2.5,0,-19)))
+holoAng(A, SeatR:toWorld(ang(0,180,0)))
+holoColor(A,vec(255))
+holoScale(A, vec(1,0.265,1))
+holoParent(A,SeatR)
+holoEntity(A):setSubMaterial(1,"models/proppertextures/cabmetal_gray")
+
+}
+
+
+
+
+
+       

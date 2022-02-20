@@ -1,0 +1,159 @@
+@name PowerTrain's Waterglass V2
+@inputs Water
+@persist WaterLevel Total Water
+@model models/anytrains/props/detail/fuelgauge.mdl
+if(first() | duped()){
+entity():setAlpha(0)
+
+A=1
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,0,0)))
+holoParent(A, entity())
+holoModel(A, "models/anytrains/props/detail/fuelgauge.mdl")
+holoEntity(A):setSubMaterial(2,"models/proppertextures/brass")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/aluminum")
+holoAng(A, entity():toWorld(ang(0,0,0)) )
+holoScale(A, vec(1,1,1))
+holoColor(A, vec(255))
+holoAlpha(A,100)
+
+A=2
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,0,0)))
+holoParent(A, entity())
+holoModel(A, "models/anytrains/props/detail/fuelgauge.mdl")
+holoAng(A, entity():toWorld(ang(0,0,0)) )
+holoScale(A, vec(1,1,1))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/brass")
+holoEntity(A):setSubMaterial(3,"invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/aluminum")
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+A=4
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,0,-1.25)))
+holoParent(A, entity())
+holoModel(A, "models/sprops/rectangles/size_1/rect_3x12x3.mdl")
+holoAng(A, entity():toWorld(ang(0,90,0)) )
+holoScale(A, vec(0.67,0.85,0.62))
+holoMaterial(A,"models/proppertextures/brass")
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+A=5
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,4.75,-1.25)))
+holoParent(A, entity())
+holoModel(A, "models/sprops/misc/fittings/t_fitting_1_5_to_1_5.mdl")
+holoAng(A, entity():toWorld(ang(90,0,90)) )
+holoScale(A, vec(1))
+holoMaterial(A,"models/proppertextures/brass")
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+A=6
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,-4.75,-1.25)))
+holoParent(A, entity())
+holoModel(A, "models/sprops/misc/fittings/t_fitting_1_5_to_1_5.mdl")
+holoAng(A, entity():toWorld(ang(90,0,-90)) )
+holoScale(A, vec(1))
+holoMaterial(A,"models/proppertextures/brass")
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+A=7
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,-5.17,-4)))
+holoParent(A, entity())
+holoModel(A, "models/sprops/cylinders/size_1/cylinder_1_5x12.mdl")
+holoMaterial(A,"models/proppertextures/aluminum")
+holoAng(A, entity():toWorld(ang(0,90,0)) )
+holoScale(A, vec(0.75))
+holoColor(A, vec(255))
+holoAlpha(A,255)
+A=8
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,5.17,-4)))
+holoParent(A, entity())
+holoModel(A, "models/sprops/cylinders/size_1/cylinder_1_5x12.mdl")
+holoMaterial(A,"models/proppertextures/aluminum")
+holoAng(A, entity():toWorld(ang(0,90,0)) )
+holoScale(A, vec(0.75))
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+
+A=9
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,-5.17,0.25)))
+holoParent(A, entity())
+holoModel(A, "models/unionsparts/valve_base1.mdl")
+holoAng(A, entity():toWorld(ang(0,90,0)) )
+holoScale(A, vec(0.1))
+holoColor(A, vec(255))
+holoAlpha(A,255)
+A=10
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,5.17,0.25)))
+holoParent(A, entity())
+holoModel(A, "models/unionsparts/valve_base1.mdl")
+holoAng(A, entity():toWorld(ang(0,90,0)) )
+holoScale(A, vec(0.1))
+holoColor(A, vec(255))
+holoAlpha(A,255)
+
+
+A=11
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,-5.17,1.75)))
+holoParent(A, entity())
+holoModel(A, "models/toast/steam/steam_valve_2.mdl")
+holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic_grimey")
+holoAng(A, entity():toWorld(ang(0,30,0)) )
+holoScale(A, vec(0.35))
+holoColor(A, vec(150,50,50))
+holoAlpha(A,255)
+A=12
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,5.17,1.75)))
+holoParent(A, entity())
+holoModel(A, "models/toast/steam/steam_valve_2.mdl")
+holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic_grimey")
+holoAng(A, entity():toWorld(ang(0,-10,0)) )
+holoScale(A, vec(0.35))
+holoColor(A, vec(150,50,50))
+holoAlpha(A,255)
+
+A=13
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(7,5,-5)))
+holoParent(A, entity())
+holoModel(A, "models/props_bennjo/steam_detail_3.mdl")
+holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic_grimey")
+holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic_grimey")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic_grimey")
+holoAng(A, entity():toWorld(ang(30,0,-90)) )
+holoScale(A, vec(0.5))
+holoColor(A, vec(40))
+holoAlpha(A,255)
+
+
+}
+#Script
+interval(100)
+Total=200
+WaterLevel=Water/Total*5
+WaterLevel=clamp(WaterLevel,0,7.4)
+A=3
+holoCreate(A)
+holoParent(A, entity())
+holoModel(A, "models/sprops/cylinders/size_1/cylinder_1_5x3.mdl")
+holoMaterial(A,"models/proppertextures/acrylic")
+holoPos(A,entity():toWorld(vec(0,-3.5+WaterLevel+0.5,-0.25)))
+holoAng(A, entity():toWorld(ang(90,0,90)) )
+holoScale(A, vec(0.2,0.55,0.1*WaterLevel*8.5))
+holoColor(A, vec(100))
+holoAlpha(A,255)
+

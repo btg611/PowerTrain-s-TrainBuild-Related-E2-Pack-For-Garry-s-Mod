@@ -1,0 +1,158 @@
+@name PowerTrain's Digital Air Brake Gauge Calibrator
+@inputs On BrakeInfo:array
+@outputs
+@persist E:entity MainResS:string EqResS:string BPS:string BCS:string 
+@trigger none
+@model models/monkcabdetailpack/misc/elspeedo.mdl
+
+#This E2 is helpful for the creation of new brake gauge E2s. It was created for the purpose of matching values for accurate 
+# needle movement during the creation of the gauge. I hope you will find it helpful!
+
+
+    
+Mode = 2 # Mode 1 shows the Equalising Reservoir Pressure on top and the Main Reservoir Pressure on the bottom.
+         #Mode 2 Shows the Brake Pipe Pressure on top and  Brake Cylinder Pressure on the bottom.
+        
+        
+E = entity()
+
+interval(1)
+
+MainRes = BrakeInfo[1,number]
+EqRes = BrakeInfo[2,number]    
+BP = BrakeInfo[3,number]
+BC = BrakeInfo[5,number] 
+
+if(Mode == 1){
+
+    
+    EqResS = round(EqRes):toString()
+    
+    if(EqRes<=99){
+        if(round(EqRes)>=10){
+            E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_" + EqResS[1])
+            E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_" + EqResS[2])
+        }else{
+            E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_0")
+            E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_" + EqResS[1])
+            if(EqRes>99){
+                E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_9")
+                E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_9")
+            }
+        }
+                
+ 
+        if(-MainRes){
+            
+            MainResS = toString(round(MainRes))
+            
+            if(inrange(round(MainRes),0,10)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + MainResS[1])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(MainRes),10,100)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + MainResS[2])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + MainResS[1])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(MainRes),100,1000)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + MainResS[3])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + MainResS[2])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_" + MainResS[1])
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(MainRes),1000,10000) & round(MainRes)<10000){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + MainResS[4])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + MainResS[3])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_" + MainResS[2])
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_" + MainResS[1])
+            }
+                
+            }elseif(!-MainRes){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_off")
+            }
+            else{
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+        }
+                
+
+        
+}
+    
+}
+elseif(Mode == 2){
+
+    
+    BPS = round(BP):toString()
+    
+    if(BP<=99){
+        if(round(BP)>=10){
+            E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_" + BPS[1])
+            E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_" + BPS[2])
+        }else{
+            E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_0")
+            E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_" + BPS[1])
+            if(BP>99){
+                E:setSubMaterial(7,"models/monkcabdetailpack/speedo/speed_9")
+                E:setSubMaterial(6,"models/monkcabdetailpack/speedo/speed_9")
+            }
+        }
+                
+ 
+        if(BC){
+            
+            BCS = toString(round(BC))
+            
+            if(inrange(round(BC),0,10)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + BCS[1])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(BC),10,100)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + BCS[2])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + BCS[1])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(BC),100,1000)){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + BCS[3])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + BCS[2])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_" + BCS[1])
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+            }
+            if(inrange(round(BC),1000,10000) & round(BC)<10000){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_" + BCS[4])
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_" + BCS[3])
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_" + BCS[2])
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_" + BCS[1])
+            }
+                
+            }elseif(!BC){
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_off")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_off")
+            }
+            else{
+                E:setSubMaterial(8,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(9,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(10,"models/monkcabdetailpack/speedo/speed_0")
+                E:setSubMaterial(11,"models/monkcabdetailpack/speedo/speed_0")
+        }
+                
+
+        
+}
+    
+}
+

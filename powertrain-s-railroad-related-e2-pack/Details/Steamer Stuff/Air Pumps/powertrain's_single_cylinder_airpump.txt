@@ -1,0 +1,266 @@
+@name PowerTrain's Single Cylinder Airpump
+@inputs Valve 
+@outputs Compressing
+@persist [RunSound RunSound2 OffSound OffSound2]:string SmoothTable:table ValveAmmount 
+@trigger 
+@model models/seabo/air systems/airpump_sc_1.mdl
+
+# -------- Be forewarn'd: --------
+#I don't know how well the sounds will actually work. I'm not super great with coding and couldn;t tell if it was just my server
+# giving me issues or if I fucked up with the way this was coded. May require some fiddling. If the sounds don't play, let me know and I'll do what 
+# I can to fix it. Or, if you know why they don't work and you can fix it, let me know so I can update these.
+
+if(dupefinished() | duped()){ reset() }
+if(first()){ 
+    
+#Compressor Idle On/Off
+
+    RunSound = "locnoisbygeordie/steam/misc/air_pump5_loop_slow.wav"
+    OffSound = "locnoisbygeordie/steam/misc/air_pump5_end_slow.wav"
+    
+#Compressor Running On/Off
+    
+    RunSound2 = "locnoisbygeordie/steam/misc/air_pump5_loop_fast.wav"
+    OffSound2 = "locnoisbygeordie/steam/misc/air_pump5_end_fast.wav"
+
+    MainColor = vec(30)  # Chnages the color of the main body. Set this to the color of your boiler.
+    SecondaryColor = vec(150,20,20) # Chnages the color of the piston rods.
+    ValveColor = vec(150,30,30)  # Chnages the color of the vlve handle.
+    PipingColor = vec(30)  # Chnages the color of the piping. Should probably be the same as the MainColor unless you're some kind of loon. Eat your heart out, shitposters.
+    
+    BodyMaterial = "models/proppertextures/acrylic_grimey" #You should probably set this to the same material your engine's boiler uses.
+    AccentMaterial = "models/proppertextures/acrylic_grimey" #For a flair of color, change this to something fancy like models/proppertextures/brass_new
+    StripeMaterial = "models/proppertextures/acrylic_white" #For a flair of color, change this to something fancy like models/proppertextures/brass_new
+    ShieldMaterial = "models/proppertextures/acrylic_white" #This is the maerial of the inner part of the shields behind the piston rods.
+    ShinyMaterial = "bobsters_trains/chrome" #This is the material for the piston rods. It doesn't have to be shiny, it can be something oily looking like models/proppertextures/acrylic_grimy . 
+    ValveMaterial = "models/proppertextures/acrylic_darkred" #Material for the valve handle
+    PipingMaterial = "models/proppertextures/acrylic_grimey" #You should probably set this to the same material your engine's boiler uses.
+  
+
+
+
+  
+#Don't edit Past Here unless you know what you're doing.
+
+
+
+
+
+#Don't say I didn;t warn you...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Ok, you asked for it...
+
+
+
+
+
+
+
+
+
+E=entity()
+E:setAlpha(0)
+
+
+
+
+A=0
+#Body
+A++
+holoCreate(A)
+holoModel(A,"models/seabo/air systems/airpump_sc_1.mdl")
+holoEntity(A):setSubMaterial(1,BodyMaterial)
+holoEntity(A):setSubMaterial(2,AccentMaterial)
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,ShieldMaterial)
+holoEntity(A):setSubMaterial(5,StripeMaterial)
+holoPos(A,E:toWorld(vec(0,0,0)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoScale(A,vec(1))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,MainColor)
+
+#Piston Rod
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_1/cylinder_1_5x18.mdl")
+holoEntity(A):setSubMaterial(1,ShinyMaterial)
+holoPos(A,E:toWorld(vec(0,0,0)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,SecondaryColor)
+
+
+#Piston Rod Indicators
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_3/cylinder_6x3.mdl")
+holoEntity(A):setSubMaterial(1,AccentMaterial)
+holoPos(A,E:toWorld(vec(0,0,-0.9)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoScale(A,vec(0.3))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,MainColor)
+
+#Steam Inlet (To Turret Valve/Steam  Manifold)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe01_90degree01.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(-9,0,8.75)))
+holoAng(A,E:toWorld(ang(-90,90,0)))
+holoScale(A,vec(0.45))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+A++
+holoCreate(A)
+holoModel(A,"models/toast/steam/steam_valve_body.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(-9,0,13)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoScale(A,vec(0.65))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+A++
+holoCreate(A)
+holoModel(A,"models/toast/steam/steam_valve_2.mdl")
+holoEntity(A):setSubMaterial(1,ValveMaterial)
+holoPos(A,E:toWorld(vec(-12.5,0,13)))
+holoAng(A,holoEntity(6):toWorld(ang(0,0,0)))
+holoScale(A,vec(0.75))
+holoParent(A,5)
+holoAlpha(A,255)
+holoColor(A,ValveColor)
+
+#Air Inlet and filter
+A++
+holoCreate(A)
+holoModel(A,"models/anytrucks/details/airfilter_left_generic.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoEntity(A):setSubMaterial(2,AccentMaterial)
+holoPos(A,E:toWorld(vec(-9.5,0,-14.75)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoScale(A,vec(0.2))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe01_90degree01.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(-7.25,0,-10)))
+holoAng(A,E:toWorld(ang(90,90,0)))
+holoScale(A,vec(0.4))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe01_90degree01.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(-7.25,0,-12.75)))
+holoAng(A,E:toWorld(ang(-90,-90,0)))
+holoScale(A,vec(0.4))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+
+#Steam Exhaust (To Stack or air pump exhaust nozzle)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe03_lcurve01_long.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(8,-2.5,9)))
+holoAng(A,E:toWorld(ang(-90,180,0)))
+holoScale(A,vec(0.15))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+
+#Air Exhaust (to Main Reservoir via cooling pipes)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe02_yjoint01.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(12.4,0,-1.75)))
+holoAng(A,E:toWorld(ang(90,180,180)))
+holoScale(A,vec(0.23))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+A++
+holoCreate(A)
+holoModel(A,"models/props_pipes/pipe02_lcurve02_short.mdl")
+holoEntity(A):setSubMaterial(1,PipingMaterial)
+holoPos(A,E:toWorld(vec(10.5,0,-10)))
+holoAng(A,E:toWorld(ang(180,90,0)))
+holoScale(A,vec(0.25))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,PipingColor)
+}
+
+
+if(Valve){
+    entity():soundPlay(1,0,RunSound)
+    soundVolume(1,1)
+    soundLevel(1,78)
+}elseif(!Valve){
+    soundStop(1)
+    entity():soundPlay(2,0,OffSound)
+    soundVolume(2,1)
+    soundLevel(2,78)
+}
+if(Compressing==1){   
+    soundStop(1)
+    soundStop(2) 
+    entity():soundPlay(3,0,RunSound2)
+    soundVolume(3,1)
+    soundLevel(3,78)
+}elseif(Compressing==0 & (Valve)){
+    soundStop(3)
+    entity():soundPlay(4,0,RunSound)
+    soundLevel(4,78)
+}elseif(Compressing==0 & (!Valve)){
+    soundStop(3)
+    entity():soundPlay(4,0,OffSound2)
+    soundLevel(4,78)
+
+}
+
+function number smooth(Var,SmoothAmount,ID:string,DefaultVal){
+    if(!SmoothTable:exists(ID)){
+        SmoothTable[ID,number] = DefaultVal
+    }
+    local Smooth = SmoothTable[ID,number]    
+    Smooth += (Var-Smooth) / SmoothAmount
+    SmoothTable[ID,number] = Smooth
+    return Smooth
+}  
+
+ValveAmmount=3
+
+
+local VAPS = smooth((ValveAmmount*100),3,"smoothing",0)
+holoAng(6,holoEntity(5):toWorld(ang(0,30+VAPS,0)))
+
+

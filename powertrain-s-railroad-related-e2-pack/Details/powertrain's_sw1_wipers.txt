@@ -1,0 +1,180 @@
+@name PowerTrain's SW1 Wipers
+@inputs Base:entity On
+
+
+if(first()|dupefinished()){
+
+A = 0
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-40,165,113)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,-90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(40,165,113)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,-90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-45,86.5,115)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(45,86.5,115)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-25,86.5,120)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(25,86.5,120)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+
+
+
+
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(25,87,122)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,16)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-25,87,122)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,-16)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(45,87,116)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,18)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-45,87,116)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,90,-18)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(40,163.5,113)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,-90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+holoScale(A,vec(1))
+holoPos(A,Base:toWorld(vec(-40,163.5,113)))
+holoParent(A, entity())
+holoAng(A,Base:toWorld(ang(0,-90,0)))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+
+}
+if(On){
+    holoAnim(1,1)
+    holoAnim(2,1)
+    holoAnim(3,1)
+    holoAnim(4,1)
+    holoAnim(5,1)
+    holoAnim(6,1)
+    holoAnim(7,1)
+    holoAnim(8,1)
+    holoAnim(9,1)
+    holoAnim(10,1)
+    holoAnim(11,1)
+    holoAnim(12,1)
+Base:soundPlay(0,0,"monkssounds/wipers/wiper.wav")
+}
+if(!On){
+    holoAnim(1,0)
+    holoAnim(2,0)
+    holoAnim(3,0)
+    holoAnim(4,0)
+    holoAnim(5,0)
+    holoAnim(6,0)
+    holoAnim(7,0)
+    holoAnim(8,0)
+    holoAnim(9,0)
+    holoAnim(10,0)
+    holoAnim(11,0)
+    holoAnim(12,0)
+    soundStop(0,1)
+}

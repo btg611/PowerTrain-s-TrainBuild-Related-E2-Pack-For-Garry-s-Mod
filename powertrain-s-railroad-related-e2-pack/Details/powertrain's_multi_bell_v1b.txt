@@ -1,0 +1,159 @@
+@name PowerTrain's Multi Bell V1b
+@inputs Bell
+@outputs A
+@persist A B ClapperAng Bell BQ On
+
+
+E = entity()
+
+E:setAlpha(0)
+
+SoundOn = "scotttrains/bells/loksound/emd_8475495_steelbell_10_loop.wav"
+SoundOff = "scotttrains/bells/loksound/emd_8475495_steelbell_10_end.wav"
+
+ClapperType = 1 #---- 1 for Horizontal clapper, 2 for vertical.
+MountType = 0 #------ 0 for no mount, 1 for roof, 2 for cab, 3 for underframe.
+ColoredBell = 1 #---- 1 for colored, 0 for standard brass.
+ColoredPiping = 1 #-- 1 for colored, 0 for standard brass.
+Spacerblock = 0
+HangerMount = 0 #---- 0 for steamer style hanger
+BellColor = vec(50,50,30)    # vec(130,110,65)
+ClapperColor = vec(50,50,30) # vec(130,110,65)
+
+
+
+Level = 80
+Volume = 1
+Pitch = 100
+
+if(Bell & !BQ){
+    BQ = 1
+    E:soundPlay(1,0,SoundOn)
+    soundLevel(1,Level)
+    soundVolume(1,Volume)
+    soundPitch(1,Pitch)
+}elseif(!Bell & BQ){
+    BQ = 0
+    soundStop(1)
+    soundPlay(2,0,SoundOff)
+    soundLevel(2,Level)
+    soundVolume(2,Volume)
+    soundPitch(2,Pitch)
+}
+
+if(first() | dupefinished())
+{
+    A = 1
+    holoCreate(A,entity():toWorld(+vec(0,0,0)),vec(0.5),entity():toWorld(+ang(0,0,0)))
+    holoParent(A,entity())
+    holoModel(A,"models/anytrains/props/detail/12in_emd_bell_brass.mdl")  
+    holoColor(A,BellColor)
+    holoScale(A,vec(1))
+    if(ColoredBell==1){
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_cast")}
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/enamel_cast")  
+    holoBodygroup(A,3,MountType)
+    if(ClapperType == 1){
+    holoBodygroup(A,2,3)}
+    if(ClapperType == 2){
+    holoBodygroup(A,2,4)} 
+    if(Spacerblock == 0){
+    holoBodygroup(A,1,1)} 
+    A = 2  
+    if(ClapperType==1){holoCreate(A,entity():toWorld(+vec(-0.37,0,-2.3)),vec(0.5),entity():toWorld(+ang(0,180,0)))
+    holoModel(A,"models/anytrains/props/detail/gong_horizontal.mdl")
+    holoMaterial(A,"models/proppertextures/enamel_cast")
+    holoColor(A,ClapperColor)
+    holoScale(A,vec(1))
+    holoParent(A,entity())}
+    if(ClapperType==2){holoCreate(A,entity():toWorld(+vec(-1.3,0,-4.1)),vec(0.5),entity():toWorld(+ang(0,0,0)))
+    holoModel(A,"models/anytrains/props/detail/gong_vertical.mdl")
+    holoMaterial(A,"models/proppertextures/enamel_cast")
+    holoColor(A,ClapperColor)
+    holoScale(A,vec(1))
+    holoParent(A,entity())}
+    if(HangerMount==1){
+    A++
+    holoCreate(A,entity():toWorld(+vec(-0.5,0,-1.5)),vec(0.5),entity():toWorld(+ang(0,0,0)))
+    holoModel(A,"models/freight/bellmount_top.mdl")
+    holoScale(A,vec(0.85))
+    holoParent(A,entity())  
+    holoClipEnabled(A,1,1)     
+    holoClip(A,1,vec(0,-9,0),vec(0,1,0),0)
+    A++    
+    holoCreate(A,entity():toWorld(+vec(-0.5,0,-14.5)),vec(0.5),entity():toWorld(+ang(0,0,0)))
+    holoModel(A,"models/freight/bellmount_bottom.mdl")
+    holoScale(A,vec(0.85))
+    holoParent(A,entity())      
+    }    
+
+
+
+
+}     
+  
+holoAng(2,entity():toWorld(+ang(+ClapperAng,0,0))) 
+             
+Max = 30        
+Min = 0             
+
+if(BQ==1)
+{    
+    interval(23)
+
+    if(A == 0)
+    {
+        ClapperAng += 10
+        }
+        
+    if(A == 1)
+    {
+        ClapperAng -= 10
+        }
+
+if(ClapperAng > Max)
+{
+    B = 1
+    }
+    
+if(ClapperAng < Min)
+{
+    B = 0
+    }
+
+if(B == 0)
+{
+    A = 0
+    }
+    elseif(B == 1)
+    {
+        A = 1
+        }
+    }
+    else
+    {
+        ClapperAng = 0
+        }
+    
+    
+
+
+# Created by PowerTrain, 2019. This E2 is public and may not be made private without 
+# extensive modification which would justify it to be a completely different E2. For
+# questions, comments, and concerns, contact PowerTrain directly via Steam Messenger.
+
+#  -------------------------------------Changelog-------------------------------------
+
+#V1
+# --Release
+
+#V1A
+#--- Renamed E2 from 'PowerTrain's Multi-Bell V1' to PowerTrain's EMD Model 8004156 Bronze Bell V1A)
+#--- Added holoScale(A,vec(1))to make it propper size. Not sure why it's tiny without it.
+#--- Added the ability to easily color the bell.
+#--- Improved Clapped Timing and fixed an issue with the clapper clipping through the bell.
+#--- Added airline details for cab mounted style. 
+#--- Also added an option to color the piping.
+
+#V1B
+#--- Added Steamer Style Hanger Mount

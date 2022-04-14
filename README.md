@@ -16,3 +16,6 @@ You might as well subscribe to my server collection, everything you will ever ne
 
 # PowerTrain's Server Collection is found here:
 https://steamcommunity.com/sharedfiles/filedetails/?id=1724366638
+
+# PowerTrain's Trainbuild Pack addon can be found here:
+https://steamcommunity.com/sharedfiles/filedetails/?id=2739370208

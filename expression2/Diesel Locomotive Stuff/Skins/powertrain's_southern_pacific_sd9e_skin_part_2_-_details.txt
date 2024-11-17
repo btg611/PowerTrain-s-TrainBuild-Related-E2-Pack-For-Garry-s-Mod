@@ -1,0 +1,163 @@
+@name PowerTrain's Southern Pacific SD9E Skin Part 2 - Details
+@inputs SD9:entity 
+
+SD9:setAlpha(0)
+
+#White = vec(208)   
+#Black = vec(35)
+LarkGray = vec(45,50,60)
+ScarletRed = vec(150,27,34)
+
+
+Acrylic = "models/proppertextures/acrylic"
+#Invis = "models/proppertextures/invisible"
+#Rubber = "models/proppertextures/rubber"
+
+
+E=entity()
+E:setAlpha(255)
+    
+if(first()|dupefinished()){
+    
+#--------------------------------------------------------------------------
+A=0
+
+#Wipers
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(46.5,227,106)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-46.5,227,105)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(46.5,147.75,105.15)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/wiper_single.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-46.5,148.5,106)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))
+    
+#Inside Sunshades
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/fox/sunvisor_emd.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(57.5,215,104)))
+    holoAng(A,SD9:toWorld(ang(170,0,0)))
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/fox/sunvisor_emd.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(57.5,165,104)))
+    holoAng(A,SD9:toWorld(ang(170,0,180)))    
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/fox/sunvisor_emd.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-57.5,165,104)))
+    holoAng(A,SD9:toWorld(ang(170,180,0)))
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/fox/sunvisor_emd.mdl")
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-57.5,215,104)))
+    holoAng(A,SD9:toWorld(ang(170,180,180)))    
+    
+#Outside Cab Shades
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/lazpack/detail/sunshade.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(59.5,188,100)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0))) 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/lazpack/detail/sunshade.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-59.5,188,100)))
+    holoAng(A,SD9:toWorld(ang(0,90,0))) 
+    
+#Grab Irons
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(20,312,119.25)))
+    holoAng(A,SD9:toWorld(ang(0,58,0))) 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-20,-315,119.25)))
+    holoAng(A,SD9:toWorld(ang(0,180+58,0))) 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(20,-315,119.25)))
+    holoAng(A,SD9:toWorld(ang(0,-58,0))) 
+    
+#Walkway Crossovers
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/zexciv_train_stuff/misc/details/crossover.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,343,19.5)))
+    holoAng(A,SD9:toWorld(ang(0,180,-90))) 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/zexciv_train_stuff/misc/details/crossover.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,-343,19.5)))
+    holoAng(A,SD9:toWorld(ang(0,0,-90))) 
+
+}
+
+
+

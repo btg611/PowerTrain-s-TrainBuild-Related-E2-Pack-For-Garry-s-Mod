@@ -1,0 +1,18 @@
+@name PowerTrain's Control Stand Toggles
+@inputs CS:entity LightToggle MiscToggle BellToggle
+@outputs Light Misc Bell
+
+#For some reason some of my control stand edis don't allow for the use of these functions in the stand e2, so here's an external substitute for now
+#until i can figure out what the fuck is causing it.
+
+if(LightToggle & ~LightToggle){
+    Light = !Light
+    CS:soundPlay(0,1,"buttons/lightswitch2.wav")
+}
+if(BellToggle & ~BellToggle){
+    Bell = !Bell
+    CS:soundPlay(0,1,Bell ? "rlc_delta/cstands/bell_on.wav" : "rlc_delta/cstands/bell_off.wav")
+}
+if(MiscToggle & ~MiscToggle){
+    Misc = !Misc
+}

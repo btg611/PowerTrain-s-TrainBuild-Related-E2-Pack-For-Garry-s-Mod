@@ -1,0 +1,146 @@
+@name PowerTrain's Operational and Configureable Steamer Windows
+@inputs Base:entity WindowsL WindowsR
+@persist WindowsL WindowsR WindowHeight WindowWidth WindowForward PaneSpacing ClosedPosition FrameColor:vector 
+@persist [FrameMaterial FrameMaterial2 FrameMaterial3 GlassMaterial SoundOpen SoundClose]:string
+@trigger WindowsL WindowsR
+
+E=entity()
+#E:setAlpha(0) #uncomment this if you want the E2 to be invisible.
+
+if(first()|dupefinished()){
+
+WindowModel = "models/props_phx/construct/windows/window2x2.mdl" #The model of the window pane.
+
+WindowHeight = 114.25 #The height of the windows from the base prop. Z Axis.
+WindowWidth = 56.45  #The lateral position of the windows from the base prop. Y Axis.
+WindowForward = 20  #The forward or backward position of the windows from the base prop. X Axis.
+
+PaneSpacing = 1.5 #Controls the space there is between each pane for one to slide past the other.
+
+ClosedPosition = 30 #The position of the window pane that moves when it is closed.
+Scale = vec(0.32,0.4,0.5) #The scale of the windows in X Y and Z axes.
+
+FrameColor = vec(35)
+FrameMaterial = "models/proppertextures/paintedwood1" #The material for the outer frame.
+FrameMaterial2 = "models/proppertextures/paintedwood2" #The material for the edges of the frame.
+FrameMaterial3 = "models/proppertextures/acrylic_metal1_grimey" #The material for the trim that holds the glass panes in place,
+GlassMaterial = "models/proppertextures/glass_new" #The material for the glass panes.
+
+SoundOpen = ""  #The sound the windows make when they open.
+SoundClose = "" #The sound the windows make when they close.
+
+#------ End of config. Do not edit past here unless you know what you're doing. You'll probably mess it up.
+
+#Left Parents
+
+A=0
+holoCreate(A)
+holoModel(A,"")
+holoPos(A,Base:toWorld(vec(WindowForward,WindowWidth,WindowHeight)))
+holoAng(A, Base:toWorld(ang(0,0,90)))
+holoScale(A, vec(0))
+holoParent(A,Base)
+A=1
+holoCreate(A)
+holoModel(A,"")
+holoPos(A,Base:toWorld(vec(WindowForward,WindowWidth+PaneSpacing,WindowHeight)))
+holoAng(A, Base:toWorld(ang(0,0,90)))
+holoScale(A,vec(0))
+holoParent(A,Base)
+
+#Left Pane 1
+
+A++
+holoCreate(A)
+holoModel(A,WindowModel)
+holoPos(A,holoEntity(0):toWorld(vec(0,0,0)))
+holoAng(A, holoEntity(0):toWorld(ang(0,0,0)))
+holoColor(A,FrameColor)
+holoScale(A,(Scale))
+holoParent(A,0)
+holoEntity(A):setSubMaterial(1,FrameMaterial)
+holoEntity(A):setSubMaterial(2,FrameMaterial2)
+holoEntity(A):setSubMaterial(3,FrameMaterial3)
+holoEntity(A):setSubMaterial(4,GlassMaterial)
+
+#Left Pane 2
+
+A++
+holoCreate(A)
+holoModel(A,WindowModel)
+holoPos(A,holoEntity(1):toWorld(vec(0,0,0)))
+holoAng(A, holoEntity(1):toWorld(ang(0,0,0)))
+holoColor(A,FrameColor)
+holoScale(A,(Scale))
+holoParent(A,1)
+holoEntity(A):setSubMaterial(1,FrameMaterial)
+holoEntity(A):setSubMaterial(2,FrameMaterial2)
+holoEntity(A):setSubMaterial(3,FrameMaterial3)
+holoEntity(A):setSubMaterial(4,GlassMaterial)
+
+#Right Parents
+
+A=4
+holoCreate(A)
+holoModel(A,"")
+holoPos(A,Base:toWorld(vec(WindowForward,-WindowWidth,WindowHeight)))
+holoAng(A, Base:toWorld(ang(0,0,90)))
+holoScale(A, vec(0))
+holoParent(A,Base)
+
+A=5
+holoCreate(A)
+holoModel(A,"")
+holoPos(A,Base:toWorld(vec(WindowForward,-WindowWidth+PaneSpacing,WindowHeight)))
+holoAng(A, Base:toWorld(ang(0,0,90)))
+holoScale(A, vec(0))
+holoParent(A,Base)
+
+#Right Pane 1
+
+A++
+holoCreate(A)
+holoModel(A,WindowModel)
+holoPos(A,holoEntity(4):toWorld(vec(0,0,0)))
+holoAng(A, holoEntity(4):toWorld(ang(0,0,0)))
+holoColor(A,FrameColor)
+holoScale(A,(Scale))
+holoParent(A,4)
+holoEntity(A):setSubMaterial(1,FrameMaterial)
+holoEntity(A):setSubMaterial(2,FrameMaterial2)
+holoEntity(A):setSubMaterial(3,FrameMaterial3)
+holoEntity(A):setSubMaterial(4,GlassMaterial)
+
+#Right Pane 2
+
+A++
+holoCreate(A)
+holoModel(A,WindowModel)
+holoPos(A,holoEntity(5):toWorld(vec(0,0,0)))
+holoAng(A, holoEntity(5):toWorld(ang(0,0,0)))
+holoColor(A,FrameColor)
+holoScale(A,(Scale))
+holoParent(A,5)
+holoEntity(A):setSubMaterial(1,FrameMaterial)
+holoEntity(A):setSubMaterial(2,FrameMaterial2)
+holoEntity(A):setSubMaterial(3,FrameMaterial3)
+holoEntity(A):setSubMaterial(4,GlassMaterial)
+
+}
+
+
+if(WindowsL){
+holoPos(1,Base:toWorld(vec(WindowForward,WindowWidth+PaneSpacing,WindowHeight)))
+holoEntity(1):soundPlay(1,0,SoundOpen)
+}elseif(!WindowsL){
+holoPos(1,Base:toWorld(vec(WindowForward-ClosedPosition,WindowWidth+PaneSpacing,WindowHeight)))
+holoEntity(1):soundPlay(2,0,SoundClose)
+}
+
+if(WindowsR){
+holoPos(5,Base:toWorld(vec(WindowForward,-WindowWidth+PaneSpacing,WindowHeight)))
+holoEntity(5):soundPlay(3,0,SoundOpen)
+}elseif(!WindowsR){
+holoPos(5,Base:toWorld(vec(WindowForward-ClosedPosition,-WindowWidth+PaneSpacing,WindowHeight)))
+holoEntity(5):soundPlay(4,0,SoundClose)
+}

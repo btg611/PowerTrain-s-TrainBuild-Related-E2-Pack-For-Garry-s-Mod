@@ -1,0 +1,134 @@
+@name PowerTrain's Digital Air Brake Gauge V2
+@inputs On MainRes EqualRes BrakePipe Cyl CFM
+#@inputs On BrakeInfo:array
+@outputs
+@persist E:entity MRS:string ERS:string BPS:string BCS:string 
+@trigger none
+@model models/meem/gauge/electronic_air_gauge_bc_bp.mdl
+
+#This E2 is helpful for the creation of new brake gauge E2s. It was created for the purpose of matching values for accurate 
+# needle movement during the creation of the gauge. I hope you will find it helpful!
+
+
+    
+Mode = 1  #Mode 1 shows the Main Reservoir Pressure and Equalizing Reservoir Pressure.
+          #Mode 2 Shows the Brake Pipe Pressure and  Brake Cylinder Pressure.
+          #Mode 3 Is for AFM.         
+         
+ Scale = 1.15       
+        
+E = entity()
+E:setAlpha(0)
+
+interval(100)
+
+
+MR = MainRes
+ER = EqualRes 
+BP = BrakePipe
+BC = Cyl
+AF = CFM
+
+
+#[
+MR = BrakeInfo[1,number]
+ER = BrakeInfo[2,number]    
+BP = BrakeInfo[3,number]
+BC = BrakeInfo[5,number] 
+]#
+
+if(first()|dupefinished()){
+
+    if(Mode == 1){
+    Model = "models/meem/gauge/electronic_air_gauge_bc_bp.mdl"
+    Material = "models/gauge/mr_eq"
+    }elseif(Mode == 2){
+    Model = "models/meem/gauge/electronic_air_gauge_bc_bp.mdl"
+    Material = "models/gauge/bc_bp"
+    }elseif(Mode == 3){
+    Model = "models/meem/gauge/electronic_air_gauge_cfm.mdl"
+    Material = "models/gauge/cfm"    
+    }
+
+    A = 1
+    holoCreate(A)
+    holoParent(A,E)
+    holoColor(A,vec(255))
+    holoScale(A,vec(Scale))
+    holoModel(A, Model)
+    holoEntity(A):setSubMaterial(2,Material)
+    holoPos(A,E:toWorld(vec(0,0,0)))
+    holoAng(A,E:toWorld(ang(0,0,0)))
+
+}
+
+if(On){
+
+if(Mode == 1){
+        if(MR){
+                MRS = toString(round(MR))
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_"+ MRS[1])
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_"+ MRS[2])
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_"+ MRS[3])
+            }elseif(!MR){ 
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_0")    
+            }
+            
+        if(ER){
+                ERS = toString(round(ER))
+                holoEntity(1):setSubMaterial(7,"fonts/tickingtimebombbb/num_"+ ERS[2])
+                holoEntity(1):setSubMaterial(8,"fonts/tickingtimebombbb/num_"+ ERS[1])
+                holoEntity(1):setSubMaterial(6,"fonts/tickingtimebombbb/num_"+ ERS[3])
+            }elseif(!ER){
+                holoEntity(1):setSubMaterial(6,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(7,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(8,"fonts/tickingtimebombbb/num_0")                
+            }
+}
+if(Mode == 2){
+        if(BC){
+                BCS = toString(round(BC))
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_"+ BCS[1])
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_"+ BCS[2])
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_"+ BCS[3])
+            }elseif(!BC){ 
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_0")
+            }
+
+        if(BP){
+                BPS = toString(round(BP))
+                holoEntity(1):setSubMaterial(6,"fonts/tickingtimebombbb/num_"+ BPS[3])
+                holoEntity(1):setSubMaterial(7,"fonts/tickingtimebombbb/num_"+ BPS[2])
+                holoEntity(1):setSubMaterial(8,"fonts/tickingtimebombbb/num_"+ BPS[1])
+            }elseif(!BP){
+                holoEntity(1):setSubMaterial(6,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(7,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(8,"fonts/tickingtimebombbb/num_0")                
+            }
+}
+
+if(Mode == 3){
+        if(AF){
+                FLO = toString(round(AF))
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_"+ FLO[1])
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_"+ FLO[2])
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_"+ FLO[3])
+            }elseif(!AF){
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/num_0")
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/num_0")                
+            }
+}
+        }elseif(!On){
+                holoEntity(1):setSubMaterial(3,"fonts/tickingtimebombbb/off_1")
+                holoEntity(1):setSubMaterial(4,"fonts/tickingtimebombbb/off_2")
+                holoEntity(1):setSubMaterial(5,"fonts/tickingtimebombbb/off_3")      
+                holoEntity(1):setSubMaterial(6,"fonts/tickingtimebombbb/off_4")
+                holoEntity(1):setSubMaterial(7,"fonts/tickingtimebombbb/off_5")
+                holoEntity(1):setSubMaterial(8,"fonts/tickingtimebombbb/off_6")   
+        }
+

@@ -1,0 +1,22 @@
+@name PowerTrain's Number Table Example Code
+@outputs [Num]:string
+@persist [Num]:string
+@persist NumberTable:table
+
+
+
+    # Initialize the table with 4-digit numbers
+
+    NumberTable[1, number] = 8011
+    NumberTable[2, number] = 8025
+    NumberTable[3, number] = 8033
+    NumberTable[4, number] = 8046
+
+    # Generate a random index between 1 and the number of elements in the table
+    NumIndex = randint(1, 4)
+
+    # Select a random number from the table
+    NumIndex = NumberTable[NumIndex, number]
+    Num=NumIndex:toString()
+
+

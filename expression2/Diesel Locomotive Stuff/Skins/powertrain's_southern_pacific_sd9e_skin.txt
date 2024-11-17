@@ -1,0 +1,1308 @@
+@name PowerTrain's Southern Pacific SD9E Skin
+@inputs SD9:entity CycleMarkersF CycleMarkersR  FrontTruck:entity RearTruck:entity WheelSlip Reverser Load Dynamics IcicleBreaker
+@outputs Num:string MF MR
+@persist SD9:entity MF MR
+@persist [TMSound RollingSound FlangingSound]:string E1:entity E2:entity Angle1  WheelDiameter SlippingIncreaseMax SlippingIncrease MaxSpeed MaxLoad MaxTMPitch [TMMat Truckframe]:string Color:vector TimkenRefitAlt
+@trigger 
+#@model models/sprops/rectangles/size_3/rect_24x24x3.mdl
+
+SD9:setAlpha(0)
+
+White = vec(208)   
+Black = vec(35)
+LarkGray = vec(45,50,60)
+ScarletRed = vec(150,27,34)
+
+Body = "models/doggard/locos/emd_sd9_ph1-3.mdl"
+
+BrakeHose = "models/lazpack/detail/brakehose_offset.mdl"
+Cutbar = "models/anytrains/props/detail/cutbar.mdl"
+HosesL = "models/lazpack/detail/mu_4hose_left.mdl"
+HosesR = "models/lazpack/detail/mu_4hose_right.mdl"
+Marker = "models/gsgtrainprops/parts/auxlights/caboose_marker.mdl"
+NumBoard = "models/magtrains/numplate_emd_4d.mdl"
+Pin = "models/parts/flumz/coupler_pin.mdl"
+Plow = "models/gsgtrainprops/trains/propper/snowplows/plow_medium_multipurpose.mdl"
+
+Acrylic = "models/proppertextures/acrylic"
+Invis = "models/proppertextures/invisible"
+Rubber = "models/proppertextures/rubber"
+
+Plane = "plane"
+NoseLogo = "models/logos/railroads/sp/sp_logo1a"
+NoseLogo1 = "cubics_pack/logos/real/sp/bloody_nose_long1"
+NoseLogo2 = "cubics_pack/logos/real/sp/bloody_nose_long2"
+TextLogo = "cubics_pack/logos/real/sp/roman_long"
+
+BuildPlate = "cubics_pack/misc/builder_plates/emd2"
+
+TMSound = "braixssoundcollection/misc/tractionmotors/emd_d27_tractionmotor_loop.wav"
+MaxTMPitch = 100 #Pitch of the TM sound at the max speed
+RollingSound = "priority's sounds/wheels/rumble_5_1.wav" #Remove the text if you don'tt want the rumble
+FlangingSound = "priority's sounds/wheels/flange2.wav"   #Remove the text if you don't want flange noises Ballaistic Studios
+MaxSpeed = 65 #Max speed in MPH
+MaxLoad = 1500 #Max TM load
+
+WheelDiameter = 40
+
+SlippingIncreaseMax=randint(30,MaxSpeed) #Minimum/Maximum mph slip
+    
+if(first()|dupefinished()){
+    
+#--------------------------------------------------------------------------
+
+Min = 4370 
+Max = 4408
+
+Num = "" + randint(Min,Max):toString() + ""
+
+Num1 = "cubics_pack/numbers/sp_roman/"+Num[1]
+Num2 = "cubics_pack/numbers/sp_roman/"+Num[2]
+Num3 = "cubics_pack/numbers/sp_roman/"+Num[3]
+Num4 = "cubics_pack/numbers/sp_roman/"+Num[4]
+
+Num21 = "cubics_pack/numbers/sp_roman_stencil/"+Num[1]
+Num22 = "cubics_pack/numbers/sp_roman_stencil/"+Num[2]
+Num23 = "cubics_pack/numbers/sp_roman_stencil/"+Num[3]
+Num24 = "cubics_pack/numbers/sp_roman_stencil/"+Num[4]
+
+
+NumsDark = "cubics_pack/numbers/sp_roman/sp_numbd_dark"
+#NumsLit = "cubics_pack/numbers/sp_roman/sp_numbd_lit"
+
+E=entity()
+E:setAlpha(255)
+
+    E1=FrontTruck
+    E1:propPhysicalMaterial("gmod_ice")
+    
+    E2=RearTruck
+    E1:propPhysicalMaterial("gmod_ice")
+    
+#-----------Skin---------------------
+
+    A=0
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClip(A,1,vec(0,226.75,0),vec(0,-1,0),0)
+    holoClip(A,2,vec(0,-308,0),vec(0,1,0),0)
+
+    A=1
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,ScarletRed)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClip(A,1,vec(0,-308,0),vec(0,-1,0),0)
+    holoClip(A,2,vec(0,-365,0),vec(0,1,0),0)
+    holoClip(A,3,vec(0,0,19.3),vec(0,0,1),0)
+
+    A=2
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClip(A,1,vec(0,-308,0),vec(0,-1,0),0)
+    holoClip(A,2,vec(0,-365,0),vec(0,1,0),0)
+    holoClip(A,3,vec(0,0,19.3),vec(0,0,-1),0)
+    
+    A=3 
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClip(A,1,vec(0,226.75,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,350,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(36.65,0,0),vec(1,0,0),0)
+
+    A=4 
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClip(A,1,vec(0,226.75,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,350,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(-1,0,0),0)
+    
+    A=5  
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,ScarletRed)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClipEnabled(A,5,1)
+    holoClip(A,1,vec(0,265,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,330,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(36.65,0,0),vec(-1,0,0),0)
+    holoClip(A,5,vec(0,0,45),vec(0,0,-1),0)
+
+    A=6
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,226.75,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,265,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(36.65,0,0),vec(-1,0,0),0)
+
+
+    A=7
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,ScarletRed)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClipEnabled(A,5,1)
+    holoClip(A,1,vec(0,302,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,365,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(36.65,0,0),vec(-1,0,0),0)
+
+
+    A=8
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(17,Acrylic)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClipEnabled(A,5,1)
+    holoClip(A,1,vec(0,265,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,302,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(36.65,0,0),vec(-1,0,0),0)
+    holoClip(A,5,vec(0,0,55),vec(0,0,1),0) 
+
+    A=9
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(15,Invis)
+    holoEntity(A):setSubMaterial(16,Invis)
+    holoEntity(A):setSubMaterial(19,Acrylic)
+    holoEntity(A):setSubMaterial(25,Acrylic)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClipEnabled(A,5,1)
+    holoClipEnabled(A,6,1)
+    holoClip(A,1,vec(0,265,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,302,0),vec(0,-1,0),0)
+    holoClip(A,3,vec(-36.65,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(36.65,0,0),vec(-1,0,0),0)
+    holoClip(A,5,vec(0,0,45),vec(0,0,1),0)
+    holoClip(A,6,vec(0,0,55),vec(0,0,-1),0)  
+             
+#Handrails
+
+    A=10
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Body)
+    holoColor(A,LarkGray)
+    holoPos(A,SD9:toWorld(vec(0,0,0)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,Invis)
+    holoEntity(A):setSubMaterial(2,Invis)
+    holoEntity(A):setSubMaterial(3,Invis)
+    holoEntity(A):setSubMaterial(4,Invis)
+    holoEntity(A):setSubMaterial(5,Invis)
+    holoEntity(A):setSubMaterial(6,Invis)
+    holoEntity(A):setSubMaterial(7,Invis)
+    holoEntity(A):setSubMaterial(8,Invis)
+    holoEntity(A):setSubMaterial(9,Invis)
+    holoEntity(A):setSubMaterial(10,Invis)
+    holoEntity(A):setSubMaterial(11,Invis)
+    holoEntity(A):setSubMaterial(12,Invis)
+    holoEntity(A):setSubMaterial(13,Invis)
+    holoEntity(A):setSubMaterial(14,Invis)
+    holoEntity(A):setSubMaterial(15,Acrylic)
+    holoEntity(A):setSubMaterial(16,Acrylic)
+    holoEntity(A):setSubMaterial(17,Invis)
+    holoEntity(A):setSubMaterial(18,Invis)
+    holoEntity(A):setSubMaterial(19,Invis)
+    holoEntity(A):setSubMaterial(20,Invis)
+    holoEntity(A):setSubMaterial(21,Invis)
+    holoEntity(A):setSubMaterial(22,Invis)
+    holoEntity(A):setSubMaterial(23,Invis)
+    holoEntity(A):setSubMaterial(24,Invis)
+    holoEntity(A):setSubMaterial(25,Invis)
+    holoEntity(A):setSubMaterial(26,Invis)
+    holoEntity(A):setSubMaterial(27,Invis)
+    holoEntity(A):setSubMaterial(28,Invis)
+    holoEntity(A):setSubMaterial(29,Invis)
+    holoEntity(A):setSubMaterial(30,Invis)
+    holoEntity(A):setSubMaterial(31,Invis)
+    holoEntity(A):setSubMaterial(32,Invis)
+    holoEntity(A):setBodygroup(5,1)  
+    holoEntity(A):setBodygroup(6,1)  
+    holoEntity(A):setBodygroup(7,1)  
+    holoEntity(A):setBodygroup(11,1)     
+    holoEntity(A):setBodygroup(12,1)  
+    holoEntity(A):setBodygroup(13,4)   
+    holoEntity(A):setBodygroup(15,1)  
+    holoEntity(A):setBodygroup(16,2)    
+
+
+#Class Lights
+
+#-----------------------------------Short Hood End---------------------------------------------------------
+    
+    A=11
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Marker)
+    holoEntity(A):setSubMaterial(2,Rubber)
+    holoColor(A,White)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(29.9,313.25,108)))
+    holoAng(A,SD9:toWorld(ang(0,29,0)))  
+    A=12
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Marker)
+    holoEntity(A):setSubMaterial(2,Rubber)
+    holoColor(A,White)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-29.9,313.25,108)))
+    holoAng(A,SD9:toWorld(ang(0,180-29,0)))  
+
+#-----------------------------------Long Hood End----------------------------------------------------------
+    
+    A=13
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Marker)
+    holoEntity(A):setSubMaterial(2,Rubber)
+    holoColor(A,White)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(34.5,-312.75,109.15)))
+    holoAng(A,SD9:toWorld(ang(0,-33,0)))  
+    A=14
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Marker)
+    holoEntity(A):setSubMaterial(2,Rubber)
+    holoColor(A,White)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-34.5,-312.75,109.15)))
+    holoAng(A,SD9:toWorld(ang(0,180+33,0)))  
+
+#Wheels
+    
+    A=15
+    holoCreate(A,E1:toWorld(vec(-81.5,0,-24.5)),vec(1,1,1),E1:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")    
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+    #
+    A=16
+    holoCreate(A,E1:toWorld(vec(0,0,-24.5)),vec(1,1,1),E1:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+    
+    A=17
+    holoCreate(A,E1:toWorld(vec(81.5,0,-24.5)),vec(1,1,1),E1:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")
+    holoParent(A,E1)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+
+
+    A=18
+    holoCreate(A,E2:toWorld(vec(-81.5,0,-24.5)),vec(1,1,1),E2:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")    
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+    #
+    A=19
+    holoCreate(A,E2:toWorld(vec(0,0,-24.5)),vec(1,1,1),E2:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+    
+    A=20
+    holoCreate(A,E2:toWorld(vec(81.5,0,-24.5)),vec(1,1,1),E2:toWorld(ang(0,90,0)),vec(255),"models/meem/wheel/wheel01_42_rsg.mdl")
+    holoParent(A,E2)
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/wheel")
+    holoBodygroup(A,1,1)
+
+#Icicle Breaker
+
+    A=21
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/goomzmodels/details/roof_platform.mdl")
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1,1,0.3))
+    holoPos(A,SD9:toWorld(vec(30,189,121.25)))
+    holoAng(A,SD9:toWorld(ang(0,0,0)))  
+
+    A=22
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/goomzmodels/details/icicle_breaker.mdl")
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,215,107)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+
+    A=23
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/goomzmodels/details/roof_platform.mdl")
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1,1,0.3))
+    holoPos(A,SD9:toWorld(vec(-30,189,121.25)))
+    holoAng(A,SD9:toWorld(ang(0,180,0)))  
+        
+#Logos    
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(6.5))
+    holoPos(A,SD9:toWorld(vec(36.15,287,79)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,NoseLogo1)
+    holoClipEnabled(A,1,1)
+    holoClip(A,1,vec(0,15,0),vec(0,-1,0),0)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,ScarletRed)
+    holoScale(A,vec(6.5))
+    holoPos(A,SD9:toWorld(vec(-36.15,287,74)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,NoseLogo2)
+    holoClipEnabled(A,1,1)
+    holoClip(A,1,vec(0,-15,0),vec(0,1,0),0)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(2,18,2))
+    holoPos(A,SD9:toWorld(vec(36.65,0,90)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,TextLogo)   
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(2,18,2))
+    holoPos(A,SD9:toWorld(vec(-36.65,0,90)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,TextLogo)  
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(2,3,2))
+    holoPos(A,SD9:toWorld(vec(0,327.4,60)))
+    holoAng(A,SD9:toWorld(ang(90,90,0)))  
+    holoEntity(A):setSubMaterial(1,NoseLogo)     
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClip(A,1,vec(0,6.5,0),vec(0,-1,0),0)
+    holoClip(A,2,vec(0,-6.5,0),vec(0,1,0),0)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(2,3,2))
+    holoPos(A,SD9:toWorld(vec(1.12,330.85,60)))
+    holoAng(A,SD9:toWorld(ang(90,56.5,0)))  
+    holoEntity(A):setSubMaterial(1,NoseLogo)     
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClip(A,1,vec(0,-6.5,0),vec(0,-1,0),0)
+    holoClip(A,2,vec(0,-35,0),vec(0,1,0),0)
+
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(2,3,2))
+    holoPos(A,SD9:toWorld(vec(-1.12,330.85,60)))
+    holoAng(A,SD9:toWorld(ang(90,123.5,0)))  
+    holoEntity(A):setSubMaterial(1,NoseLogo)     
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClip(A,1,vec(0,6.5,0),vec(0,1,0),0)
+    holoClip(A,2,vec(0,35,0),vec(0,-1,0),0)  
+    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.4,1.5,0.4))
+    holoPos(A,SD9:toWorld(vec(-60,132,25)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,BuildPlate)   
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.4,1.5,0.4))
+    holoPos(A,SD9:toWorld(vec(60,132,25)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,BuildPlate)  
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(36.5,-150,70)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/engine_start")      
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(36.5,-150,60)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/engine_water")   
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(-36.5,-150,68)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/engine_water") 
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(36.5,-220,72)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"titus/fxi")   
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(-36.5,-220,72)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,"titus/fxi")   
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(36.5,108,72)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"titus/fxi")   
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(-36.5,108,72)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,"titus/fxi")   
+        
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(60,108,25)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/jumper_cable") 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(-60,108,25)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/jumper_cable") 
+    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(60,255,28)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/jumper_cable") 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(-60,255,28)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/jumper_cable") 
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.75,1,1))
+    holoPos(A,SD9:toWorld(vec(60,-33,9)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"titus/fuelfill")     
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.4,1,1))
+    holoPos(A,SD9:toWorld(vec(60,299,8)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,"foxes_pack/southern_pacific/raw_water")        
+
+
+           
+#Numbers
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(60,161,55)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,Num1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(60,179,55)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,Num2)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(60,197,55)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,Num3)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(60,215,55)))
+    holoAng(A,SD9:toWorld(ang(90,0,0)))  
+    holoEntity(A):setSubMaterial(1,Num4)
+    
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(-60,215,55)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,Num1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(-60,197,55)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,Num2)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(-60,179,55)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,Num3)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(1.5))
+    holoPos(A,SD9:toWorld(vec(-60,161,55)))
+    holoAng(A,SD9:toWorld(ang(90,180,0)))  
+    holoEntity(A):setSubMaterial(1,Num4)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,NumBoard)
+    holoColor(A,White)
+    holoScale(A,vec(0.9))
+    holoPos(A,SD9:toWorld(vec(-20,318.5,97)))
+    holoAng(A,SD9:toWorld(ang(90,123.5,0)))  
+    holoEntity(A):setSubMaterial(1,NumsDark)
+    holoBodygroup(A,1,Num[1]:toNumber())
+    holoBodygroup(A,2,Num[2]:toNumber())
+    holoBodygroup(A,3,Num[3]:toNumber())
+    holoBodygroup(A,4,Num[4]:toNumber())
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,NumBoard)
+    holoColor(A,White)
+    holoScale(A,vec(0.9))
+    holoPos(A,SD9:toWorld(vec(20,318.5,97)))
+    holoAng(A,SD9:toWorld(ang(90,56.5,0)))  
+    holoEntity(A):setSubMaterial(1,NumsDark)
+    holoBodygroup(A,1,Num[1]:toNumber())
+    holoBodygroup(A,2,Num[2]:toNumber())
+    holoBodygroup(A,3,Num[3]:toNumber())
+    holoBodygroup(A,4,Num[4]:toNumber())
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.5))
+    holoPos(A,SD9:toWorld(vec(-9,-325.55,62)))
+    holoAng(A,SD9:toWorld(ang(90,-123.5,0)))  
+    holoEntity(A):setSubMaterial(1,Num1)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.5))
+    holoPos(A,SD9:toWorld(vec(-3,-327.4,62)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num2)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.5))
+    holoPos(A,SD9:toWorld(vec(3,-327.4,62)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num3)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,White)
+    holoScale(A,vec(0.5))
+    holoPos(A,SD9:toWorld(vec(9,-325.55,62)))
+    holoAng(A,SD9:toWorld(ang(90,-56.5,0)))  
+    holoEntity(A):setSubMaterial(1,Num4)   
+
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,Black)
+    holoScale(A,vec(0.45))
+    holoPos(A,SD9:toWorld(vec(8,224,100)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num21)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,Black)
+    holoScale(A,vec(0.45))
+    holoPos(A,SD9:toWorld(vec(13,224,100)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num22) 
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,Black)
+    holoScale(A,vec(0.45))
+    holoPos(A,SD9:toWorld(vec(18,224,100)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num23)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plane)
+    holoColor(A,Black)
+    holoScale(A,vec(0.45))
+    holoPos(A,SD9:toWorld(vec(23,224,100)))
+    holoAng(A,SD9:toWorld(ang(90,-90,0)))  
+    holoEntity(A):setSubMaterial(1,Num24)  
+    
+#Pilot Details
+
+#-----------------------------------Short Hood End---------------------------------------------------------
+    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plow)
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,339.5,-40)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    holoBodygroup(A,1,1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Cutbar)
+    holoEntity(A):setSubMaterial(4,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,337.75,3)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    holoBodygroup(A,2,1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Pin)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,352.25,-5.75)))
+    holoAng(A,SD9:toWorld(ang(-10,90,0)))  
+    holoBodygroup(A,1,1)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Pin)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,352.25,-5.75)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    holoBodygroup(A,1,2)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,HosesL)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-33,340.5,-5)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    holoBodygroup(A,1,1)        
+    holoBodygroup(A,2,1)     
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,BrakeHose)
+    holoEntity(A):setSubMaterial(5,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-15,340.5,-8)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,HosesR)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(33,340.5,-5)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    holoBodygroup(A,1,1)        
+    holoBodygroup(A,2,1)       
+ 
+#-----------------------------------Long Hood End----------------------------------------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Plow)
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,-339.5,-40)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    holoBodygroup(A,1,1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Cutbar)
+    holoEntity(A):setSubMaterial(4,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,-337.75,3)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    holoBodygroup(A,2,1)
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Pin)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,-352.25,-5.75)))
+    holoAng(A,SD9:toWorld(ang(-10,-90,0)))  
+    holoBodygroup(A,1,1)    
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,Pin)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(0,-352.25,-5.75)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    holoBodygroup(A,1,2)     
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,HosesL)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(33,-340.5,-5)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    holoBodygroup(A,1,1)        
+    holoBodygroup(A,2,1)     
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,BrakeHose)
+    holoEntity(A):setSubMaterial(5,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(15,-340.5,-8)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,HosesR)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoColor(A,LarkGray)
+    holoScale(A,vec(1))
+    holoPos(A,SD9:toWorld(vec(-33,-340.5,-5)))
+    holoAng(A,SD9:toWorld(ang(0,-90,0)))  
+    holoBodygroup(A,1,1)        
+    holoBodygroup(A,2,1)     
+
+#Walkway Details
+
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/walkway_chain_gp_sp.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,White)
+    holoScale(A,vec(0.9))
+    holoPos(A,SD9:toWorld(vec(0,343.35,58)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+    A++
+    holoCreate(A)
+    holoParent(A,SD9)
+    holoModel(A,"models/anytrains/props/detail/walkway_chain_gp_sp.mdl")
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoColor(A,White)
+    holoScale(A,vec(0.9))
+    holoPos(A,SD9:toWorld(vec(0,-343.35,58)))
+    holoAng(A,SD9:toWorld(ang(0,90,0)))  
+
+}
+
+
+if(CycleMarkersF){
+
+    MF++
+    if(MF>5){MF=0}
+    
+    switch(MF){
+        case 0,
+        #White Off
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_white")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_white")
+    lightRemove(1)
+    lightRemove(2)
+            break
+        case 1,
+        #White On
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_white_lit")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_white_lit")
+    lightCreate(1,SD9:toWorld(vec(30.5,313.5,108)),vec(255,223,127),10,10)
+    lightCreate(2,SD9:toWorld(vec(-30.5,313.5,108)),vec(255,223,127),10,10)
+            break
+        case 2,    
+        #Red Off
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red")
+    lightRemove(1)
+    lightRemove(2)
+            break
+        case 3,
+        #Red On
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red_lit")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red_lit")
+    lightCreate(1,SD9:toWorld(vec(30.5,313.5,108)),vec(255,0,0),10,10)
+    lightCreate(2,SD9:toWorld(vec(-30.5,313.5,108)),vec(255,0,0),10,10)
+            break
+        case 4,
+        #Green Off
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green")
+    lightRemove(1)
+    lightRemove(2)
+            break
+        case 5,
+        #Green On
+    holoEntity(11):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green_lit")
+    holoEntity(12):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green_lit")
+    lightCreate(1,SD9:toWorld(vec(30.5,313.5,108)),vec(0,255,0),10,10)
+    lightCreate(2,SD9:toWorld(vec(-30.5,313.5,108)),vec(0,255,0),10,10)
+            break
+    }
+}
+
+if(CycleMarkersR & ~CycleMarkersR){
+
+    MR++
+    if(MR>5){MR=0}
+    
+    switch(MR){
+        case 0,
+        #White Off
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class")
+    lightRemove(3)
+    lightRemove(4)
+            break
+        case 1,
+        #White On
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_lit")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_lit")
+    lightCreate(3,SD9:toWorld(vec(35.5,-313.5,109.15)),vec(255,223,127),10,10)
+    lightCreate(4,SD9:toWorld(vec(-35.5,-313.5,109.15)),vec(255,223,127),10,10)
+            break
+        case 2,    
+        #Red Off
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red")
+    lightRemove(3)
+    lightRemove(4)
+            break
+        case 3,
+        #Red On
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red_lit")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_red_lit")
+    lightCreate(3,SD9:toWorld(vec(35.5,-313.5,109.15)),vec(255,0,0),10,10)
+    lightCreate(4,SD9:toWorld(vec(-35.5,-313.5,109.15)),vec(255,0,0),10,10)
+            break
+        case 4,
+        #Green Off
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green")
+    lightRemove(3)
+    lightRemove(4)
+            break
+        case 5,
+        #Green On
+    holoEntity(13):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green_lit")
+    holoEntity(14):setSubMaterial(1,"models/gsgtrainprops/auxlights/light_class_green_lit")
+    lightCreate(3,SD9:toWorld(vec(35.5,-313.5,109.15)),vec(0,255,0),10,10)
+    lightCreate(4,SD9:toWorld(vec(-35.5,-313.5,109.15)),vec(0,255,0),10,10)
+            break
+    }
+}
+
+if(IcicleBreaker){
+holoBodygroup(22,1,1)
+}elseif(!IcicleBreaker){
+holoBodygroup(22,1,3)
+}
+
+        E1:soundPlay(1,0,TMSound)
+        E1:soundPlay(2,0,RollingSound)
+        E1:soundPlay(3,0,FlangingSound)
+        E2:soundPlay(4,0,TMSound)
+        E2:soundPlay(5,0,RollingSound)
+        E2:soundPlay(6,0,FlangingSound)
+
+    SlippingIncrease = 1
+    
+    timer("soundCheck",50000)
+
+if(clk("clk")){
+    local Speed1 = (-E1:velL():x())/(4.4*(WheelDiameter/30))
+    if(abs(Speed1)>0.02|WheelSlip){
+        if(WheelSlip&SlippingIncrease<SlippingIncreaseMax){
+          SlippingIncrease += (3*Load)
+        # SlippingIncrease += (Speed1>0 ? randint(2,4)+(Load*4/MaxLoad) : randint(-2,-4)-(Load*4/MaxLoad))*Reverser
+        }elseif((!WheelSlip|SlippingIncrease>SlippingIncreaseMax) & SlippingIncrease>0){
+            SlippingIncrease -= randint(1.5,3.25)
+        }
+        
+        if(SlippingIncrease>SlippingIncreaseMax){
+            SlippingIncrease = SlippingIncreaseMax
+        }elseif(SlippingIncrease<0){
+            SlippingIncrease = 0
+        }
+        
+        local Rotate1 = (WheelSlip ? Dynamics ? 0 : Reverser*abs((sign(Speed1)==sign(Reverser) ? abs(Speed1) : 0)+SlippingIncrease) : Speed1)
+        
+        Angle1 += Rotate1
+        if(Angle1>36000){Angle1-=36000}
+        if(Angle1<0){Angle1+=36000}
+        
+        holoAng(15,E1:toWorld(ang(0,90,-Angle1)))
+        holoAng(16,E1:toWorld(ang(0,90,-Angle1)))
+        holoAng(17,E1:toWorld(ang(0,90,-Angle1)))
+        
+        holoAng(18,E2:toWorld(ang(0,90,-Angle1)))
+        holoAng(19,E2:toWorld(ang(0,90,-Angle1)))
+        holoAng(20,E2:toWorld(ang(0,90,-Angle1)))
+        
+        local MPH1 = WheelSlip&(Load<0) ? 0 : abs(E1:velL():x())/17.6
+        
+        soundPitch(1,clamp(MaxTMPitch*(abs(MPH1+abs(SlippingIncrease))/MaxSpeed),0,MaxTMPitch))
+        soundVolume(1,clamp((MPH1/5),0.6,1)*clamp(abs(MaxLoad)/200,(MPH1/MaxSpeed)/1.5,1))
+        soundPitch(2,100*MPH1/43)
+        soundVolume(2,clamp((MPH1/4),0,1))
+        soundVolume(3,abs(E1:angVel():yaw()/16)+clamp(((randint(0,1000)/1000)-0.7)*2.5,0,1))
+        
+        soundPitch(4,clamp(MaxTMPitch*(abs(MPH1+abs(SlippingIncrease))/MaxSpeed),0,MaxTMPitch))
+        soundVolume(4,clamp((MPH1/5),0.6,1)*clamp(abs(MaxLoad)/200,(MPH1/MaxSpeed)/1.5,1))
+        soundPitch(5,100*MPH1/43)
+        soundVolume(5,clamp((MPH1/4),0,1))
+        soundVolume(6,abs(E2:angVel():yaw()/16)+clamp(((randint(0,1000)/1000)-0.7)*2.5,0,1))
+    }else{
+        soundVolume(1,0)
+        soundVolume(2,0)
+        soundVolume(3,0)
+        soundVolume(4,0)
+        soundVolume(5,0)
+        soundVolume(6,0)
+    }
+}
+timer("clk",100)
+
+

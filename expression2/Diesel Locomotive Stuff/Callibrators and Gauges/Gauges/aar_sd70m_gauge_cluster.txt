@@ -1,0 +1,191 @@
+@name AAR SD70M Gauge Cluster
+@inputs Stand:entity On MainRes EqualRes Cyl BrakePipe CFM GaugeLights
+@outputs 
+@persist Red Wht AFM CalCurve:table AltAFM AFMInd
+@trigger On
+
+if(first() | dupefinished()){
+
+    AFMInd = 1
+    AltAFM = 1
+
+Scale = vec(0.85)
+    #Red    - MR
+    #White  - ER
+    A = 1
+    holoCreate(A)
+    holoModel(A, "models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+    holoPos(A,Stand:toWorld(vec(-7,-6.3,37)))
+    holoAng(A,Stand:toWorld(ang(90-14,0,0)))
+    holoParent(A, Stand)
+    holoScale(A,Scale)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+    Red = holoEntity(A):boneIndex("needle_1")
+    Wht = holoEntity(A):boneIndex("needle_2")
+
+    holoEntity(A):setBoneAngRelative(Red,ang(-45,0,0))
+    holoEntity(A):setBoneAngRelative(Wht,ang(-45,0,0))
+    #Red    - BC
+    #White  - BP
+    A = 2
+    holoCreate(A)
+    holoPos(A,Stand:toWorld(vec(-7,-1.25,37)))
+    holoAng(A,Stand:toWorld(ang(90-14,0,0)))
+    holoColor(A, vec4(255,255,255,255))
+    holoModel(A, "models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+    holoParent(A, Stand)
+    holoScale(A,Scale)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+    holoEntity(A):setBoneAngRelative(Red,ang(-45,0,0))
+    holoEntity(A):setBoneAngRelative(Wht,ang(-45,0,0))
+
+    if(AFMInd){
+
+    if(!AltAFM){
+
+    A = 3
+    holoCreate(A)
+    holoPos(A,Stand:toWorld(vec(-7,3.75,37)))
+    holoAng(A,Stand:toWorld(ang(90-14,0,0)))
+    holoColor(A, vec4(255,255,255,255))
+    holoModel(A, "models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+    holoParent(A, Stand)
+    holoScale(A,Scale)
+    holoEntity(A):setSubMaterial(4,"models/rlc_delta_lua/accessories/gauge_air_gw_796-653g_a")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoBodygroup(A,1,2)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,3,1)
+
+    AFM = holoEntity(A):boneIndex("needle_1")
+    AFM_M = holoEntity(A):boneIndex("needle_2")
+
+    holoEntity(A):setBoneAngRelative(AFM,ang(-145,0,0))
+    holoEntity(A):setBoneAngRelative(AFM_M,ang(-180,0,0))
+
+    CalCurve = table()
+    CalCurve[1,vector2] = vec2(0,-145)
+    CalCurve[2,vector2] = vec2(20,-152)
+    CalCurve[3,vector2] = vec2(40,-161)
+    CalCurve[4,vector2] = vec2(60,-180)
+    CalCurve[5,vector2] = vec2(80,-216)
+    CalCurve[6,vector2] = vec2(100,-245)
+
+    }else{
+
+    A = 3
+    holoCreate(A)
+    holoPos(A,Stand:toWorld(vec(-7,3.75,37)))
+    holoAng(A,Stand:toWorld(ang(90-14,0,0)))
+    holoColor(A, vec4(255,255,255,255))
+    holoModel(A, "models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+    holoParent(A, Stand)
+    holoScale(A,Scale)
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(8,"models/rlc_delta_lua/accessories/gauge_air_gw_796-150b_b")
+    holoBodygroup(A,1,3)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,3,1)
+
+    AFM = holoEntity(A):boneIndex("needle_1")
+    AFM_M = holoEntity(A):boneIndex("needle_2")
+
+    holoEntity(A):setBoneAngRelative(AFM,ang(-145,0,0))
+    holoEntity(A):setBoneAngRelative(AFM_M,ang(-180,0,0))
+
+    CalCurve = table()
+    CalCurve[1,vector2] = vec2(0,-120)
+    CalCurve[2,vector2] = vec2(14,-244)
+
+    }
+
+    }
+    A++
+    B=holoEntity(1)
+    holoCreate(A)
+    holoPos(A,B:toWorld(vec(3,0,-0.5)))
+    holoAng(A,B:toWorld(ang(0,0,0)))
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoParent(A, B)
+    holoScale(A,vec(0.25))
+    holoEntity(A):setSubMaterial(1,"trans_train_stuff/cabstuff/labelplates/label_mrer")
+    A++
+    B=holoEntity(2)
+    holoCreate(A)
+    holoPos(A,B:toWorld(vec(3,0,-0.5)))
+    holoAng(A,B:toWorld(ang(0,0,0)))
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoParent(A, B)
+    holoScale(A,vec(0.25))
+    holoEntity(A):setSubMaterial(1,"trans_train_stuff/cabstuff/labelplates/label_bcbp")
+
+    A++
+    B=holoEntity(3)
+    holoCreate(A)
+    holoPos(A,B:toWorld(vec(3,0,-0.5)))
+    holoAng(A,B:toWorld(ang(0,0,0)))
+    holoColor(A, vec(255,255,255))
+    holoModel(A, "plane")
+    holoParent(A, B)
+    holoScale(A,vec(0.25))
+    holoEntity(A):setSubMaterial(1,"trans_train_stuff/cabstuff/labelplates/label_cfm")
+ 
+}
+
+if(On){
+    interval(100)
+    holoEntity(1):setBoneAngRelative(Red,ang(-45-(MainRes/160)*270,0,0))
+    holoEntity(1):setBoneAngRelative(Wht,ang(-45-(EqualRes/160)*270,0,0))
+
+    holoEntity(2):setBoneAngRelative(Red,ang(-45-(Cyl/160)*270,0,0))
+    holoEntity(2):setBoneAngRelative(Wht,ang(-45-(BrakePipe/160)*270,0,0))
+
+    if(AFMInd){
+        local A = 0
+        local CFMA = abs(CFM)
+
+        for(N=2,CalCurve:ncount()){
+            local Point1 = CalCurve[N-1,vector2]
+            local Point2 = CalCurve[N,vector2]
+            local X1 = Point1:x()
+            local X2 = Point2:x()
+            local Y1 = Point1:y()
+            local Y2 = Point2:y()
+            if(CFMA<X2){ #Is the CFM below the upper bound of this curve segment?
+                local Frac = (CFMA-X1)/(X2-X1)
+                A = Y1 + Frac*(Y2-Y1)
+                break
+            }else{ #Set it to the upper limit. If it reaches the end of the table, it'll clamp.
+                A = Y2
+            }
+        }
+
+        holoEntity(3):setBoneAngRelative(AFM,ang(A,0,0))
+
+    }
+}
+
+if(GaugeLights){
+lightCreate(1,holoEntity(1):toWorld(vec(1,0,0)),vec(250,190,100),50,0.65) 
+lightParent(1,holoEntity(1))
+lightCreate(2,holoEntity(2):toWorld(vec(1,0,0)),vec(250,190,100),50,0.65) 
+lightParent(2,holoEntity(2))
+lightCreate(3,holoEntity(3):toWorld(vec(1,0,0)),vec(250,190,100),50,0.65) 
+lightParent(3,holoEntity(3))
+holoEntity(1):setColor(vec(255,223,127))
+holoEntity(2):setColor(vec(255,223,127))
+holoEntity(3):setColor(vec(255,223,127))
+    }
+if(!GaugeLights){
+holoEntity(1):setColor(vec(200))
+holoEntity(2):setColor(vec(200))
+holoEntity(3):setColor(vec(200))
+lightRemoveAll()
+
+}

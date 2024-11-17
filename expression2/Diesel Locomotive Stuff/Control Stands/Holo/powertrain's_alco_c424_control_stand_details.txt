@@ -1,0 +1,578 @@
+@name PowerTrain's ALCo C424 Control Stand Details
+@inputs ControlStand:entity Control GeneratorField FuelPump BrakeCutIn EqualRes MainRes Cyl BrakePipe 
+@inputs GaugeLights DomeLights GroundLights Load MPH Sand Bell
+@inputs Pod:entity NextWeapon PrevWeapon ThirdPerson
+@persist EqualRes1 MainRes1 Cyl1 BrakePipe1 Load1 Red1 Red2 Wht1 Wht2
+@persist Driver:entity FPosition RPosition FKeyUnlock RKeyUnlock
+@trigger NextWeapon PrevWeapon UnlockKey
+
+# *********************************************************************************************************************
+# I don't really give a damn what you do with this. If you modify it in a way that makes it better though, 
+# I would appreciate a heads up and a "How It's Done" tutorial. I'm always looking for new ideas.
+# If you'd like to contribute, complain, or say thanks feel free to rach out. Credit will be given where credit is due.
+# Let's bask in the glory of being kings of the fuckin' train nerds together!
+# *********************************************************************************************************************
+
+#Originally created for an ALCo FA, but you can use it however ya like.
+
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#     /$$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ /$$$$$$$  /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$ /$$   /$$       #
+#    | $$__  $$ /$$__  $$| $$  /$ | $$| $$_____/| $$__  $$|__  $$__/| $$__  $$ /$$__  $$|_  $$_/| $$$ | $$       #
+#    | $$  \ $$| $$  \ $$| $$ /$$$| $$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  \ $$  | $$  | $$$$| $$       #
+#    | $$$$$$$/| $$  | $$| $$/$$ $$ $$| $$$$$   | $$$$$$$/   | $$   | $$$$$$$/| $$$$$$$$  | $$  | $$ $$ $$       #
+#    | $$____/ | $$  | $$| $$$$_  $$$$| $$__/   | $$__  $$   | $$   | $$__  $$| $$__  $$  | $$  | $$  $$$$       #
+#    | $$      | $$  | $$| $$$/ \  $$$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  | $$  | $$  | $$\  $$$       #
+#    | $$      |  $$$$$$/| $$/   \  $$| $$$$$$$$| $$  | $$   | $$   | $$  | $$| $$  | $$ /$$$$$$| $$ \  $$       #
+#    |__/       \______/ |__/     \__/|________/|__/  |__/   |__/   |__/  |__/|__/  |__/|______/|__/  \__/       #
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+
+E=entity()
+
+if(first() | dupefinished()){
+
+A = 0
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/gsgtrainprops/parts/cab/gauge_load_alco.mdl")
+holoPos(A,ControlStand:toWorld(vec(-8.5,4.2,28)))
+holoAng(A,ControlStand:toWorld(ang(-10,90,0)))
+holoScale(A,vec(1,1,1))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoEntity(A):setSubMaterial(2,"models/gsgtrainprops/cab/gauge_amp_ge_a1800_v1")
+holoParent(A,ControlStand)
+A = 1
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"")
+holoPos(A,ControlStand:toWorld(vec(-8.5,4.25,28)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(0))
+holoParent(A,ControlStand)
+A = 2
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/gsgtrainprops/parts/cab/anim/gauge_needles_holo.mdl")
+holoPos(A,holoEntity(1):toWorld(vec(0,0,0)))
+holoAng(A,holoEntity(1):toWorld(ang(0,0,-90)))
+holoScale(A,vec(1.25))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic")
+holoParent(A,holoEntity(1))
+holoBodygroup(A,1,1)
+
+A = 3
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/gsgtrainprops/parts/cab/gauge_load_alco.mdl")
+holoPos(A,ControlStand:toWorld(vec(-15,4.2,28)))
+holoAng(A,ControlStand:toWorld(ang(-10,90,0)))
+holoScale(A,vec(1,1,1))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoEntity(A):setSubMaterial(2,"models/gsgtrainprops/cab/speedo_mph_80_v2_black")
+holoParent(A,ControlStand)
+A = 4
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"")
+holoPos(A,ControlStand:toWorld(vec(-15,4.35,28)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(0))
+holoParent(A,ControlStand)
+A = 5
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/gsgtrainprops/parts/cab/anim/gauge_needles_holo.mdl")
+holoPos(A,holoEntity(4):toWorld(vec(0,0,0)))
+holoAng(A,holoEntity(4):toWorld(ang(0,0,-90)))
+holoScale(A,vec(1))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic")
+holoParent(A,holoEntity(4))
+holoBodygroup(A,1,0)
+
+A = 6
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+holoPos(A,ControlStand:toWorld(vec(1.5,4.75,28.5)))
+holoAng(A,ControlStand:toWorld(ang(80.5,90,0)))
+holoScale(A,vec(1))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/enamel_darkgray")
+holoEntity(A):setSubMaterial(7,"models/gsgtrainprops/cab/gauge_air_alco1")
+holoParent(A,ControlStand)
+holoBodygroup(A,1,1)
+holoBodygroup(A,2,1)
+
+
+A = 7
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/accessories/gauge_gw4.5_standard.mdl")
+holoPos(A,ControlStand:toWorld(vec(7.25,4.75,28.5)))
+holoAng(A,ControlStand:toWorld(ang(80.5,90,0)))
+holoScale(A,vec(1))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/enamel_darkgray")
+holoEntity(A):setSubMaterial(7,"models/gsgtrainprops/cab/gauge_air_alco2")
+holoParent(A,ControlStand)
+holoBodygroup(A,1,1)
+holoBodygroup(A,2,1)
+
+A = 8
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/magtrainslocos/rotaryswitches/headlight_alco.mdl")
+holoPos(A,ControlStand:toWorld(vec(10,3.3,8)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoBodygroup(A,1,7)
+holoSkin(A,1)
+A = 9
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/magtrainslocos/rotaryswitches/headlight_alco.mdl")
+holoPos(A,ControlStand:toWorld(vec(5,3.3,8)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoBodygroup(A,1,7)
+
+A = 10
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,ControlStand:toWorld(vec(-2.5,4.25,28)))
+holoAng(A,ControlStand:toWorld(ang(0,0,10)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoEntity(A):setSubMaterial(3,"models/proppertextures/plastic_red")
+holoBodygroup(A,0,1)
+
+A = 11
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,ControlStand:toWorld(vec(9,3.5,14)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoBodygroup(A,0,7)
+A = 12
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,ControlStand:toWorld(vec(6,3.5,14)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoBodygroup(A,0,7)
+
+A = 13
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,ControlStand:toWorld(vec(5,3.5,11)))
+holoAng(A,ControlStand:toWorld(ang(90,0,-90)))
+holoScale(A,vec(0.6))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum")
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+A = 14
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,ControlStand:toWorld(vec(7.5,3.5,11)))
+holoAng(A,ControlStand:toWorld(ang(90,0,-90)))
+holoScale(A,vec(0.6))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum")
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+A = 15
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,ControlStand:toWorld(vec(10,3.5,11)))
+holoAng(A,ControlStand:toWorld(ang(90,0,-90)))
+holoScale(A,vec(0.6))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum")
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+
+A = 16
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,ControlStand:toWorld(vec(2.85,3.5,4)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoEntity(A):setSubMaterial(6,"models/proppertextures/plastic_red")
+holoBodygroup(A,0,5)
+A = 17
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,ControlStand:toWorld(vec(2.85,3.5,2)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,ControlStand)
+holoEntity(A):setSubMaterial(6,"models/proppertextures/plastic_black")
+holoBodygroup(A,0,5)
+
+
+A = 18
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,ControlStand:toWorld(vec(6,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+holoScale(A,vec(1.25))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A = 19
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,ControlStand:toWorld(vec(8,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+holoScale(A,vec(1.25))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A = 20
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,ControlStand:toWorld(vec(10,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+holoScale(A,vec(1.25))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/unionsparts/bolt_3.mdl")
+holoPos(A,ControlStand:toWorld(vec(0.75,5,25.5)))
+holoAng(A,ControlStand:toWorld(ang(0,0,10)))
+holoScale(A,vec(0.25))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/brass")
+holoParent(A,ControlStand)
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/unionsparts/bolt_3.mdl")
+holoPos(A,ControlStand:toWorld(vec(2.35,5,25.5)))
+holoAng(A,ControlStand:toWorld(ang(0,0,10)))
+holoScale(A,vec(0.25))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/brass")
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,ControlStand:toWorld(vec(11,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoScale(A,vec(0.4,0.4,0.4))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+A++
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,ControlStand:toWorld(vec(9,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoScale(A,vec(0.4,0.4,0.4))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,ControlStand:toWorld(vec(7,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoScale(A,vec(0.4,0.4,0.4))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,ControlStand:toWorld(vec(5,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoScale(A,vec(0.4,0.4,0.4))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,E)
+holoModel(A,"models/sprops/rectangles_superthin/size_1_5/rect_6x12.mdl")
+holoPos(A,ControlStand:toWorld(vec(8,3.5,3)))
+holoAng(A,ControlStand:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel_darkgray")
+holoScale(A,vec(0.5,0.7,0.7))
+holoColor(A,vec(255))
+holoParent(A,ControlStand)
+
+
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/unionsparts/bolt_3.mdl")
+holoPos(A,ControlStand:toWorld(vec(6.5,5,25.5)))
+holoAng(A,ControlStand:toWorld(ang(0,0,10)))
+holoScale(A,vec(0.25))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/brass")
+holoParent(A,ControlStand)
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"models/unionsparts/bolt_3.mdl")
+holoPos(A,ControlStand:toWorld(vec(8,5,25.5)))
+holoAng(A,ControlStand:toWorld(ang(0,0,10)))
+holoScale(A,vec(0.25))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/brass")
+holoParent(A,ControlStand)
+
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"plane")
+holoPos(A,ControlStand:toWorld(vec(10,3.65,0)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoScale(A,vec(0.18))
+holoEntity(A):setSubMaterial(1,"cubics_pack/breakers/control")
+holoParent(A,ControlStand)
+holoColor(A,vec(30))
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"plane")
+holoPos(A,ControlStand:toWorld(vec(8,3.65,0)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoScale(A,vec(0.3))
+holoEntity(A):setSubMaterial(1,"cubics_pack/breakers/generator_field")
+holoParent(A,ControlStand)
+holoColor(A,vec(30))
+A++
+holoCreate(A)
+holoParent(A,ControlStand)
+holoModel(A,"plane")
+holoPos(A,ControlStand:toWorld(vec(6,3.65,0)))
+holoAng(A,ControlStand:toWorld(ang(90,90,0)))
+holoScale(A,vec(0.09))
+holoEntity(A):setSubMaterial(1,"cubics_pack/breakers/fuel_pump")
+holoParent(A,ControlStand)
+holoColor(A,vec(30))
+
+}
+Gauge1 = holoEntity(6)
+Gauge2 = holoEntity(7)
+
+    Red1 = Gauge1:boneIndex("needle_1")
+    Wht1 = Gauge1:boneIndex("needle_2")
+    
+    Red2 = Gauge2:boneIndex("needle_1")
+    Wht2 = Gauge2:boneIndex("needle_2")
+
+interval(50)
+
+    BrakePipe1 = BrakePipe1 + ((BrakePipe) - BrakePipe1) * 0.75
+    Cyl1 = Cyl1 + ((Cyl) - Cyl1) * 0.75
+        
+    EqualRes1 = EqualRes1 + ((EqualRes) - EqualRes1) * 0.75
+    MainRes1 = MainRes1 + ((MainRes) - MainRes1) * 0.75
+
+holoBodygroup(20,1,Control)
+holoBodygroup(19,1,GeneratorField)
+holoBodygroup(18,1,FuelPump)
+    
+        holoEntity(7):setBoneAngRelative(Wht2,ang(-40-(278*(BrakePipe1/160)),0,0))
+        holoEntity(7):setBoneAngRelative(Red2,ang(-40-(278*(Cyl1/160)),0,0))
+            
+        holoEntity(6):setBoneAngRelative(Wht1,ang(-40-(268*(EqualRes1/200)),0,0))
+        holoEntity(6):setBoneAngRelative(Red1,ang(-40-(268*(MainRes1/200)),0,0))
+
+        holoAng(1,ControlStand:toWorld(ang(-45-(Load/1800)*+(45*6.05),0,10)))
+        holoAng(4,ControlStand:toWorld(ang(120-(MPH/80)*+(45*5.35),0,-10)))
+
+        holoEntity(11):setBonePosRelative(1,vec(0,Sand*0.5,0))
+        holoEntity(12):setBonePosRelative(1,vec(0,Bell*0.5,0))
+        
+if(GaugeLights){
+    holoEntity(0):setColor(vec(255,223,127))
+    holoEntity(2):setColor(vec(255,223,127))
+    holoEntity(3):setColor(vec(255,223,127))
+    holoEntity(5):setColor(vec(255,223,127))
+    holoEntity(6):setColor(vec(255,223,127))
+    holoEntity(7):setColor(vec(255,223,127))
+}elseif(!GaugeLights){
+    holoEntity(0):setColor(vec(200))
+    holoEntity(2):setColor(vec(200))
+    holoEntity(3):setColor(vec(200))
+    holoEntity(5):setColor(vec(200))
+    holoEntity(6):setColor(vec(200))
+    holoEntity(7):setColor(vec(200))
+}
+
+holoAnim(15,GaugeLights)
+holoAnim(14,DomeLights)
+holoAnim(13,GroundLights)
+
+SwitchSound = "trans_train_sounds/buttons/headlight_switch.wav"
+
+FUnlockKey = "F" #Hold down this key to operate the switch without looking at it.
+RUnlockKey = "R" #Hold down this key to operate the switch without looking at it.
+
+
+timer("clk",100)
+
+
+
+#Headlight Switch Code
+
+Driver = Pod:driver()
+if(Driver){
+FKeyUnlock = Driver:keyPressed(FUnlockKey)
+RKeyUnlock = Driver:keyPressed(RUnlockKey)
+}
+
+#Front Headlight Switch
+if(inputClk() & ((FKeyUnlock))){
+    if(PrevWeapon){ #Switch Pos Up
+        if(FPosition<2){
+            FPosition++
+            soundPlay(0,1,SwitchSound)
+        }
+    }elseif(NextWeapon){ #Switch Pos Down
+        if(FPosition>0){
+            FPosition--
+            soundPlay(0,1,SwitchSound)
+        }
+    }
+
+
+#Off
+if(FPosition==0){
+        holoBodygroup(9,1,7)
+    }
+#Dim
+if(FPosition==1){
+        holoBodygroup(9,1,0)
+    }
+
+#Bright
+if(FPosition==2){
+
+        holoBodygroup(9,1,1)
+    }
+
+}
+
+#Rear Headlight Switch
+if(inputClk() & ((RKeyUnlock))){
+    if(PrevWeapon){ #Switch Pos Up
+        if(RPosition<2){
+            RPosition++
+            soundPlay(0,1,SwitchSound)
+        }
+    }elseif(NextWeapon){ #Switch Pos Down
+        if(RPosition>0){
+            RPosition--
+            soundPlay(0,1,SwitchSound)
+        }
+    }
+
+#Off
+if(RPosition==0){
+        holoBodygroup(8,1,7)
+    }
+    RHdltRGB=vec(0,0,0)
+    
+#Dim
+if(RPosition==1){
+        holoBodygroup(8,1,0)
+    }
+
+#Bright
+if(RPosition==2){
+
+        holoBodygroup(8,1,1)
+    }
+
+
+}

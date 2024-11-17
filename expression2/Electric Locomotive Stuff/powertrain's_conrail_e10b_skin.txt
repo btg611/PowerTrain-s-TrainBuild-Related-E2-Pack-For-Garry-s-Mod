@@ -1,0 +1,600 @@
+@name PowerTrain's Conrail E10b Skin
+@inputs [E10b Truck1 Truck2]:entity
+@inputs PantoUp MPH
+@outputs Num:string
+@persist [E10b Truck1 Truck2]:entity 
+@persist Roll Roll2 VelL VelL2
+@model models/sprops/rectangles/size_3/rect_24x24x3.mdl
+
+White = vec(255)   
+Gray = vec(180)
+Dark = vec(100)
+Black = vec(40)
+
+Body = "models/zexciv_train_stuff/usa/ge/ge_e10b.mdl"
+Plane = "plane"
+
+Acrylic = "models/proppertextures/acrylic2_metal1_hw"
+Gold = "models/proppertextures/acrylic2_gold_hw"
+RustyBlack = "models/proppertextures/enamel_black_rust2"
+Orange = "models/proppertextures/acrylic2_orange_hw"
+CabMetal = "models/proppertextures/cabmetal_celadon"
+CastMat = "models/proppertextures/enamel_cast_black"
+Dirty = "models/proppertextures/acrylic_dirty"
+Grimey = "models/proppertextures/acrylic_metal1_grimey"
+Glass = "models/proppertextures/glass_new"
+Invisible = "models/proppertextures/invisible"
+Wheel = "models/proppertextures/wheel"
+StripesPilot = "models/proppertextures/acrylic_hazard_diagonal_white_d2"
+StripesSidesill = "models/proppertextures/acrylic_hazard_diagonal_white_d2"
+WhiteMat = "models/proppertextures/acrylic2_white_hw"
+
+Logo = "cubics_pack/logos/real/cr/cr_pc2"
+BuildPlate = "cubics_pack/misc/builder_plates/ge3"
+ClassDesignation = "cubics_pack/engine_classes/conrail/e10b"
+NumFont = "cubics_pack/numbers/sou/"
+
+#--------------------------------------------------------------------------
+
+if(first()|dupefinished()){
+E=entity()
+E:setAlpha(255)
+E10b:setAlpha(0)
+
+Min = 4750
+Max = 4756
+
+Num = "" + randint(Min,Max):toString() + ""
+
+#--------------------------------------------------------------------------
+
+#---------------------Skin---------------------
+
+#1 End
+
+    A=0
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,-50),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,5),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,-1,0),0)
+    holoClip(A,4,vec(0,-500,0),vec(0,1,0),0)
+    
+    A=1
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,StripesSidesill)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,5),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,13),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,-1,0),0)
+    holoClip(A,4,vec(0,-500,0),vec(0,1,0),0)
+
+    A=2
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,13),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,15),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,-1,0),0)
+    holoClip(A,4,vec(0,-500,0),vec(0,1,0),0)
+    
+    A=3
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,15),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,150),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,-1,0),0)
+    holoClip(A,4,vec(0,-500,0),vec(0,1,0),0)
+
+    #2 End    
+    A=4
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,-50),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,5),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,1,0),0)
+    holoClip(A,4,vec(0,500,0),vec(0,-1,0),0)
+    
+    A=5
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,StripesSidesill)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,5),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,13),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,1,0),0)
+    holoClip(A,4,vec(0,500,0),vec(0,-1,0),0)
+
+    A=6
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,13),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,15),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,1,0),0)
+    holoClip(A,4,vec(0,500,0),vec(0,-1,0),0)
+    
+    A=7
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,Body)
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,0,0)))
+    holoAng(A,E10b:toWorld(ang(0,0,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Acrylic)
+    holoEntity(A):setSubMaterial(8,Acrylic)
+    holoEntity(A):setSubMaterial(9,StripesPilot)
+    holoEntity(A):setSubMaterial(12,WhiteMat)
+    holoEntity(A):setSubMaterial(17,WhiteMat)
+    holoEntity(A):setSubMaterial(18,Acrylic)
+    holoEntity(A):setSubMaterial(20,Acrylic)
+    holoEntity(A):setBodygroup(1,0)
+    holoClipEnabled(A,1,1)
+    holoClipEnabled(A,2,1)
+    holoClipEnabled(A,3,1)
+    holoClipEnabled(A,4,1)
+    holoClip(A,1,vec(0,0,15),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,150),vec(0,0,-1),0)
+    holoClip(A,3,vec(0,0,0),vec(0,1,0),0)
+    holoClip(A,4,vec(0,500,0),vec(0,-1,0),0)
+    
+    A=8
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,"models/zexciv_train_stuff/misc/lamps/lamp_2.mdl")
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,182,84.5)))
+    holoAng(A,E10b:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    A=9
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,"models/sprops/rectangles/size_2/rect_12x12x3.mdl")
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,177,75.5)))
+    holoAng(A,E10b:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    
+    A=10
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,"models/zexciv_train_stuff/misc/lamps/lamp_2.mdl")
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,-182,84.5)))
+    holoAng(A,E10b:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    A=11
+    holoCreate(A)
+    holoParent(A,E10b)
+    holoModel(A,"models/sprops/rectangles/size_2/rect_12x12x3.mdl")
+    holoColor(A,Black)
+    holoPos(A,E10b:toWorld(vec(0,-177,75.5)))
+    holoAng(A,E10b:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    
+    A=12
+    holoCreate(A)
+    holoModel(A,"models/zexciv_train_stuff/usa/details/csssb_diamond_pantograph.mdl")
+    holoPos(A,E10b:toWorld(vec(0,0,121.5)))
+    holoAng(A, E10b:toWorld(ang(0,90,0)))
+    holoScale(A, vec(0.67,0.665,0.67))
+    holoBodygroup(A,1,1)
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/aluminum_brushed_worn_stained")
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/rubber")
+    holoColor(A, vec(50))
+    holoParent(A, E10b)
+    
+    spriteSpawn(1,"sprites/light_glow02",holoEntity(10):toWorld(vec(0,0,72)),vec(180,180,255),255,0.35)
+    spriteSetParent(1,holoEntity(10))
+    spriteEnable(1,0)
+    
+    A=13
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,0,50)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(1,1.5,1))
+    holoEntity(A):setSubMaterial(1,Logo)
+    holoColor(A, White)
+    holoParent(A, E10b)
+    
+    A=14
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,-15,35)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=15
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,-5,35)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=16
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,5,35)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=17
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,15,35)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+    holoColor(A, White)
+    holoParent(A, E10b)
+            
+    A=18
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,0,50)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(1,1.5,1))
+    holoEntity(A):setSubMaterial(1,Logo)
+    holoColor(A, White)
+    holoParent(A, E10b)
+
+    A=19
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,15,35)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=20
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,5,35)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=21
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,-5,35)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=22
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,-15,35)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(1.5))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    
+    A=23
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck1:toWorld(vec(0,43,-21.5)))
+    holoAng(A, Truck1:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1,1,1))
+    holoColor(A, White)
+    holoParent(A, Truck1)
+    A=24
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck1:toWorld(vec(0,-43,-21.5)))
+    holoAng(A, Truck1:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1,1,1))
+    holoColor(A, White)
+    holoParent(A, Truck1)
+
+    A=25
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck2:toWorld(vec(0,43,-21.5)))
+    holoAng(A, Truck2:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1,1,1))
+    holoColor(A, White)
+    holoParent(A, Truck2)
+    A=26
+    holoCreate(A)
+    holoModel(A,"models/anytrains/props/locoparts/axle_40_rsg.mdl")
+    holoPos(A,Truck2:toWorld(vec(0,-43,-21.5)))
+    holoAng(A, Truck2:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1,1,1))
+    holoColor(A, White)
+    holoParent(A, Truck2)
+    
+    A=27
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(10,189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=28
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(3.5,189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=29
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-3.5,189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=30
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-10,189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    
+    A=31
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-10,-189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,-90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=32
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-3.5,-189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,-90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=33
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(3.5,-189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,-90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=34
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(10,-189.5,60)))
+    holoAng(A, E10b:toWorld(ang(87,-90,0)))
+    holoScale(A, vec(1))
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+    holoColor(A, White)
+    holoParent(A, E10b)
+    
+    A=35
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(60.15,0,20)))
+    holoAng(A, E10b:toWorld(ang(90,0,0)))
+    holoScale(A, vec(0.5,1,1))
+    holoEntity(A):setSubMaterial(1,ClassDesignation)
+    holoColor(A, White)
+    holoParent(A, E10b)
+    A=36
+    holoCreate(A)
+    holoModel(A,"plane")
+    holoPos(A,E10b:toWorld(vec(-60.15,0,20)))
+    holoAng(A, E10b:toWorld(ang(90,180,0)))
+    holoScale(A, vec(0.5,1,1))
+    holoEntity(A):setSubMaterial(1,ClassDesignation)
+    holoColor(A, White)
+    holoParent(A, E10b)
+}
+
+if(PantoUp){
+holoAnim(12,1,4,15)
+holoAnimLength(15)
+soundPlay(1,0,"priority's sounds/engine sounds/iore/other/pantograph_up.wav")
+soundVolume(1,1)
+soundPitch(1,150)
+}
+if(!PantoUp){
+holoAnim(12,3,0,3)
+holoAnimLength(3)
+soundStop(1,0)
+soundPlay(2,0,"priority's sounds/engine sounds/iore/other/pantograph_down.wav")
+soundVolume(2,1)
+soundPitch(2,120) 
+}
+if(MPH>1&&(PantoUp)){
+timer("panto",1000)
+
+if(clk("spark")){
+timer("sparkstop",250)
+spriteEnable(1,1)
+soundPlay(3,0,"atzesounds/misc/electrical/spark2.wav")
+}
+timer("spark",randint(80000/MPH,200000/MPH))
+if(clk("sparkstop")){
+spriteEnable(1,0)
+}}else{
+stoptimer("panto")
+spriteEnable(1,0)
+}
+if(PantoUp&&clk("panto")){
+holoAnim(1,1,1-(randint(0,MPH)/150),0)
+}
+
+
+
+interval(100)
+
+
+VelL = Truck1:velL():y()/-4.25    
+
+Roll+=VelL
+    
+holoAng(23,Truck1:toWorld(ang(0,0,Roll)))
+holoAng(24,Truck1:toWorld(ang(0,0,Roll)))
+
+
+VelL2 = Truck2:velL():y()/-4.25    
+
+Roll2+=VelL2
+    
+holoAng(25,Truck2:toWorld(ang(0,0,Roll2)))
+holoAng(26,Truck2:toWorld(ang(0,0,Roll2)))
+
+
+

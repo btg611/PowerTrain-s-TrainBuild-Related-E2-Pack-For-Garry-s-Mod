@@ -1,0 +1,523 @@
+@name PowerTrain's KC92 Control Stand and RS3 Cab Details
+@inputs Stand:entity RS3:entity
+#######################################################################################################################################################################################
+@inputs Battery On1 Temperature TM_Health  
+@inputs Engine_Room_Light_Switch Classification_Light_Switch_Rear Classification_Light_Switch_Front Number_Light_Switch Dome_Light_Switch
+@inputs Fuel_Pump_Circuit_Breaker Generator_Field_Switch Control_Circuit_Breaker Gauge_Light_Switch
+#######################################################################################################################################################################################
+@persist Hot_Engine Low_Lube_Oil_Pressure Ground_Relay #Alarm
+#######################################################################################################################################################################################
+#############################################################
+if(first() | dupefinished()){
+#############################################################
+    #Ground Relay Warning Light	    
+    A = 0
+    holoCreate(A)
+    holoModel(A, "models/rlc_delta_lua/cstands/indicators.mdl")
+    holoPos(A,Stand:toWorld(vec(2.5,-0.3,52)))
+    holoAng(A,Stand:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, vec(255))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_orange_unlit")
+    holoBodygroup(A,0,0)
+    holoParent(A,Stand)
+    #Hot Engine Warning Light	
+    A = 1
+    holoCreate(A)
+    holoModel(A, "models/rlc_delta_lua/cstands/indicators.mdl")
+    holoPos(A,Stand:toWorld(vec(2.5,-0.3,50)))
+    holoAng(A,Stand:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, vec(255))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+    holoParent(A,Stand)
+    #Low Lube Oil Pressure Warning Light	
+    A = 2
+    holoCreate(A)
+    holoModel(A, "models/rlc_delta_lua/cstands/indicators.mdl")
+    holoPos(A,Stand:toWorld(vec(2.5,-0.3,48)))
+    holoAng(A,Stand:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, vec(255))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_green_unlit")
+    holoParent(A,Stand)
+    #Engine Room Light Switch	
+    A=3
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(5.25,-0.3,52.75)))
+    holoAng(A,Stand:toWorld(ang(0,0,-90)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+    #Classification Light Switch (Rear)	
+    A=4
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(5.25,-0.3,51)))
+    holoAng(A,Stand:toWorld(ang(0,0,-90)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+    #Classification Light Switch (Front)	
+    A=5
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(5.25,-0.3,49.75)))
+    holoAng(A,Stand:toWorld(ang(0,0,-90)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+    #Number Light Switch	
+    A=6
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(5.25,-0.3,48.5)))
+    holoAng(A,Stand:toWorld(ang(0,0,-90)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+    #Dome Light Switch	
+    A=7
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(5.25,-0.3,47.25)))
+    holoAng(A,Stand:toWorld(ang(0,0,-90)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+
+    #Gauge Light Switch	
+    A=8
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/bull/buttons/toggle_switch.mdl")
+    holoPos(A,Stand:toWorld(vec(0.4,-14,51)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/aluminum_new_worn")
+    holoScale(A, vec(0.4))
+    holoColor(A,vec(255))
+    #Trailing Engine Emergency Shutdown Switch (Stop Button)	
+    A=9
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/buttons/pushbutton.mdl")
+    holoPos(A,Stand:toWorld(vec(0.8,-15.75,53)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/plastic_red")
+    holoScale(A, vec(2))
+    holoColor(A,vec(255))
+    #Trailing Engine Emergency Shutdown Switch (Run Button)	
+    A=10
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/buttons/pushbutton.mdl")
+    holoPos(A,Stand:toWorld(vec(0.4,-15.75,51)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/plastic_black")
+    holoScale(A, vec(2))
+    holoColor(A,vec(255))   
+
+    
+    #Unused
+    A=11
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_large.mdl")
+    holoPos(A,Stand:toWorld(vec(-0.25,-17,47)))
+    holoAng(A,Stand:toWorld(ang(0,90,14)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(255)) 
+    #Fuel Pump Circuit Breaker
+    A=12
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_large.mdl")
+    holoPos(A,Stand:toWorld(vec(-0.25,-15,47)))
+    holoAng(A,Stand:toWorld(ang(0,90,14)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(255))  
+    #Generator Field Switch
+    A=13
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_large.mdl")
+    holoPos(A,Stand:toWorld(vec(-0.25,-13,47)))
+    holoAng(A,Stand:toWorld(ang(0,90,14)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(255)) 
+    #Control Circuit Breaker
+    A=14
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_large.mdl")
+    holoPos(A,Stand:toWorld(vec(-0.25,-11,47)))
+    holoAng(A,Stand:toWorld(ang(0,90,14)))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/plastic_black")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(255)) 
+    
+    
+     
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Stand:toWorld(vec(-1,-18,47)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoScale(A, vec(0.45,0.25,0.35))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Stand:toWorld(vec(-1,-16,47)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoScale(A, vec(0.45,0.25,0.35))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))  
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Stand:toWorld(vec(-1,-14,47)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoScale(A, vec(0.45,0.25,0.35))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))  
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Stand:toWorld(vec(-1,-12,47)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoScale(A, vec(0.45,0.25,0.35))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Stand:toWorld(vec(-1,-10,47)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoScale(A, vec(0.45,0.25,0.35))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "models/res/props/electric/audio/warning_horn.mdl")
+    holoPos(A,Stand:toWorld(vec(-6.5,-15,27)))
+    holoAng(A,Stand:toWorld(ang(0,180,0)))
+    holoScale(A, vec(0.5))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/enamel2_cab_worn_grey")
+    holoColor(A,vec(255))    
+    holoClipEnabled(A,1,1)     
+    holoClip(A,1,vec(0,0,0.3),vec(0,0,1),0)   
+
+#[    A++
+    holoCreate(A)
+    holoParent(A, entity())
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(-27.75,104.5,75)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.8))
+    holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/ecs")
+    holoColor(A,vec(240)) ]#
+ 
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(23.75,104.5,85)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50))    
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(-23.75,104.5,85)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50))  
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(-23.75,104.5,60)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50))   
+
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(0,104.5,60)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50))  
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(0,104.5,82)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50)) 
+    
+    A++
+    holoCreate(A)
+    holoParent(A, RS3)
+    holoModel(A, "plane")
+    holoPos(A,RS3:toWorld(vec(23.75,104.5,60)))
+    holoAng(A,RS3:toWorld(ang(90,0,-90)))
+    holoScale(A, vec(0.75,1.75,1))
+    holoEntity(A):setSubMaterial(1,"dev_and_countings_logos/others/plates/info_warning/600_volts_01")
+    holoColor(A,vec(255,50,50))  
+
+#Labels
+
+#Fault Indicator Lights
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(2.45,-0.2,51)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/ground relay light")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(2.45,-0.2,49.25)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/hot engine")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(2.45,-0.2,47.15)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/low lube oil")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))    
+      
+#Light Switch Labels  
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,52.85)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/eng rm lights")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,51.15)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/rear class")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))  
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,50)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/front hood")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))  
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,49.25)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/front number")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))  
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,48.5)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/rear number")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))            
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(4,-0.2,47.5)))
+    holoAng(A,Stand:toWorld(ang(90,90,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/dome")
+    holoScale(A, vec(0.15))
+    holoColor(A,vec(30))            
+        
+#Breaker Switch Labels
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(-1.18,-11,44.1)))
+    holoAng(A,Stand:toWorld(ang(77,180,0)))
+    holoEntity(A):setSubMaterial(1,"titus/control")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(30)) 
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(-1.18,-13,44.1)))
+    holoAng(A,Stand:toWorld(ang(77,180,0)))
+    holoEntity(A):setSubMaterial(1,"titus/generatorfield")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(30)) 
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(-1.18,-15,44.1)))
+    holoAng(A,Stand:toWorld(ang(77,180,0)))
+    holoEntity(A):setSubMaterial(1,"titus/fuelpump")
+    holoScale(A, vec(0.75))
+    holoColor(A,vec(30)) 
+
+    A++
+    holoCreate(A)
+    holoParent(A, Stand)
+    holoModel(A, "plane")
+    holoPos(A,Stand:toWorld(vec(0.1,-14,50.35)))
+    holoAng(A,Stand:toWorld(ang(78.5,180,0)))
+    holoEntity(A):setSubMaterial(1,"cab details/cab labels/gauge")
+    holoScale(A, vec(0.25))
+    holoColor(A,vec(30))     
+
+
+}
+
+if(TM_Health <= 50){
+    Ground_Relay = 1
+}elseif(TM_Health > 50){
+    Ground_Relay = 0
+}
+
+if(Ground_Relay){
+    holoEntity(0):setSubMaterial(2,"models/proppertextures/bulb_orange_lit")
+    #Alarm = 1
+}
+elseif(!Ground_Relay){
+    holoEntity(0):setSubMaterial(2,"models/proppertextures/bulb_orange_unlit")
+    #Alarm = 0
+}
+
+if(Temperature >= 200){
+    Hot_Engine = 1
+}elseif(Temperature < 200){
+    Hot_Engine = 0
+}
+
+if(Hot_Engine){
+    holoEntity(1):setSubMaterial(2,"models/proppertextures/bulb_red_lit")
+    #Alarm = 1
+}
+elseif(!Hot_Engine){
+    holoEntity(1):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+    #Alarm = 0
+}
+
+
+if(Battery & Fuel_Pump_Circuit_Breaker & !On1){
+    Low_Lube_Oil_Pressure = 1
+}elseif(Battery & Fuel_Pump_Circuit_Breaker & On1){
+    Low_Lube_Oil_Pressure = 0
+}
+
+if(Low_Lube_Oil_Pressure){
+    holoEntity(2):setSubMaterial(2,"models/proppertextures/bulb_green_lit")
+    #Alarm = 1
+}
+elseif(!Low_Lube_Oil_Pressure){
+    holoEntity(2):setSubMaterial(2,"models/proppertextures/bulb_green_unlit")
+    #Alarm = 0
+}
+
+if(Engine_Room_Light_Switch){
+holoAnim(3,1)  
+}elseif(!Engine_Room_Light_Switch){
+holoAnim(3,0)  
+}
+
+if(Classification_Light_Switch_Rear){
+holoAnim(4,1)  
+}elseif(!Classification_Light_Switch_Rear){
+holoAnim(4,0)  
+}
+
+if(Classification_Light_Switch_Front){
+holoAnim(5,1)  
+}elseif(!Classification_Light_Switch_Front){
+holoAnim(5,0)  
+}
+
+if(Number_Light_Switch){
+holoAnim(6,1)  
+}elseif(!Number_Light_Switch){
+holoAnim(6,0)  
+}
+
+if(Dome_Light_Switch){
+holoAnim(7,1)  
+}elseif(!Dome_Light_Switch){
+holoAnim(7,0)  
+}
+
+if(Gauge_Light_Switch){
+holoAnim(8,1)  
+}elseif(!Gauge_Light_Switch){
+holoAnim(8,0)  
+}
+
+holoBodygroup(12,1,Fuel_Pump_Circuit_Breaker)
+holoBodygroup(13,1,Generator_Field_Switch)
+holoBodygroup(14,1,Control_Circuit_Breaker)
+
+
+#[if(Alarm == 1){
+soundPlay(1,0,"kei/trains/cab/ge_alarmbell_2_loop.wav")
+}elseif(Alarm == 0){
+soundStop(1)
+soundPlay(2,0,"kei/trains/cab/ge_alarmbell_2_end.wav")
+}]#

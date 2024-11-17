@@ -1,0 +1,1078 @@
+@name PowerTrain's CSX YN2 SD40-2
+@inputs [Frame FrontTruck RearTruck]:entity NumLightsF NumLightsR
+@outputs Num:string
+@model models/woozie/e2/dash2_module.mdl
+#---------------Colors-----------------------------------------------------------------
+Yellow = vec(252,192,9)
+Blue = vec(20,50,100)
+Black = vec(30)
+White = vec(255)
+Gray = vec(150)
+Green = vec(50,180,50)
+Red = vec(180,50,50)
+#---------------Props------------------------------------------------------------------
+Cab = "models/zexciv_train_stuff/usa/emd/kit/emd_gp38-2_cab.mdl"#-----------Cab
+Nose = "models/zexciv_train_stuff/usa/emd/kit/emd_gp38-2_nose.mdl"#--------Nose
+Numberboards = "models/zexciv_train_stuff/usa/emd/kit/emd_gp38-2_numboards.mdl"
+SD40 = "models/gsgtrainprops/trains/propper/emd_sd40.mdl"#------------Main Body
+#---------------Decals-----------------------------------------------------------------
+Decal = "bobsters_trains/decals/csx" #----The decal
+Size = vec(1.5,7,1) #---The scale of the nose decals
+Size2 = vec(5,20,10) #---The scale of the side decals
+Size3 = vec(1.5) #---The scale of the number decals
+#---------------Numbers----------------------------------------------------------------
+Min = 8800 # Smallest number the random code can put out.
+Max = 8889 # Biggest number the random code can put out.
+NumFont = "countings_realistic_logos_part_1/csxt/numbers/csxt_"
+Num = randint(Min,Max):toString()#----------Don't touch this, it's the randomizing code
+#---------------Base Stuff-------------------------------------------------------------
+Frame:setAlpha(255)
+Frame:setColor(Yellow)
+#---------------Init-------------------------------------------------------------------
+if((first() | dupefinished())){
+
+    A = 0
+
+#--------------------Numberboards------------------------------------------------------
+
+#Front
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Numberboards)
+    holoPos(A,Frame:toWorld(vec(-16,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Black)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+    holoEntity(A):setSubMaterial(3,NumFont+Num[2])
+    holoEntity(A):setSubMaterial(4,NumFont+Num[1])
+    holoEntity(A):setSubMaterial(5,NumFont+Num[3])
+    holoEntity(A):setSubMaterial(6,NumFont+Num[4])
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,1,0),0)
+    
+#Rear
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Numberboards)
+    holoPos(A,Frame:toWorld(vec(2,0,-12)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Black)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+    holoEntity(A):setSubMaterial(3,NumFont+Num[2])
+    holoEntity(A):setSubMaterial(4,NumFont+Num[1])
+    holoEntity(A):setSubMaterial(5,NumFont+Num[3])
+    holoEntity(A):setSubMaterial(6,NumFont+Num[4])
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,-1,0),0)
+    
+#-----------------------Nose--------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Nose)
+    holoPos(A,Frame:toWorld(vec(-15,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,1,12)
+    holoBodygroup(A,2,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,5,1)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,150,-265),vec(0,-2.75,1),0)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/gritpaint_worn_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_hw")
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Nose)
+    holoPos(A,Frame:toWorld(vec(-15,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Yellow)
+    holoBodygroup(A,1,12)
+    holoBodygroup(A,2,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,5,1)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,150,-265),vec(0,2.75,-1),0)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/gritpaint_worn_black")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_gold_hw")
+
+#-----------------------Cab---------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Cab)
+    holoPos(A,Frame:toWorld(vec(-15,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,1,16)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,150,-265),vec(0,-2.75,1),0)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/enamel2_cab_worn_grey")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(10,"models/proppertextures/acrylic2_gold_hw")
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,Cab)
+    holoPos(A,Frame:toWorld(vec(-15,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Yellow)
+    holoBodygroup(A,1,16)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,150,-265),vec(0,2.75,-1),0)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/enamel2_cab_worn_grey")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(10,"models/proppertextures/acrylic2_gold_hw")
+
+#-----------------------Hood Fill---------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,"models/anytrains/props/detail/ht_cab.mdl")
+    holoPos(A,Frame:toWorld(vec(-177,0,11)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,9,1)
+    holoBodygroup(A,10,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClip(A,1,vec(1,0,0),vec(1,0,0),0)
+    holoClip(A,2,vec(10,0,0),vec(-1,0,0),0)
+
+#-----------------------Body--------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(9,"models/proppertextures/gritpaint_worn_black")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible")  
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClipEnabled(A, 4, 1)
+    holoClip(A,1,vec(0,0,19),vec(0,0,1),0)
+    holoClip(A,2,vec(-120,0,30),vec(1,0,0.5),0)
+    holoClip(A,3,vec(-100,0,30),vec(-1,0,-0.5),0)
+    holoClip(A,4,vec(300,0,0),vec(-1,0,0),0)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(9,"models/proppertextures/gritpaint_worn_black")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible")  
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClipEnabled(A, 4, 1)
+    holoClipEnabled(A, 5, 1)
+    holoClipEnabled(A, 6, 1)
+    holoClip(A,1,vec(0,0,19),vec(0,0,1),0)
+    holoClip(A,2,vec(-170,0,0),vec(1,0,0),0)
+    holoClip(A,3,vec(-100,0,30),vec(-1,0,-0.5),0)
+    holoClip(A,4,vec(300,0,0),vec(-1,0,0),0)
+    holoClip(A,5,vec(0,-60,0),vec(0,1,0),0)
+    holoClip(A,6,vec(0,37.5,0),vec(0,-1,0),0)
+        
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Gray)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible")  
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClip(A,1,vec(0,0,35),vec(0,0,1),0)
+    holoClip(A,2,vec(-100,0,30),vec(1,0,0.5),0)
+    holoClip(A,3,vec(300,0,0),vec(-1,0,0),0)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Blue)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClipEnabled(A, 4, 1)
+    holoClip(A,1,vec(0,0,19),vec(0,0,1),0)
+    holoClip(A,2,vec(0,0,35),vec(0,0,-1),0)
+    holoClip(A,3,vec(-150,0,0),vec(1,0,0),0)
+    holoClip(A,4,vec(300,0,0),vec(-1,0,0),0)
+
+
+#-----------------------Rear Hood End--------------------------
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Yellow)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible")  
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClip(A,1,vec(300,0,0),vec(1,0,0),0)
+    holoClip(A,2,vec(350,0,0),vec(-1,0,0),0)
+    holoClip(A,3,vec(0,0,127),vec(0,0,-1),0)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame)
+    holoModel(A,SD40)
+    holoPos(A,Frame:toWorld(vec(0,0,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoScale(A, vec(1))
+    holoColor(A, Yellow)
+    holoBodygroup(A,2,2)
+    holoBodygroup(A,7,1)
+    holoBodygroup(A,8,4)
+    holoBodygroup(A,9,3)
+    holoBodygroup(A,19,1)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(13,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(14,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(17,"models/proppertextures/invisible")  
+    holoEntity(A):setSubMaterial(20,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(23,"models/proppertextures/invisible")
+    holoEntity(A):setSubMaterial(27,"models/proppertextures/invisible") 
+    holoEntity(A):setSubMaterial(28,"models/proppertextures/invisible")
+    holoClipEnabled(A, 1, 1)
+    holoClipEnabled(A, 2, 1)
+    holoClipEnabled(A, 3, 1)
+    holoClipEnabled(A, 4, 1)
+    holoClip(A,1,vec(300,0,0),vec(1,0,0),0)
+    holoClip(A,2,vec(350,0,0),vec(-1,0,0),0)
+    holoClip(A,3,vec(0,0,127),vec(0,0,1),0)
+    holoClip(A,4,vec(0,0,135),vec(0,0,-1),0)
+
+#-------------------Handrails----------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/fox/sd40-2_handrails.mdl")
+    holoPos(A,Frame:toWorld(vec(0,0,0)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)))
+    holoColor(A, Gray)
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_hw")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_gold_hw")
+    holoEntity(A):setSubMaterial(4,"models/proppertextures/acrylic2_hw")
+    holoBodygroup(A,1,1)
+
+#-------------------Nose Logo----------------------  
+ 
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-342.75,0,58)))
+    holoAng(A,Frame:toWorld(ang(90,-153.5,0)))
+    holoColor(A, Blue)
+    holoScale(A, Size)
+    holoMaterial(A,Decal) 
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,1,0), 0)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-342.75,0,58)))
+    holoAng(A,Frame:toWorld(ang(90,153.5,0)))
+    holoColor(A, Blue)
+    holoScale(A, Size)
+    holoMaterial(A, Decal) 
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,-1,0),0)
+
+#-------------------Rear Logo----------------------   
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(322,0,60)))
+    holoAng(A,Frame:toWorld(ang(90,180-153,0)))
+    holoColor(A, Blue)
+    holoScale(A, Size)
+    holoMaterial(A,Decal) 
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,1,0), 0)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(322,0,60)))
+    holoAng(A,Frame:toWorld(ang(90,180+153,0)))
+    holoColor(A, Blue)
+    holoScale(A, Size)
+    holoMaterial(A, Decal) 
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(0,-1,0),0)
+        
+#------------Side Logos---------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(30,-37,65)))
+    holoAng(A,Frame:toWorld(ang(90,0,90)) )
+    holoColor(A, Blue)
+    holoScale(A, Size2)
+    holoMaterial(A,Decal) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(30,37,65)))
+    holoAng(A,Frame:toWorld(ang(90,0,-90)) )
+    holoColor(A, Blue)
+    holoScale(A, Size2)
+    holoMaterial(A,Decal) 
+    holoClipEnabled(A, 1,1)
+    holoClip(A, 1, vec(0,0,0), vec(0,0,0), 0)
+
+#-------------Cab Logos---------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-235,-60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,0,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-221.75,-60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,0,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])   
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-208.25,-60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,0,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3]) 
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-195,-60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,0,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-195,60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,180,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[1])
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-208.25,60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,180,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[2])   
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-221.75,60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,180,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[3]) 
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "plane")
+    holoPos(A,Frame:toWorld(vec(-235,60.5,52)))
+    holoAng(A,Frame:toWorld(ang(90,180,90)) )
+    holoColor(A, Yellow)
+    holoScale(A, Size3)
+    holoEntity(A):setSubMaterial(1,NumFont+Num[4])
+    
+#-------------Details-----------------------
+
+#Engine Water Sight Glass Base
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36,75)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/toolsblack")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/rectangles_thin/size_2/rect_12x12x1_5.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36,70.75)))
+    holoAng(A,Frame:toWorld(ang(90,90,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/toolsblack")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36,66.5)))
+    holoAng(A,Frame:toWorld(ang(180,0,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/toolsblack")
+    holoColor(A, Black)
+
+#Gasket
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/holograms/hq_torus.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36.5,74)))
+    holoAng(A,Frame:toWorld(ang(90,90,0)) )
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/rubber")
+    holoColor(A, Black)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(-1,0,0),0)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/cylinders/size_1/cylinder_1_5x12.mdl")
+    holoPos(A,Frame:toWorld(vec(162.6,36.5,70.75)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoScale(A,vec(0.52,0.52,0.6))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/rubber")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/cylinders/size_1/cylinder_1_5x12.mdl")
+    holoPos(A,Frame:toWorld(vec(157.4,36.5,70.75)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoScale(A,vec(0.52,0.52,0.6))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/rubber")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/holograms/hq_torus.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36.5,67.5)))
+    holoAng(A,Frame:toWorld(ang(90,90,0)) )
+    holoScale(A,vec(0.5))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/rubber")
+    holoColor(A, Black)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(1,0,0),0)
+    
+#Glass
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36.35,75)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/glass_new")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/rectangles_thin/size_2/rect_12x12x1_5.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36.35,70.75)))
+    holoAng(A,Frame:toWorld(ang(90,90,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/glass_new")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/sprops/geometry/t_hdisc_12.mdl")
+    holoPos(A,Frame:toWorld(vec(160,36.35,66.5)))
+    holoAng(A,Frame:toWorld(ang(180,0,0)) )
+    holoScale(A,vec(0.475))
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/glass_new")
+    holoColor(A, Black)
+    
+#--------------Hatch------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/fox/toilet_hatch.mdl")
+    holoPos(A,Frame:toWorld(vec(-88,35,42)))
+    holoAng(A,Frame:toWorld(ang(90,90,0)) )
+    holoScale(A,vec(0.75))
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_hw")
+    holoColor(A, Gray)    
+
+#--------Rear Headlight Base----------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/parts/headlights/headlight_base_twinbeam_plate.mdl")
+    holoPos(A,Frame:toWorld(vec(322,0,103)))
+    holoAng(A,Frame:toWorld(ang(0,90,90)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+
+#--------------Grabs------------------------
+
+#Front
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(-334.85,15,50)))
+    holoAng(A,Frame:toWorld(ang(90,153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(-334.85,-15,50)))
+    holoAng(A,Frame:toWorld(ang(90,-153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_17.mdl")
+    holoPos(A,Frame:toWorld(vec(-290,30,80.65)))
+    holoAng(A,Frame:toWorld(ang(0,90,-1.75)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+
+#Rear
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,25)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,42)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,60)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,15,60)))
+    holoAng(A,Frame:toWorld(ang(90,180-153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,77)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,95)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/billiam/grabbage/grabirons/grab_19.mdl")
+    holoPos(A,Frame:toWorld(vec(314,-15,112)))
+    holoAng(A,Frame:toWorld(ang(90,180+153.5,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/anytrains/props/detail/grabiron_rearfan.mdl")
+    holoPos(A,Frame:toWorld(vec(290,0,123.25)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+
+
+#--------------------Pilot Details-------------------------
+
+#Front
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/anytrains/props/detail/cutbar.mdl")
+    holoPos(A,Frame:toWorld(vec(-383,0,-4)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, Yellow)
+    holoBodygroup(A,2,5)
+    holoEntity(A):setSubMaterial(5,"models/proppertextures/acrylic")
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/coupler_pin.mdl")
+    holoPos(A,Frame:toWorld(vec(-400,0,-10)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,2)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/coupler_pin.mdl")
+    holoPos(A,Frame:toWorld(vec(-400,0,-10)))
+    holoAng(A,Frame:toWorld(ang(70,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/fox/emd_pilot.mdl")
+    holoPos(A,Frame:toWorld(vec(-383.25,0,-40)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, White)
+        
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/trains/propper/snowplows/plow_medium_multipurpose.mdl")
+    holoPos(A,Frame:toWorld(vec(-386,0,-50)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_black_hw")
+    holoColor(A, White)
+    holoBodygroup(A,1,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/mu_3hose_left.mdl")
+    holoPos(A,Frame:toWorld(vec(-386,-35,-8)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/mu_3hose_right.mdl")
+    holoPos(A,Frame:toWorld(vec(-386,35,-8)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/brakehose.mdl")
+    holoPos(A,Frame:toWorld(vec(-386,-15,-15)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, White)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/wam98_trainparts/miscellaneous/emd_anticlimber_ditchlight_mount.mdl")
+    holoPos(A,Frame:toWorld(vec(-396,35,-6)))
+    holoAng(A,Frame:toWorld(ang(180,180,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_black_hw")
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/wam98_trainparts/miscellaneous/emd_anticlimber_ditchlight_mount.mdl")
+    holoPos(A,Frame:toWorld(vec(-396,-35,-6)))
+    holoAng(A,Frame:toWorld(ang(180,180,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_black_hw")
+    holoColor(A, Black)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/mu_plugs/mu_socket_27pin.mdl")
+    holoPos(A,Frame:toWorld(vec(-382.85,22,6)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_hw")
+    holoColor(A, Green)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/anytrains/props/detail/mu_cable.mdl")
+    holoPos(A,Frame:toWorld(vec(-384,0,6)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_orange_hw")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_hw")
+    holoColor(A, Red)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/mu_plugs/mu_socket_27pin.mdl")
+    holoPos(A,Frame:toWorld(vec(-382.85,-22,6)))
+    holoAng(A,Frame:toWorld(ang(0,90,0)) )
+    holoColor(A, Red)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+#Rear
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/anytrains/props/detail/cutbar.mdl")
+    holoPos(A,Frame:toWorld(vec(402,0,-4)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, Yellow)
+    holoBodygroup(A,2,5)
+    holoEntity(A):setSubMaterial(5,"models/proppertextures/acrylic2_gold_hw")
+        
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/coupler_pin.mdl")
+    holoPos(A,Frame:toWorld(vec(420,0,-10)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,2)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/coupler_pin.mdl")
+    holoPos(A,Frame:toWorld(vec(420,0,-10)))
+    holoAng(A,Frame:toWorld(ang(-70,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,1,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/fox/emd_pilot.mdl")
+    holoPos(A,Frame:toWorld(vec(402,0,-40)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_black_hw")
+    holoColor(A, White)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/mu_3hose_left.mdl")
+    holoPos(A,Frame:toWorld(vec(404.75,35,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,2,1)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/mu_3hose_right.mdl")
+    holoPos(A,Frame:toWorld(vec(404.75,-35,-8)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, White)
+    holoBodygroup(A,2,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/lazpack/detail/brakehose.mdl")
+    holoPos(A,Frame:toWorld(vec(404.75,15,-15)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, White)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/mu_plugs/mu_socket_27pin.mdl")
+    holoPos(A,Frame:toWorld(vec(401.85,-22,2)))
+    holoAng(A,Frame:toWorld(ang(0,-90,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_hw")
+    holoColor(A, Green)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/anytrains/props/detail/mu_cable.mdl")
+    holoPos(A,Frame:toWorld(vec(403.75,0,2)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_orange_hw")
+    holoEntity(A):setSubMaterial(3,"models/proppertextures/acrylic2_hw")
+    holoColor(A, Red)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/titus's_propper_model_pack_2.4/propper/mu_plugs/mu_socket_27pin.mdl")
+    holoPos(A,Frame:toWorld(vec(401.85,22,2)))
+    holoAng(A,Frame:toWorld(ang(0,-90,0)) )
+    holoEntity(A):setMaterial("models/proppertextures/acrylic2_hw")
+    holoColor(A, Red)
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,2,1)
+
+#--------------------------Cab Signal Box----------------------------------
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/parts/cabsignals/cab_signal_box.mdl")
+    holoPos(A,Frame:toWorld(vec(-282.5,45,50.5)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+    holoColor(A, Blue)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(-2.75,0,1),0)
+    
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/parts/cabsignals/cab_signal_box.mdl")
+    holoPos(A,Frame:toWorld(vec(-282.5,45,50.5)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+    holoClipEnabled(A, 1, 1)
+    holoClip(A,1,vec(0,0,0),vec(2.75,0,-1),0)
+
+#NOSE VENTS AND TOILET HATCH
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/tank_vent/tank_vent.mdl")
+    holoPos(A,Frame:toWorld(vec(-296,23.5,70)))
+    holoAng(A,Frame:toWorld(ang(0,0,-90)) )
+    holoEntity(A):setSubMaterial(1,"models/proppertextures/acrylic2_gold_hw")
+    holoColor(A, Yellow)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/fox/toilet_hatch.mdl")
+    holoPos(A,Frame:toWorld(vec(-296,0,80)))
+    holoAng(A,Frame:toWorld(ang(-2,0,0)) )
+    holoScale(A,vec(1))
+    holoEntity(A):setMaterial("models/proppertextures/gritpaint_worn_black")
+    holoColor(A, Black)    
+    
+#------------------------------Fuel Tank Detail----------------------------
+#[
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/fuelline.mdl")
+    holoPos(A,Frame:toWorld(vec(-75,40,-8.5)))
+    holoAng(A,Frame:toWorld(ang(30,-90,0)) )
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/parts/flumz/fuelline.mdl")
+    holoPos(A,Frame:toWorld(vec(-75,-40,-8.5)))
+    holoAng(A,Frame:toWorld(ang(30,90,0)) )
+    holoColor(A, Black)
+
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/parts/fuel/emd_sightglass_legacy.mdl")
+    holoPos(A,Frame:toWorld(vec(-95,58.75,-10)))
+    holoAng(A,Frame:toWorld(ang(0,0,0)) )
+    holoColor(A, Black)
+    A++
+    holoCreate(A)
+    holoParent(A, Frame) 
+    holoModel(A, "models/gsgtrainprops/parts/fuel/emd_sightglass_legacy.mdl")
+    holoPos(A,Frame:toWorld(vec(-92,-58.75,-10)))
+    holoAng(A,Frame:toWorld(ang(0,180,0)) )
+    holoColor(A, Black)]#
+
+}
+
+if(NumLightsF){
+    holoEntity(1):setSubMaterial(2,"models/proppertextures/bulb_offwhite_lit")
+}elseif(!NumLightsF){
+    holoEntity(1):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+}
+
+if(NumLightsR){
+    holoEntity(2):setSubMaterial(2,"models/proppertextures/bulb_offwhite_lit")
+}elseif(!NumLightsR){
+    holoEntity(2):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+}

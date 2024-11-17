@@ -1,0 +1,595 @@
+@name PowerTrain's NYC S Motor Skin
+@inputs [SMotor PilotTruck1 PilotTruck2 DriverBase1 DriverBase2 DriverBase3 DriverBase4]:entity
+@outputs [Num TrainTag Consist]:string
+@persist [SMotor Truck1 Truck2 DriverBase1 DriverBase2 DriverBase3 DriverBase4]:entity 
+@persist Roll Roll2 Roll3 Roll4 Roll5 Roll6 VelL VelL2 VelL3 VelL4 VelL5 VelL6 
+@persist NumberTable:table
+@model models/sprops/rectangles/size_3/rect_24x24x3.mdl
+
+White = vec(255)   
+Gray = vec(180)
+Dark = vec(100)
+Black = vec(25)
+
+AirHose = "models/lazpack/detail/brakehose.mdl"
+Body = "models/alcoge_s-1.mdl"
+Coupler = "models/rlc_delta_lua/type_e_knuckle_coupler.mdl"
+CouplerPocket = "models/zexciv_train_stuff/misc/details/coupler_pocket.mdl"
+DrivingWheel = "models/meem/wheel/wheel01_42_rsg.mdl"
+EqualizingLever = "models/zexciv_train_stuff/misc/frames/spring_balance.mdl"
+JournalBox = "models/zexciv_train_stuff/misc/details/bearing.mdl"
+Lamp = "models/zexciv_train_stuff/misc/lamps/lamp_2.mdl"
+LeafSprings = "models/zexciv_train_stuff/misc/frames/leaf_spring.mdl"
+Motor = "models/res/props/electric/motors/motor_1.mdl"
+PilotTruck = "models/phantom_one/k4_pilot_truck.mdl"
+PilotWheel = "models/meem/wheel/double_wheel_36.mdl"
+Plane = "plane"
+WheelThing = "models/anytrains/props/detail/brakewheel.mdl"
+
+
+Acrylic = "models/proppertextures/acrylic2_hw"
+Gold = "models/proppertextures/acrylic2_gold_hw"
+CabMetal = "models/proppertextures/cabmetal_celadon"
+CabFloor = "models/proppertextures/cabfloor_dirty"
+CastMat = "models/proppertextures/enamel_cast_black"
+Dirty = "models/proppertextures/acrylic_dirty"
+Grimey = "models/proppertextures/acrylic_metal1_grimey"
+Glass = "models/proppertextures/glass_new"
+Invisible = "models/proppertextures/invisible"
+Pilot = "models/rika/part/pilot/footboards_alco_rs_early.mdl"
+RustyBlack = "models/proppertextures/enamel_black_rust2"
+Rubber = "models/proppertextures/rubber"
+Wheel = "models/proppertextures/wheel"
+WhiteMat = "models/proppertextures/acrylic2_white_hw"
+
+Logo = "cubics_pack/logos/real/cr/cr_pc2"
+BuildPlate = "cubics_pack/misc/builder_plates/ge3"
+ClassDesignation = "cubics_pack/engine_classes/conrail/e10b"
+NumFont = "cubics_pack/numbers/sou/"
+
+#--------------------------------------------------------------------------
+
+if(first()|dupefinished()){
+E=entity()
+E:setAlpha(255)
+Truck1:setAlpha(0)
+SMotor:setAlpha(0)
+DriverBase1:setAlpha(0)
+DriverBase2:setAlpha(0)
+DriverBase3:setAlpha(0)
+DriverBase4:setAlpha(0)
+Truck2:setAlpha(0)
+
+    # Initialize the table with 4-digit numbers
+
+NumberTable[1, number] = 4702
+NumberTable[2, number] = 4710
+NumberTable[3, number] = 4712
+NumberTable[4, number] = 4715
+NumberTable[5, number] = 4725
+NumberTable[6, number] = 4731
+NumberTable[7, number] = 4733
+NumberTable[8, number] = 4751
+
+# Generate a random index between 1 and the number of elements in the table
+NumIndex = randint(1, 8)
+
+# Select a random number from the table
+NumIndex = NumberTable[NumIndex, number]
+Num=NumIndex:toString()
+
+TrainTag = "Penn Central S2 Electric #"+Num+ Consist
+
+Consist = "Light Engine"
+
+#Num = "" + randint(Min,Max):toString() + ""
+
+#--------------------------------------------------------------------------
+
+#---------------------Skin---------------------
+
+
+    A=0
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Body)
+    holoColor(A,Black)          #3.25
+    holoPos(A,SMotor:toWorld(vec(0,0,0)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoScale(A,vec(1,1.05,1))
+    holoEntity(A):setSubMaterial(1,CastMat)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoEntity(A):setSubMaterial(3,Glass)
+    holoEntity(A):setSubMaterial(4,Rubber)
+    holoEntity(A):setSubMaterial(5,Rubber)
+    holoEntity(A):setSubMaterial(6,Invisible)
+    holoEntity(A):setSubMaterial(7,CabMetal)
+    holoEntity(A):setSubMaterial(8,CabFloor)
+#[    holoClipEnabled(A,1,1)
+    holoClip(A,1,vec(0,0,0),vec(0,0,0),0)]#
+
+    A=1000
+    holoCreate(A)
+    holoParent(A,PilotTruck1)
+    holoModel(A,PilotTruck)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck1:toWorld(vec(0,0,22)))
+    holoAng(A,PilotTruck1:toWorld(ang(0,90,0))) 
+    holoScale(A,vec(0.55,1,1))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,Invisible)
+    holoEntity(A):setSubMaterial(4,Invisible)
+    A=1
+    holoCreate(A)
+    holoParent(A,PilotTruck1)
+    holoModel(A,PilotWheel)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck1:toWorld(vec(0,30,18)))
+    holoAng(A,PilotTruck1:toWorld(ang(0,90,0))) 
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    A=2
+    holoCreate(A)
+    holoParent(A,PilotTruck1)
+    holoModel(A,PilotWheel)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck1:toWorld(vec(0,-30,18)))
+    holoAng(A,PilotTruck1:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+
+    A=1001
+    holoCreate(A)
+    holoParent(A,PilotTruck2)
+    holoModel(A,PilotTruck)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck2:toWorld(vec(0,0,22)))
+    holoAng(A,PilotTruck2:toWorld(ang(0,-90,0))) 
+    holoScale(A,vec(0.55,1,1))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,Invisible)
+    holoEntity(A):setSubMaterial(4,Invisible)
+    A=3
+    holoCreate(A)
+    holoParent(A,PilotTruck2)
+    holoModel(A,PilotWheel)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck2:toWorld(vec(0,30,18)))
+    holoAng(A,PilotTruck2:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    A=4
+    holoCreate(A)
+    holoParent(A,PilotTruck2)
+    holoModel(A,PilotWheel)
+    holoColor(A,Black)
+    holoPos(A,PilotTruck2:toWorld(vec(0,-30,18)))
+    holoAng(A,PilotTruck2:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    
+    A=5
+    holoCreate(A)
+    holoParent(A,DriverBase1)
+    holoModel(A,DrivingWheel)
+    holoColor(A,Black)
+    holoPos(A,DriverBase1:toWorld(vec(0,0,22)))
+    holoAng(A,DriverBase1:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1,1.047619048,1.047619048))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    A=6
+    holoCreate(A)
+    holoParent(A,DriverBase2)
+    holoModel(A,DrivingWheel)
+    holoColor(A,Black)
+    holoPos(A,DriverBase2:toWorld(vec(0,0,22)))
+    holoAng(A,DriverBase2:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1,1.047619048,1.047619048))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    A=7
+    holoCreate(A)
+    holoParent(A,DriverBase3)
+    holoModel(A,DrivingWheel)
+    holoColor(A,Black)
+    holoPos(A,DriverBase3:toWorld(vec(0,0,22)))
+    holoAng(A,DriverBase3:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1,1.047619048,1.047619048))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    A=8
+    holoCreate(A)
+    holoParent(A,DriverBase4)
+    holoModel(A,DrivingWheel)
+    holoColor(A,Black)
+    holoPos(A,DriverBase4:toWorld(vec(0,0,22)))
+    holoAng(A,DriverBase4:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1,1.047619048,1.047619048))
+    holoEntity(A):setSubMaterial(1,RustyBlack) 
+    holoEntity(A):setSubMaterial(3,WhiteMat) 
+    
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase1)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase1:toWorld(vec(32,0,22)))
+    holoAng(A,DriverBase1:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase1)
+    holoModel(A,LeafSprings)
+    holoColor(A,Black)
+    holoPos(A,DriverBase1:toWorld(vec(0,0,28)))
+    holoAng(A,DriverBase1:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(1))    
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase1)
+    holoModel(A,Motor)
+    holoColor(A,Black)
+    holoPos(A,DriverBase1:toWorld(vec(-2.5,0,22)))
+    holoAng(A,DriverBase1:toWorld(ang(0,0,180)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(4,RustyBlack)
+    holoEntity(A):setSubMaterial(7,RustyBlack)
+    holoScale(A,vec(1.9))    
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,1)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase1)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase1:toWorld(vec(-32,0,22)))
+    holoAng(A,DriverBase1:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,EqualizingLever)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,51.5,-36.25)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(0.85))    
+    holoBodygroup(A,1,0)
+
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase2)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase2:toWorld(vec(32,0,22)))
+    holoAng(A,DriverBase2:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase2)
+    holoModel(A,Motor)
+    holoColor(A,Black)
+    holoPos(A,DriverBase2:toWorld(vec(-2.5,0,22)))
+    holoAng(A,DriverBase2:toWorld(ang(0,0,180)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(4,RustyBlack)
+    holoEntity(A):setSubMaterial(7,RustyBlack)
+    holoScale(A,vec(1.9))    
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,1)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase2)
+    holoModel(A,LeafSprings)
+    holoColor(A,Black)
+    holoPos(A,DriverBase2:toWorld(vec(0,0,28)))
+    holoAng(A,DriverBase2:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(1))    
+    holoBodygroup(A,1,2)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase2)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase2:toWorld(vec(-32,0,22)))
+    holoAng(A,DriverBase2:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,EqualizingLever)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,0,-36.25)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(0.85))    
+    holoBodygroup(A,1,0)
+        
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase3)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase3:toWorld(vec(32,0,22)))
+    holoAng(A,DriverBase3:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase3)
+    holoModel(A,Motor)
+    holoColor(A,Black)
+    holoPos(A,DriverBase3:toWorld(vec(-2.5,0,22)))
+    holoAng(A,DriverBase3:toWorld(ang(0,0,180)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(4,RustyBlack)
+    holoEntity(A):setSubMaterial(7,RustyBlack)
+    holoScale(A,vec(1.9))    
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,1)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase3)
+    holoModel(A,LeafSprings)
+    holoColor(A,Black)
+    holoPos(A,DriverBase3:toWorld(vec(0,0,28)))
+    holoAng(A,DriverBase3:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(1))    
+    holoBodygroup(A,1,2)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase3)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase3:toWorld(vec(-32,0,22)))
+    holoAng(A,DriverBase3:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,EqualizingLever)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,-51.5,-36.25)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(0.85))    
+    holoBodygroup(A,1,0)
+        
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase4)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase4:toWorld(vec(32,0,22)))
+    holoAng(A,DriverBase4:toWorld(ang(0,-90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase4)
+    holoModel(A,Motor)
+    holoColor(A,Black)
+    holoPos(A,DriverBase4:toWorld(vec(-2.5,0,22)))
+    holoAng(A,DriverBase4:toWorld(ang(0,0,180)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)
+    holoEntity(A):setSubMaterial(4,RustyBlack)
+    holoEntity(A):setSubMaterial(7,RustyBlack)
+    holoScale(A,vec(1.9))    
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,1)
+    holoBodygroup(A,4,3)
+    holoBodygroup(A,5,1)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase4)
+    holoModel(A,LeafSprings)
+    holoColor(A,Black)
+    holoPos(A,DriverBase4:toWorld(vec(0,0,28)))
+    holoAng(A,DriverBase4:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(2,RustyBlack)
+    holoEntity(A):setSubMaterial(3,RustyBlack)
+    holoScale(A,vec(1))    
+    holoBodygroup(A,1,1)
+    A++
+    holoCreate(A)
+    holoParent(A,DriverBase4)
+    holoModel(A,JournalBox)
+    holoColor(A,Black)
+    holoPos(A,DriverBase4:toWorld(vec(-32,0,22)))
+    holoAng(A,DriverBase4:toWorld(ang(0,90,0)))  
+    holoEntity(A):setSubMaterial(1,RustyBlack)    
+    holoEntity(A):setSubMaterial(2,RustyBlack)    
+    holoScale(A,vec(3.75,2,2.75))
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Lamp)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,195,89)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoScale(A,vec(1.35))
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Glass)
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Lamp)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,-195,89)))
+    holoAng(A,SMotor:toWorld(ang(0,-90,0)))  
+    holoScale(A,vec(1.35))
+    holoEntity(A):setSubMaterial(6,Acrylic)
+    holoEntity(A):setSubMaterial(7,Glass)
+
+
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Pilot)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,218,-41.5)))
+    holoAng(A,SMotor:toWorld(ang(0,180,0)))  
+    holoScale(A,vec(1))
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,4)
+    holoEntity(A):setSubMaterial(1,Invisible)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoEntity(A):setSubMaterial(4,Gold)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,CouplerPocket)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,214,-30.25)))
+    holoAng(A,SMotor:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1.1))
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Coupler)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,208,-25.35)))
+    holoAng(A,SMotor:toWorld(ang(0,-90,0)))  
+    holoScale(A,vec(1))
+    holoClipEnabled(A,1,1)
+    holoClip(A,1,vec(-12,0,0),vec(-1,0,0),0)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,AirHose)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(-18,220,-18)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoEntity(A):setSubMaterial(2,Gold)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Pilot)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,-218,-41.5)))
+    holoAng(A,SMotor:toWorld(ang(0,0,0)))  
+    holoScale(A,vec(1))
+    holoBodygroup(A,1,1)
+    holoBodygroup(A,3,4)
+    holoEntity(A):setSubMaterial(1,Invisible)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    holoEntity(A):setSubMaterial(4,Gold)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,CouplerPocket)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,-214,-30.25)))
+    holoAng(A,SMotor:toWorld(ang(0,180,0)))  
+    holoScale(A,vec(1.1))
+    holoEntity(A):setSubMaterial(2,Acrylic)
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,Coupler)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(0,-208,-25.35)))
+    holoAng(A,SMotor:toWorld(ang(0,90,0)))  
+    holoScale(A,vec(1))
+    holoClipEnabled(A,1,1)
+    holoClip(A,1,vec(-12,0,0),vec(-1,0,0),0)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,WheelThing)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(18,-225,-18)))
+    holoAng(A,SMotor:toWorld(ang(0,-90,0)))  
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoEntity(A):setSubMaterial(2,Acrylic)
+
+    A++
+    holoCreate(A)
+    holoParent(A,SMotor)
+    holoModel(A,AirHose)
+    holoColor(A,Black)
+    holoPos(A,SMotor:toWorld(vec(18,-220,-18)))
+    holoAng(A,SMotor:toWorld(ang(0,-90,0)))  
+    holoScale(A,vec(1))
+    holoEntity(A):setSubMaterial(1,Acrylic)
+    holoEntity(A):setSubMaterial(2,Gold)
+}
+
+
+interval(100)
+
+VelL = PilotTruck1:velL():y()/-4.25    
+
+Roll+=VelL
+    
+holoAng(1,PilotTruck1:toWorld(ang(-Roll,90,0)))
+holoAng(2,PilotTruck1:toWorld(ang(-Roll,90,0)))
+
+
+VelL2 = PilotTruck2:velL():y()/-4.25    
+
+Roll2+=VelL2
+    
+holoAng(3,PilotTruck2:toWorld(ang(-Roll2,90,0)))
+holoAng(4,PilotTruck2:toWorld(ang(-Roll2,90,0)))
+
+VelL3 = DriverBase1:velL():y()/-4.25    
+VelL4 = DriverBase2:velL():y()/-4.25    
+VelL5 = DriverBase3:velL():y()/-4.25    
+VelL6 = DriverBase4:velL():y()/-4.25  
+  
+Roll3+=VelL3
+Roll4+=VelL4
+Roll5+=VelL5
+Roll6+=VelL6
+
+holoAng(5,DriverBase1:toWorld(ang(0,0,Roll3)))
+holoAng(6,DriverBase2:toWorld(ang(0,0,Roll4)))
+holoAng(7,DriverBase3:toWorld(ang(0,0,Roll5)))
+holoAng(8,DriverBase4:toWorld(ang(0,0,Roll6)))
+
+
+
+

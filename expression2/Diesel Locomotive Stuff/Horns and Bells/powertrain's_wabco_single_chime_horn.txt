@@ -1,0 +1,38 @@
+@name PowerTrain's Wabco Single Chime Horn
+@inputs Horn
+@outputs SoundOn:string SoundOff:string
+@persist SoundOn:string SoundOff:string Default_Volume Default_Level
+@trigger 
+@model models/parkmanpack/parts/wabco_e2.mdl
+if(first() | duped()){
+E=entity()
+E:setSubMaterial(1,"models/proppertextures/acrylic2_hw")
+E:setColor(vec(27,59,38))
+
+    SoundOn = "dannis_decals/horns/wabco_single_chime_1_loop.wav"
+
+    SoundOff = "dannis_decals/horns/wabco_single_chime_1_end.wav" 
+
+    Default_Volume = 1   #The Default volume the sound it played at. 1 is the maximum, as well as the defualt. Why would you want it any lower?
+    Default_Level = 100
+    
+}
+
+if(Horn & ~Horn){
+    soundStop(2)
+    soundPlay(1,0,SoundOn)
+    soundVolume(1,Default_Volume)
+    soundLevel(1,Default_Level)
+
+}elseif(!Horn & ~Horn){
+    soundStop(1)
+    soundPlay(2,0,SoundOff)
+    soundVolume(2,Default_Volume)
+    soundVolume(2,Default_Level)
+
+}
+
+
+
+
+

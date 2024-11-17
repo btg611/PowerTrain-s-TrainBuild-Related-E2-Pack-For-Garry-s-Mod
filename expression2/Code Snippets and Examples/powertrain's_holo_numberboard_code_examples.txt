@@ -1,0 +1,53 @@
+@name PowerTrain's Holo Numberboard Code Examples
+@inputs Num:string
+
+########################################################################################################
+#This whole configurable bit can go in at the top of your skin e2.
+
+Min = 1000 # Smallest number the random code can put out.
+Max = 1064 # Biggest number the random code can put out.
+
+Num = randint(Min,Max):toString() # Don't touch this, it's the randomizing code
+
+NumFont = "fonts/railroad_roman_1916/" # The number font submaterial path, minus the number at the end.
+
+########################################################################################################
+
+#For Submaterials:
+
+    A=1
+    holoCreate(A)
+    holoParent(A, entity())
+    holoPos(A,entity():toWorld(vec(7,0,0)))
+    holoAng(A,entity():toWorld(ang(-90,0,0)))
+    holoModel(A, "models/lazpack/detail/blw_sal_numberboard_submat.mdl")
+    holoScale(A, vec(1))
+    holoColor(A, vec(255))   
+
+
+
+        holoEntity(1):setSubMaterial(3,NumFont+Num[1])
+        holoEntity(1):setSubMaterial(4,NumFont+Num[2])
+        holoEntity(1):setSubMaterial(5,NumFont+Num[3])
+        holoEntity(1):setSubMaterial(6,NumFont+Num[4])
+
+
+
+#For Bodygroups:
+
+    A=2
+    holoCreate(A)
+    holoParent(A, entity())
+    holoPos(A,entity():toWorld(vec(-7,0,0)))
+    holoAng(A,entity():toWorld(ang(0,0,0)))
+    holoModel(A, "models/magtrainslocos/numplates/numplate_mcab_4d.mdl")
+    holoEntity(A):setSubMaterial(1,"cubics_pack/numbers/prr/numplate_dark")
+    holoScale(A, vec(1))
+    holoColor(A, vec(255))   
+
+
+
+        holoBodygroup(2,1,Num[1]:toNumber())
+        holoBodygroup(2,2,Num[2]:toNumber())
+        holoBodygroup(2,3,Num[3]:toNumber())
+        holoBodygroup(2,4,Num[4]:toNumber())

@@ -1,0 +1,202 @@
+@name PowerTrain's Cross Compound Airpump - Now with pump action!
+@inputs On Compressing
+@outputs
+@persist [RunSound RunSound2 OffSound OffSound2]:string 
+#SmoothTable:table ValveAmmount 
+@trigger 
+@model models/seabo/air systems/airpump_2c_1.mdl
+
+# -------- Be forewarn'd: --------
+#I don't know how well the sounds will actually work. I'm not super great with coding and couldn;t tell if it was just my server
+# giving me issues or if I fucked up with the way this was coded. May require some fiddling. If the sounds don't play, let me know and I'll do what 
+# I can to fix it. Or, if you know why they don't work and you can fix it, let me know so I can update these.
+
+if(dupefinished() | duped()){ reset() }
+if(first()){ 
+    
+#Compressor Idle On/Off
+
+    RunSound = "cyborg_sound_pack/steam/misc/airpump_7.wav"
+    
+#Compressor Running On/Off
+
+    RunSound2 = "cyborg_sound_pack/steam/misc/airpump_7.wav"
+
+    MainColor = vec(36)  # Chnages the color of the main body. Set this to the color of your boiler.
+    SecondaryColor = vec(25)    # Chnages the color of the piston rods.
+    ValveColor = vec(150,30,30)  # Chnages the color of the vlve handle.
+    PipingColor = vec(25)    # Chnages the color of the piping. Should probably be the same as the MainColor unless you're some kind of loon. Eat your heart out, shitposters.
+    
+    BodyMaterial = "models/proppertextures/acrylic2_hw" #You should probably set this to the same material your engine's boiler uses.
+    AccentMaterial = "models/proppertextures/acrylic2_hw" #For a flair of color, change this to something fancy like models/proppertextures/brass_new
+    StripeMaterial = "models/proppertextures/acrylic2_white_hw" #For a flair of color, change this to something fancy like models/proppertextures/brass_new
+    ShieldMaterial = "models/proppertextures/acrylic2_hw" #This is the maerial of the inner part of the shields behind the piston rods.
+    ShinyMaterial = "models/proppertextures/aluminum_brushed_worn_stained" #This is the material for the piston rods. It doesn't have to be shiny, it can be something oily looking like models/proppertextures/acrylic_grimy . 
+    ValveMaterial = "models/proppertextures/acrylic2_darkred_hw" #Material for the valve handle
+    PipingMaterial = "models/proppertextures/acrylic2_hw" #You should probably set this to the same material your engine's boiler uses.
+  
+
+    Volume = 0.75
+    Level = 65
+    
+    PumpTime = 1800
+    FastPumpTime = 1000
+    
+#Don't edit Past Here unless you know what you're doing.
+
+
+
+
+
+#Don't say I didn;t warn you...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Ok, you asked for it...
+
+
+
+
+
+
+
+
+
+E=entity()
+E:setAlpha(0)
+
+#Body
+A=0
+holoCreate(A)
+holoModel(A,"models/seabo/air systems/airpump_2c_1.mdl")
+holoEntity(A):setSubMaterial(1,BodyMaterial)
+holoEntity(A):setSubMaterial(2,AccentMaterial)
+holoEntity(A):setSubMaterial(3,"models/proppertextures/invisible")
+holoEntity(A):setSubMaterial(4,ShieldMaterial)
+holoEntity(A):setSubMaterial(5,StripeMaterial)
+holoPos(A,E:toWorld(vec(0,0,-2)))
+holoAng(A,E:toWorld(ang(0,180,0)))
+holoScale(A,vec(1.1,1.1,1.3))
+holoParent(A,E)
+holoAlpha(A,255)
+holoColor(A,MainColor)
+C=holoEntity(0)
+
+#Piston Rods
+A=1
+C=holoEntity(0)
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_1/cylinder_1_5x18.mdl")
+holoEntity(A):setSubMaterial(1,ShinyMaterial)
+holoPos(A,C:toWorld(vec(-6.25,0,0)))
+holoAng(A,C:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,C)
+holoAlpha(A,255)
+holoColor(A,SecondaryColor)
+A=2
+C=holoEntity(0)
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_1/cylinder_1_5x18.mdl")
+holoEntity(A):setSubMaterial(1,ShinyMaterial)
+holoPos(A,C:toWorld(vec(5,0,0)))
+holoAng(A,C:toWorld(ang(0,0,0)))
+holoScale(A,vec(1))
+holoParent(A,C)
+holoAlpha(A,255)
+holoColor(A,SecondaryColor)
+
+#Piston Rod Indicators
+A=3
+B=holoEntity(1)
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_3/cylinder_6x3.mdl")
+holoEntity(A):setSubMaterial(1,AccentMaterial)
+holoPos(A,B:toWorld(vec(0,0,0)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoScale(A,vec(0.3))
+holoParent(A,B)
+holoAlpha(A,255)
+holoColor(A,MainColor)
+
+A=4
+B=holoEntity(2)
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_3/cylinder_6x3.mdl")
+holoEntity(A):setSubMaterial(1,AccentMaterial)
+holoPos(A,B:toWorld(vec(0,0,0)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoScale(A,vec(0.3))
+holoParent(A,B)
+holoAlpha(A,255)
+holoColor(A,MainColor)
+
+}
+
+
+
+if(On){
+if(!Compressing){  timer("pump",1800) 
+if(clk("pump")){  
+    soundStop(2)
+    soundStop(3)
+    holoEntity(1):soundPlay(1,0.8,RunSound)
+    soundVolume(1,Volume)
+    soundLevel(1,Level)
+    timer("pump1",1800)  
+    holoPos(1,holoEntity(0):toWorld(vec(-6.25,0,3))) 
+    holoPos(2,holoEntity(0):toWorld(vec(5,0,-2.75))) 
+}
+if(clk("pump1")){
+    soundStop(2)
+    soundStop(3)
+    timer("pump2",1800) 
+    holoPos(1,holoEntity(0):toWorld(vec(-6.25,0,-2.75))) 
+    holoPos(2,holoEntity(0):toWorld(vec(5,0,3))) 
+
+}
+}
+if(Compressing){stoptimer("pump") 
+    timer("pumpfast",1000) 
+if(clk("pumpfast")){  
+    soundStop(1)
+    soundStop(3)    
+    holoEntity(1):soundPlay(2,1,RunSound2)
+    soundVolume(2,Volume)
+    soundLevel(2,Level)
+    timer("pumpfast1",500)  
+    holoPos(1,holoEntity(0):toWorld(vec(-6.25,0,3))) 
+    holoPos(2,holoEntity(0):toWorld(vec(5,0,-2.75))) 
+}
+if(clk("pumpfast1")){
+    timer("pumpfast2",1000) 
+    soundStop(2)
+    holoEntity(3):soundPlay(3,1,RunSound2)
+    soundVolume(3,Volume)
+    soundLevel(3,Level)
+    holoPos(1,holoEntity(0):toWorld(vec(-6.25,0,-2.75))) 
+    holoPos(2,holoEntity(0):toWorld(vec(5,0,3))) 
+}
+
+}
+
+}
+if(!On){
+    soundStop(1)
+    soundStop(2)
+    soundStop(3)
+
+    reset()
+    stopAllTimers()
+}

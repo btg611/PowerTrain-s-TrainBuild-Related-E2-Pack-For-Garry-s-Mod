@@ -1,0 +1,1169 @@
+@name PowerTrain's ALCo C420-424-425-628 Backwall Cab Panel
+@inputs Start Stop Isolation RearNumber RearClass EngineRoom FrontHood Walkway PowerMatching CabandAuxLts 
+@inputs EngRmLts FanControl AirCleanerBlower Unused1 Unused2 CompartmentLights FuelPump CrankCaseExhauster 
+@inputs Battery AuxGenFld Control Headlights TractionMotorHealth GroundRelayReset On1 EngineTemperature
+@inputs Cabinet
+@persist HotEngine GroundRelayTripped FourOrSixAxles
+@outputs Prime GroundRelayTripped
+@model models/sprops/rectangles_thin/size_1_5/rect_6x72x1_5.mdl
+
+# *********************************************************************************************************************
+# I don't really give a damn what you do with this. If you modify it in a way that makes it better though, 
+# I would appreciate a heads up and a "How It's Done" tutorial. I'm always looking for new ideas.
+# If you'd like to contribute, complain, or say thanks feel free to rach out. Credit will be given where credit is due.
+# Let's bask in the glory of being kings of the fuckin' train nerds together!
+# *********************************************************************************************************************
+
+#Originally created for an ALCo FA, but you can use it however ya like.
+
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#     /$$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ /$$$$$$$  /$$$$$$$$ /$$$$$$$   /$$$$$$  /$$$$$$ /$$   /$$       #
+#    | $$__  $$ /$$__  $$| $$  /$ | $$| $$_____/| $$__  $$|__  $$__/| $$__  $$ /$$__  $$|_  $$_/| $$$ | $$       #
+#    | $$  \ $$| $$  \ $$| $$ /$$$| $$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  \ $$  | $$  | $$$$| $$       #
+#    | $$$$$$$/| $$  | $$| $$/$$ $$ $$| $$$$$   | $$$$$$$/   | $$   | $$$$$$$/| $$$$$$$$  | $$  | $$ $$ $$       #
+#    | $$____/ | $$  | $$| $$$$_  $$$$| $$__/   | $$__  $$   | $$   | $$__  $$| $$__  $$  | $$  | $$  $$$$       #
+#    | $$      | $$  | $$| $$$/ \  $$$| $$      | $$  \ $$   | $$   | $$  \ $$| $$  | $$  | $$  | $$\  $$$       #
+#    | $$      |  $$$$$$/| $$/   \  $$| $$$$$$$$| $$  | $$   | $$   | $$  | $$| $$  | $$ /$$$$$$| $$ \  $$       #
+#    |__/       \______/ |__/     \__/|________/|__/  |__/   |__/   |__/  |__/|__/  |__/|______/|__/  \__/       #
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|        | |     | |                                                                   |  |     |  |       |**#
+#**|        [*|     |*]                                                                   |[*|     |*]|       |**#
+#**|----------|     |------------------------------------------------------------------------|     |----------|**#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |*****************Thanks for using my E2 like a BAMF!********************|     |*************#
+#*************|     |************************************************************************|     |*************#
+#*************|     |************************************************************************|     |*************#
+
+E=entity()
+E:setAlpha(0)
+
+if(first()|dupefinished()){
+
+BaseMat= "models/proppertextures/black_flat"  
+CabMetal = "models/proppertextures/enamel2_cab_worn_grey"
+CabMetal2 = "models/proppertextures/enamel2_cab_worn_tan"
+SwitchMat = "models/proppertextures/enamel_black"
+Glass = "models/proppertextures/glass_new"
+Aluminum = "models/proppertextures/aluminum_brushed_worn_stained"
+Invisible = "models/proppertextures/invisible"
+PlasticBlack = "models/proppertextures/plastic_black"
+PlasticRed = "models/proppertextures/plastic_red"
+
+FourOrSixAxles = 0 #0 for 4, 1 for 6. Changes the label on the traction motor cutout switch.
+
+BaseColor = vec(25)
+TextColor = vec(200
+)
+A = 0
+holoCreate(A)
+holoModel(A,"models/sprops/rectangles_thin/size_1_5/rect_6x72x1_5.mdl")
+holoPos(A,E:toWorld(vec(0,0,0)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoScale(A,vec(0.99,1,1))
+holoEntity(A):setMaterial(BaseMat)
+holoEntity(A):setColor(BaseColor)
+holoParent(A,E)
+
+
+A = 1
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/sphere_3.mdl")
+holoPos(A,E:toWorld(vec(-33,0,1.5)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoScale(A,vec(0.7,0.3,0.3))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 2
+B=holoEntity(1)
+C=holoEntity(3)
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/rotary_switch_1.mdl")
+holoPos(A,B:toWorld(vec(0,0,-0.46)))
+holoAng(A,B:toWorld(ang(-90,180,0)))
+holoScale(A,vec(1,1,1))
+holoEntity(A):setSubMaterial(1,Invisible)
+holoColor(A,vec(255))
+holoParent(A,C)
+
+
+A = 3
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/sphere_3.mdl")
+holoPos(A,E:toWorld(vec(33,0,1.5)))
+holoAng(A,E:toWorld(ang(0,140,0)))
+holoScale(A,vec(0.7,0.3,0.3))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 4
+B=holoEntity(1)
+C=holoEntity(3)
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/rotary_switch_1.mdl")
+holoPos(A,C:toWorld(vec(0,0,-0.45)))
+holoAng(A,B:toWorld(ang(-90,-125,0)))
+holoScale(A,vec(1,1,1))
+holoEntity(A):setSubMaterial(1,Invisible)
+holoColor(A,vec(255))
+holoParent(A,C)
+
+A = 5
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-25,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 6
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-23.5,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 7
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-22,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 8
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-20.5,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 9
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-19,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 10
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(-15,0.5,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 11
+holoCreate(A)
+holoModel(A,"models/magtrainslocos/rotaryswitches/headlight_alco.mdl")
+holoPos(A,E:toWorld(vec(-10,0.5,0.85)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(1))
+holoColor(A,vec(30))
+holoBodygroup(A,2,1)
+holoParent(A,E)
+
+A = 12
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(-6.5,0.5,0.76)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+holoScale(A,vec(1))
+holoColor(A,vec(30))
+holoBodygroup(A,2,1)
+holoParent(A,E)
+
+A = 13
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(-2.5,1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(5,Glass)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+A = 130
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(-2.25,1.15,0.72)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoScale(A,vec(0.25))
+holoColor(A,vec(30))
+holoBodygroup(A,2,1)
+holoParent(A,E)
+A = 131
+holoCreate(A)
+holoModel(A,"models/props_mining/diesel_generator_needle.mdl")
+holoPos(A,E:toWorld(vec(-2.5,0.55,1)))
+holoAng(A,E:toWorld(ang(-90,-90,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/acrylic2_hw")
+holoScale(A,vec(0.12))
+holoColor(A,vec(200))
+holoBodygroup(A,2,1)
+holoParent(A,E)
+
+A = 14
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(-4,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(5,Invisible)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 140
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(-4,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(1,Invisible)
+holoEntity(A):setSubMaterial(2,Invisible)
+holoEntity(A):setSubMaterial(3,Invisible)
+holoEntity(A):setSubMaterial(4,Invisible)
+holoEntity(A):setSubMaterial(5,Aluminum)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 15
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(2,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 16
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(4,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 17
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(6,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 18
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(8,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 19
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(10,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 20
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(12,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 21
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(14,0.75,0.76)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,2,1)
+holoParent(A,E)
+
+A = 22
+holoCreate(A)
+holoModel(A,"models/bull/buttons/toggle_switch.mdl")
+holoPos(A,E:toWorld(vec(14,-2,0.72)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 23
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(16,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 24
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(18,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 25
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(20,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 26
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(22,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 27
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(24,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 28
+holoCreate(A)
+holoModel(A,"models/titus's_propper_model_pack_2.4/propper/circuitbreakers/breaker_single.mdl")
+holoPos(A,E:toWorld(vec(26,0.75,0.5)))
+holoAng(A,E:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoScale(A,vec(1.75))
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A = 29
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(27.75,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(5,Invisible)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 290
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(27.75,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(1,Invisible)
+holoEntity(A):setSubMaterial(2,Invisible)
+holoEntity(A):setSubMaterial(3,Invisible)
+holoEntity(A):setSubMaterial(4,Invisible)
+holoEntity(A):setSubMaterial(5,PlasticBlack)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 30
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(29.25,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(5,Invisible)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 300
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/buttons.mdl")
+holoPos(A,E:toWorld(vec(27.75,-1,0.72)))
+holoAng(A,E:toWorld(ang(0,0,90)))
+holoEntity(A):setSubMaterial(1,Invisible)
+holoEntity(A):setSubMaterial(2,Invisible)
+holoEntity(A):setSubMaterial(3,Invisible)
+holoEntity(A):setSubMaterial(4,Invisible)
+holoEntity(A):setSubMaterial(5,PlasticRed)
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoBodygroup(A,0,4)
+holoParent(A,E)
+
+A = 31
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(27.5,1.75,0.74)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoScale(A,vec(0.8))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 32
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(28.5,1.75,0.74)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_blue_unlit")
+holoScale(A,vec(0.8))
+holoColor(A,vec(255))
+holoParent(A,E)
+A = 33
+holoCreate(A)
+holoModel(A,"models/rlc_delta_lua/cstands/indicators.mdl")
+holoPos(A,E:toWorld(vec(29.5,1.75,0.74)))
+holoAng(A,E:toWorld(ang(-90,0,0)))
+holoEntity(A):setSubMaterial(2,"models/proppertextures/bulb_orange_unlit")
+holoScale(A,vec(0.8))
+holoColor(A,vec(255))
+holoParent(A,E)
+
+A=34
+holoCreate(A)
+holoModel(A,"models/flak/part/misc/electrical_cabinet_cx30.mdl")
+holoPos(A,E:toWorld(vec(0,-53,-6.65)))
+holoAng(A,E:toWorld(ang(0,0,-90)))
+holoEntity(A):setSubMaterial(1,CabMetal)
+holoEntity(A):setSubMaterial(2,CabMetal2)
+holoColor(A,BaseColor)
+holoScale(A, vec(1))
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-25,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/rear number")
+holoScale(A,vec(0.05,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-23.5,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/rear class")
+holoScale(A,vec(0.05,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-22,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/engroom")
+holoScale(A,vec(0.05,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-20.5,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/front hood")
+holoScale(A,vec(0.05,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-19,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/walkway")
+holoScale(A,vec(0.02,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-15,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/pwrmatching")
+holoScale(A,vec(0.05,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-10,0,1)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.5,0.5,1))
+holoColor(A,vec(255))
+holoEntity(A):setSubMaterial(1,"cubics_pack/ge_junk/ge_hdlt_setup")
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-6.5,1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/grndrelaylight")
+holoScale(A,vec(0.05,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-4,-1.85,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/grndrelayreset")
+holoScale(A,vec(0.05,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(2,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/cablightsaux")
+holoScale(A,vec(0.06,0.1,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(4,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/engrmlights")
+holoScale(A,vec(0.04,0.09,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(6,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/fancontrol")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(8,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/aircleanerblower")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(14,-0.35,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/nobattcharge")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(16,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/fuelpump")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(18,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/crankcaseexhauster")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(20,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/battery")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(22,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/auxgenfield")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(24,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/control")
+holoScale(A,vec(0.08,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(26,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/headlights")
+holoScale(A,vec(0.02,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(33,0,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/ecs")
+holoScale(A,vec(0.5,0.5,1))
+holoColor(A,vec(200))
+holoParent(A,E)
+
+
+
+A=666
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-33,0,0.95)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoScale(A,vec(0.35,0.35,1))
+holoColor(A,vec(255))
+holoParent(A,E)
+
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(27.5,0.75,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/hoteng")
+holoScale(A,vec(0.03,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(28.5,0.75,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/lowlubeoil")
+holoScale(A,vec(0.03,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(29.5,0.75,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/exhausternotrunning")
+holoScale(A,vec(0.03,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(14,-1.15,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/comptlights")
+holoScale(A,vec(0.03,0.07,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(13,-2,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/onnoff")
+holoScale(A,vec(0.15,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-26,0.5,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/onnoff")
+holoScale(A,vec(0.15,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"plane")
+holoPos(A,E:toWorld(vec(-16,0.5,0.8)))
+holoAng(A,E:toWorld(ang(0,-90,0)))
+holoEntity(A):setSubMaterial(1,"gio_vang/alco_cab_detail_pack/onnoff")
+holoScale(A,vec(0.15,0.15,1))
+holoColor(A,TextColor)
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"models/holograms/hq_rcube_thin.mdl")
+holoPos(A,E:toWorld(vec(-33,0,0.25)))
+holoAng(A,holoEntity(1):toWorld(ang(0,0,0)))
+holoScale(A,vec(0.4,0.4,0.1))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoColor(A,vec(255))
+holoParent(A,holoEntity(1))
+
+A++
+holoCreate(A)
+holoModel(A,"models/holograms/hq_rcube_thin.mdl")
+holoPos(A,E:toWorld(vec(33,0,0.25)))
+holoAng(A,holoEntity(1):toWorld(ang(0,0,0)))
+holoScale(A,vec(0.25,0.25,0.1))
+holoEntity(A):setSubMaterial(1,PlasticBlack)
+holoColor(A,vec(255))
+holoParent(A,holoEntity(1))
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(-31.85,1.25,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(-34.15,1.25,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(-33,-1.15,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+
+
+
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(31.85,1.25,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(34.15,1.25,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/anytrains/props/bean/screw_m5.mdl")
+holoPos(A,E:toWorld(vec(33,-1.15,0.6)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(1,1,1))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_1/cylinder_1_5x6.mdl")
+holoPos(A,E:toWorld(vec(33,0,0.9)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(0.3))
+holoColor(A,vec(30))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/cylinders/size_1/cylinder_1_5x6.mdl")
+holoPos(A,E:toWorld(vec(-33,0,0.9)))
+holoAng(A,E:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,Aluminum)
+holoScale(A,vec(0.3))
+holoColor(A,vec(30))
+holoParent(A,E)
+
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(1,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(3,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(5,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(7,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(9,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(11,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(13,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(15,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(17,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(19,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(21,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(23,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(25,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+A++
+holoCreate(A)
+holoModel(A,"models/sprops/geometry/superthin/discs/hdisc_12.mdl")
+holoPos(A,E:toWorld(vec(27,0.45,1)))
+holoAng(A,E:toWorld(ang(0,90,0)))
+holoEntity(A):setSubMaterial(1,BaseMat)
+holoScale(A,vec(0.45,0.45,0.6))
+holoColor(A,vec(255))
+holoParent(A,E)
+} 
+
+if(Cabinet == 1){
+holoEntity(34):setBodygroup(1,1)
+}elseif(Cabinet == 0) {
+holoEntity(34):setBodygroup(1,0)  
+}
+
+holoAnim(5,RearNumber)
+holoAnim(6,RearClass)
+holoAnim(7,EngineRoom)
+holoAnim(8,FrontHood)
+holoAnim(9,Walkway)
+holoAnim(10,PowerMatching)
+
+holoAnim(22,CompartmentLights)
+
+holoBodygroup(15,1,CabandAuxLts)
+holoBodygroup(16,1,EngRmLts)
+holoBodygroup(17,1,FanControl)
+holoBodygroup(18,1,AirCleanerBlower)
+
+holoBodygroup(19,1,Unused1)
+holoBodygroup(20,1,Unused2)
+
+holoBodygroup(23,1,FuelPump)
+holoBodygroup(24,1,CrankCaseExhauster)
+holoBodygroup(25,1,Battery)
+holoBodygroup(26,1,AuxGenFld)
+holoBodygroup(27,1,Control)
+holoBodygroup(28,1,Headlights)
+
+
+holoPos(140,holoEntity(14):toWorld(vec(0,-GroundRelayReset*0.15,0)))
+
+holoPos(290,holoEntity(29):toWorld(vec(0,-Start*0.15,0)))
+holoPos(300,holoEntity(30):toWorld(vec(0,-Stop*0.15,0)))
+
+if(Isolation){
+holoAng(3,E:toWorld(ang(0,45,0)))
+}elseif(!Isolation){
+holoAng(3,E:toWorld(ang(0,140,0)))
+}
+
+if(Battery){
+
+if(On1){
+holoEntity(21):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+}elseif(!On1){
+holoEntity(21):setSubMaterial(2,"models/proppertextures/bulb_red_lit")
+}    
+    
+if(FuelPump){
+    Prime = 1
+}elseif(!FuelPump){
+    Prime = 0
+}
+
+if(EngineTemperature>=195){
+holoEntity(31):setSubMaterial(2,"models/proppertextures/bulb_red_lit")
+}elseif(EngineTemperature<195){
+holoEntity(31):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+}
+#[if(HotEngine==1){
+soundPlay(1,0,"lazpack/misc/cab/alarm_bell_rs27_loop.wav")
+}elseif(HotEngine==0){
+soundStop(1)
+soundPlay(2,0,"lazpack/misc/cab/alarm_bell_rs27_end.wav")
+}]#
+  
+if(CrankCaseExhauster){    
+holoEntity(33):setSubMaterial(2,"models/proppertextures/bulb_orange_unlit")
+}elseif(!CrankCaseExhauster){    
+holoEntity(33):setSubMaterial(2,"models/proppertextures/bulb_orange_lit")
+}
+
+#[if(TractionMotorHealth<=50){
+(GroundRelayTripped)
+}elseif(TractionMotorHealth>50){
+!GroundRelayTripped
+}]#
+
+##GroundRelayTripped&~GroundRelayTripped
+if(TractionMotorHealth<=50){
+holoEntity(12):setSubMaterial(2,"models/proppertextures/bulb_offwhite_lit")
+holoEntity(130):setSubMaterial(2,"models/proppertextures/bulb_red_lit")
+holoAng(131,E:toWorld(ang(-90,-115,0)))
+#}elseif(GroundRelayReset){
+}elseif(TractionMotorHealth>50){
+#!GroundRelayTripped&~GroundRelayTripped
+holoEntity(12):setSubMaterial(2,"models/proppertextures/bulb_offwhite_unlit")
+holoEntity(130):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoAng(131,E:toWorld(ang(-90,-90,0)))
+}
+
+}elseif(!Battery){
+
+Prime = 0
+holoEntity(21):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoEntity(31):setSubMaterial(2,"models/proppertextures/bulb_red_unlit")
+holoEntity(33):setSubMaterial(2,"models/proppertextures/bulb_orange_unlit")
+
+}
+
+holoEntity(666):setSubMaterial(1,FourOrSixAxles ? "cubics_pack/breakers/gm_tmcutout6motor" : "cubics_pack/breakers/gm_tmcutout4motor")
+#[
+GROUND RELAY
+1. A ground in the power circuit operates the ground relay to return the engine to "Idle," 
+    sound the alarm bell and light the white ground indicating light on the control compartment. 
+    The indicator pointer on the ground relay will point to the red dot. 
+    The pointer can be seen through the window on the plate covering the relay and is located in the engine 
+    control panel.
+
+2. To reset ground relay:
+    a. Turn engine control switch to "Idle."
+    b. Push in ground relay reset button.
+    c. Turn engine control switch to "Run."
+    d. If ground relay stays in, continue normal operation.
+    
+3. If ground relay continues to trip:
+    a. The motor cutout switch (if used) may be used to isolate a faulty truck of motors. 
+    For example: reset ground relay as outlined in 2 above; turn motor cutout switch to cutout 
+    a truck set of motors and start locomotive. Follow same procedure for motors on remaining trucks.
+    b. Under extreme emergency conditions; reset ground relay as outlined in 2 above, open ground relay 
+    cutout switch in control compartment and move locomotive no farther than is necessary observing for smoke
+    or overheating of electrical equipment. If in MU operating, the power plant should be taken "Off the Line."
+    c. Repeated ground relay tripping may indicate a traction motor failure. 
+    This might result in a locked axle. A check should be made to be sure all wheels turn freely.
+]#

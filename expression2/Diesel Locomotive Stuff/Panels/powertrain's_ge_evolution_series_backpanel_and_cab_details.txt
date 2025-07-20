@@ -1,0 +1,361 @@
+@name PowerTrain's GE Evolution Series Backpanel and Cab Details
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Inputs
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
+@inputs Base:entity Pod:entity Ack1 Ack2 AirBrake AirDryer AutoStopOverride Battery BarringOverTool BatterySaverReset BCCB CabFan CabSignal 
+@inputs CabComputers ControlCompt Cover CrosswalkLights CycleHeadlightControl CycleIsolation DistributedPower  
+@inputs EmergencyLighting EngineControl EngineStart EngineStop EngineerHeater EngineerWallHeater FrontNumLights FuelPumpECU   
+@inputs HandbrakeApplied HeadlightControl HeaterAirConditioner HelpersHeater HelpersWallHeater LocalCotnrol LongHood MTB MPH ParkingBrake Radio   
+@inputs Refrigerator RoadCrossingLights RunningLights ShortHood WindowHeaters
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Outputs
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+@outputs EBrake HeadlightSetup Isolation Jog
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#pwesists
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+@persist Base:entity Pod:entity Ack1 Ack2 Alerter Battery BreakerOffAngle BreakerOnAngle AirBrakeBreaker AirDryerBreaker  
+@persist AutoStopOverrideButton BarringOverToolSwitch BatterySaverResetButton BCCBBreaker CabFanBreaker CabSignalBreaker  
+@persist CabComputersBreaker ControlComptSwitch CoverBone CrosswalkLightsSwitch DPBreaker EmergencyLightingSwitch  
+@persist EngineControlSwitch EngineStartButton EngineStopButton EngineersHeaterSwitch EngineerWallHeaterBreaker FrontNumLightsSwitch 
+@persist HandbrakeApplied HeaterAirConditionerBreaker HelpersHeaterSwitch HelpersWallHeaterBreaker LocalCotnrolBreaker LongHoodBreaker
+@persist FuelPumpECUBreaker HeadlightControlSwitch MTBBreaker MPH ParkingBrakeBreaker RadioBreaker RefrigeratorBreaker 
+@persist RoadCrossingLightsBreaker RunningLightsBreaker SwitchOnAngle SwitchOffAngle ShortHoodBreaker WindowHeatersBreaker
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+@persist EBrake HeadlightSetup EH HH H I Jog
+@strict
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Breaker switch and button angle/position presets
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+E = entity()
+B = Base
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+BreakerOnAngle = -40
+BreakerOffAngle = 40
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+SwitchOnAngle = -25
+SwitchOffAngle = 25
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+ButtonOnPos = -0.3
+ButtonOffPos = 0
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+Alerter = 1 #Set to 0 to disable the intermittent alerter.
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+if(first()|dupefinished()){
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A = 0
+holoCreate(A)
+holoModel(A,"models/ryan's detail pack/ge widecab details.mdl") 
+holoPos(A,B:toWorld(vec(0,0,0)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(6,"models/proppertextures/enamel2_cab_worn_fedstd2040")
+holoScale(A,vec(1))
+holoColor(A,vec(0))
+holoBodygroup(A,9,4)
+holoParent(A,B)
+
+A = 1
+holoCreate(A)
+holoModel(A,"models/ryan's detail pack/ge evolution series backpanel.mdl") 
+holoPos(A,B:toWorld(vec(21.7,287.5,104.35)))
+holoAng(A,B:toWorld(ang(0,180,90)))
+holoEntity(A):setSubMaterial(1,"")
+holoScale(A,vec(1))
+holoColor(A,vec(255))
+holoParent(A,B)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Computer fan sound origin
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A = 2
+holoCreate(A)
+holoModel(A,"") 
+holoPos(A,B:toWorld(vec(52,388,70)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/")#invisible
+holoScale(A,vec(0))
+holoColor(A,vec(255))
+holoParent(A,B)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Cab fan sound origin
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A = 3
+holoCreate(A)
+holoModel(A,"") 
+holoPos(A,B:toWorld(vec(0,290,123)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/")#invisible
+holoScale(A,vec(0))
+holoColor(A,vec(255))
+holoParent(A,B)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Engine cranking sound origin
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A = 4
+holoCreate(A)
+holoModel(A,"") 
+holoPos(A,B:toWorld(vec(0,0,70)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/")#invisible
+holoScale(A,vec(0))
+holoColor(A,vec(255))
+holoParent(A,B)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Alerter sound origin
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A = 5
+holoCreate(A)
+holoModel(A,"") 
+holoPos(A,B:toWorld(vec(0,365,123)))
+holoAng(A,B:toWorld(ang(0,0,0)))
+holoEntity(A):setSubMaterial(1,"models/proppertextures/")#invisible
+holoScale(A,vec(0))
+holoColor(A,vec(255))
+holoParent(A,B)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+} #End of holos
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Bone Index
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+AirBrakeBreaker = holoEntity(1):boneIndex("Armature.Air Brake")
+AirDryerBreaker = holoEntity(1):boneIndex("Armature.Air Dryer")
+AutoStopOverrideButton = holoEntity(1):boneIndex("Armature.Auto Stop Override")
+BarringOverToolSwitch = holoEntity(1):boneIndex("Armature.Barring Over Tool")
+BatterySaverResetButton = holoEntity(1):boneIndex("Armature.Battery Saver Reset")
+BCCBBreaker = holoEntity(1):boneIndex("Armature.BCCB")
+CabFanBreaker = holoEntity(1):boneIndex("Armature.Cab Fan")
+CabSignalBreaker = holoEntity(1):boneIndex("Armature.Cab Signal")
+CabComputersBreaker = holoEntity(1):boneIndex("Armature.Cab/Display Computer")
+ControlComptSwitch = holoEntity(1):boneIndex("Armature.Control Compt")
+CoverBone = holoEntity(1):boneIndex("Armature.Cover")
+CrosswalkLightsSwitch = holoEntity(1):boneIndex("Armature.Crosswalk Lights")
+DPBreaker = holoEntity(1):boneIndex("Armature.Distributed Power")
+EmergencyLightingSwitch = holoEntity(1):boneIndex("Armature.Emergency Lighting")
+EngineControlSwitch = holoEntity(1):boneIndex("Armature.Engine Control")
+EngineStartButton = holoEntity(1):boneIndex("Armature.Engine Start")
+EngineStopButton = holoEntity(1):boneIndex("Armature.Engine Stop")
+EngineersHeaterSwitch = holoEntity(1):boneIndex("Armature.Engineer's Heater")
+EngineerWallHeaterBreaker = holoEntity(1):boneIndex("Armature.Engineer's Wall Heater")
+FrontNumLightsSwitch = holoEntity(1):boneIndex("Armature.Front Number Lights")
+FuelPumpECUBreaker = holoEntity(1):boneIndex("Armature.Fuel Pump/ECU")
+HeadlightControlSwitch = holoEntity(1):boneIndex("Armature.Headlight Control")
+HeaterAirConditionerBreaker = holoEntity(1):boneIndex("Armature.Heater/Air Conditioner")
+HelpersHeaterSwitch = holoEntity(1):boneIndex("Armature.Helper's Heater")
+HelpersWallHeaterBreaker = holoEntity(1):boneIndex("Armature.Helper's Wall Heater")
+LocalCotnrolBreaker = holoEntity(1):boneIndex("Armature.Local Control")
+LongHoodBreaker = holoEntity(1):boneIndex("Armature.Long Hood")
+MTBBreaker = holoEntity(1):boneIndex("Armature.MTB")
+ParkingBrakeBreaker = holoEntity(1):boneIndex("Armature.Parking Brake")
+RadioBreaker = holoEntity(1):boneIndex("Armature.Radio")
+RefrigeratorBreaker= holoEntity(1):boneIndex("Armature.Refrigerator")
+RoadCrossingLightsBreaker = holoEntity(1):boneIndex("Armature.Road Crossing Lights")
+RunningLightsBreaker = holoEntity(1):boneIndex("Armature.Running Lights")
+ShortHoodBreaker = holoEntity(1):boneIndex("Armature.Short Hood")
+WindowHeatersBreaker = holoEntity(1):boneIndex("Armature.Window Heaters")
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Breaker Panel Switches
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+holoEntity(1):setBoneAngRelative(AirBrakeBreaker,ang(0,0,AirBrake ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(AirDryerBreaker,ang(0,0,AirDryer ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBonePosRelative(AutoStopOverrideButton,vec(0,0,AutoStopOverride ? ButtonOnPos : ButtonOffPos))
+holoEntity(1):setBoneAngRelative(BarringOverToolSwitch,ang(0,0,BarringOverTool ? SwitchOnAngle : SwitchOffAngle))
+holoEntity(1):setBonePosRelative(BatterySaverResetButton,vec(0,0,BatterySaverReset ? ButtonOnPos : ButtonOffPos))
+holoEntity(1):setBoneAngRelative(BCCBBreaker,ang(0,0,BCCB ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(CabFanBreaker,ang(0,0,CabFan ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(CabSignalBreaker,ang(0,0,CabSignal ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(CabComputersBreaker,ang(0,0,CabComputers ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(ControlComptSwitch,ang(0,0,ControlCompt ? SwitchOnAngle : SwitchOffAngle))
+holoEntity(1):setBoneAngRelative(CoverBone,ang(0,0,Cover ? -90 : 0))
+holoEntity(1):setBoneAngRelative(CrosswalkLightsSwitch,ang(0,0,CrosswalkLights ? SwitchOnAngle : SwitchOffAngle))
+holoEntity(1):setBoneAngRelative(DPBreaker,ang(0,0,DistributedPower ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(EmergencyLightingSwitch,ang(0,0,EmergencyLighting ? SwitchOnAngle : SwitchOffAngle))
+holoEntity(1):setBonePosRelative(EngineStartButton,vec(0,0,EngineStart ? ButtonOnPos : ButtonOffPos))
+holoEntity(1):setBonePosRelative(EngineStopButton,vec(0,0,EngineStop ? ButtonOnPos : ButtonOffPos))
+holoEntity(1):setBoneAngRelative(EngineerWallHeaterBreaker,ang(0,0,EngineerWallHeater ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(FrontNumLightsSwitch,ang(0,0,FrontNumLights ? SwitchOnAngle : SwitchOffAngle))
+holoEntity(1):setBoneAngRelative(FuelPumpECUBreaker,ang(0,0,FuelPumpECU ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(HeaterAirConditionerBreaker,ang(0,0,HeaterAirConditioner ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(HelpersWallHeaterBreaker,ang(0,0,HelpersWallHeater ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(LocalCotnrolBreaker,ang(0,0,LocalCotnrol ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(LongHoodBreaker,ang(0,0,LongHood ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(MTBBreaker,ang(0,0,MTB ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(ParkingBrakeBreaker,ang(0,0,ParkingBrake ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(RadioBreaker,ang(0,0,Radio ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(RefrigeratorBreaker,ang(0,0,Refrigerator ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(RoadCrossingLightsBreaker,ang(0,0,RoadCrossingLights ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(RunningLightsBreaker,ang(0,0,RunningLights ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(ShortHoodBreaker,ang(0,0,ShortHood ? BreakerOnAngle : BreakerOffAngle))
+holoEntity(1):setBoneAngRelative(WindowHeatersBreaker,ang(0,0,WindowHeaters ? BreakerOnAngle : BreakerOffAngle))
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+if(CycleIsolation & ~CycleIsolation){
+    I++
+    if(I>3){I=0}
+    
+    switch(I){
+        case 0,
+holoEntity(1):setBoneAngRelative(EngineControlSwitch,ang(0,0,0))
+Isolation = 0
+            break
+        case 1,
+holoEntity(1):setBoneAngRelative(EngineControlSwitch,ang(-45,0,0))
+Isolation = 0
+            break
+        case 2,
+holoEntity(1):setBoneAngRelative(EngineControlSwitch,ang(-90,0,0))
+Isolation = 1
+            break
+        case 3,
+holoEntity(1):setBoneAngRelative(EngineControlSwitch,ang(45,0,0))
+Isolation = 0
+Jog = 1
+            break 
+}
+
+}
+
+if(CycleHeadlightControl & ~CycleHeadlightControl){
+    H++
+    if(H>4){H=0}
+    
+    switch(H){
+        case 0,
+holoEntity(1):setBoneAngRelative(HeadlightControlSwitch,ang(0,0,0))
+HeadlightSetup = 0
+            break
+        case 1,
+holoEntity(1):setBoneAngRelative(HeadlightControlSwitch,ang(-55,0,0))
+HeadlightSetup = 1
+            break
+        case 2,
+holoEntity(1):setBoneAngRelative(HeadlightControlSwitch,ang(-90,0,0))
+HeadlightSetup = 2
+            break
+        case 3,
+holoEntity(1):setBoneAngRelative(HeadlightControlSwitch,ang(-130,0,0))
+HeadlightSetup = 3
+            break 
+        case 4,
+holoEntity(1):setBoneAngRelative(HeadlightControlSwitch,ang(-180,0,0))
+HeadlightSetup = 4
+            break 
+}
+
+}
+
+
+if(EngineerHeater & ~EngineerHeater){
+    EH++
+    if(EH>2){EH=0}
+    
+    switch(EH){
+        case 0,
+holoEntity(1):setBoneAngRelative(EngineersHeaterSwitch,ang(0,0,0))
+            break
+        case 1,
+holoEntity(1):setBoneAngRelative(EngineersHeaterSwitch,ang(-90,0,0))
+            break
+        case 2,
+holoEntity(1):setBoneAngRelative(EngineersHeaterSwitch,ang(-180,0,0))
+            break
+}
+
+}
+
+if(HelpersHeater & ~HelpersHeater){
+    HH++
+    if(HH>2){HH=0}
+    
+    switch(HH){
+        case 0,
+holoEntity(1):setBoneAngRelative(HelpersHeaterSwitch,ang(0,0,0))
+            break
+        case 1,
+holoEntity(1):setBoneAngRelative(HelpersHeaterSwitch,ang(-90,0,0))
+            break
+        case 2,
+holoEntity(1):setBoneAngRelative(HelpersHeaterSwitch,ang(-180,0,0))
+            break
+}
+
+}
+if(Battery==1){
+    
+if(changed(CabComputers)){
+if(CabComputers>0){
+holoEntity(2):soundPlay(0,0,"cubics_pack/misc/ge_computer_fan.wav")
+soundVolume(0,0.15)
+}elseif(!CabComputers){
+soundStop(0,2.5)
+}
+}
+
+if(changed(CabFan)){
+holoEntity(3):soundPlay(1,0,CabFan ? "misc/cab_fan_loop.wav" : "misc/cab_fan_end.wav")
+soundVolume(1,1)
+}
+
+if(HandbrakeApplied){
+    holoEntity(1):setSubMaterial(14,"models/proppertextures/bulb_red_lit")
+}elseif(!HandbrakeApplied){
+    holoEntity(1):setSubMaterial(14,"models/proppertextures/bulb_red_unlit")
+}
+
+if(changed(BarringOverTool)){
+holoEntity(4):soundPlay(2,0,BarringOverTool ? "_jazzlok/diesel_engines/emd_engines/cylinder_test_start_loop.wav" : "_jazzlok/diesel_engines/emd_engines/cylinder_test_end.wav")
+soundVolume(1,1)
+}
+
+
+if(Alerter){
+    
+if(CabSignal){
+if(Pod){
+if(!Ack1&&!Ack2&&MPH>5){
+timer("start",45000)
+}
+if(clk("start")){
+interval(150)
+timer("brake",15000)
+timer("1",200)
+Sound=1
+}
+
+if(changed(Sound)&&Sound==1){
+holoEntity(5):soundPlay(3,0,"titus's locomotive sound expansion pack/resources/ac4400cw/cab/alerter/s_ac4400cwalerter.wav")
+}
+elseif(!Sound){
+soundStop(1)
+}
+
+if(clk("brake")){
+stoptimer("brake")
+EBrake=1
+}
+
+if(Ack1||Ack2||MPH<=5){
+stoptimer("brake")
+stoptimer("start")
+EBrake=0
+
+Sound=0
+}}}}
+}
+if(!Battery){
+BarringOverTool==0
+CabFan==0
+CabComputers==0
+}

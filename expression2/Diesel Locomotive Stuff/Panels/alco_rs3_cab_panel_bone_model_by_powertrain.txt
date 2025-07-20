@@ -1,0 +1,84 @@
+@name ALCO RS3 Cab Panel Bone Model by PowerTrain
+@inputs CabLightsAndAux SteamGenNegative SteamGenPositive FuelPump MGSet CrankcaseExhauster Headlight ControlNegative ControlPositive 
+@inputs Battery AuxGenField EngineRoomLights AvCurrent EngineOn1 EngineSpeed1 ComptLights
+@outputs GaugeLights SteamGenerator
+@persist CabLightsAndAux SteamGenNegative SteamGenPositive FuelPump MGSet CrankcaseExhauster Headlight ControlNegative ControlPositive 
+@persist Battery AuxGenField EngineRoomLights AvCurrent EngineOn1 EngineSpeed1 ComptLights
+@model models/zexciv_train_stuff/details/usa/alco/alco_breakerpanel.mdl
+
+BaseMaterial = "models/proppertextures/enamel2_cab_worn_grey"
+Aluminum = "models/proppertextures/aluminum_brushed_worn_stained"
+SwitchMaterial = "models/proppertextures/plastic_black"
+
+Color = vec(255)
+
+E=entity()
+E:setAlpha(0)
+
+#######################################################################################################################################################################
+
+if(first()|dupefinished()){
+
+#######################################################################################################################################################################
+
+#Base Plate
+
+A=1
+holoCreate(A)
+holoParent(A, entity())
+holoModel(A, "models/zexciv_train_stuff/details/usa/alco/alco_breakerpanel.mdl")
+holoPos(A,entity():toWorld(vec(0,0,0)))
+holoAng(A, entity():toWorld(ang(0,0,0)))
+holoScale(A, vec(1,1,1))
+holoEntity(A):setSubMaterial(1,BaseMaterial)
+holoEntity(A):setSubMaterial(2,Aluminum)
+holoEntity(A):setSubMaterial(4,SwitchMaterial)
+holoColor(A,Color)
+
+#######################################################################################################################################################################
+}
+
+
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br1"),ang(CabLightsAndAux ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br2"),ang(SteamGenNegative ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br3"),ang(SteamGenPositive ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br4"),ang(FuelPump ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br5"),ang(MGSet ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br6"),ang(CrankcaseExhauster ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br7"),ang(Headlight ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br8"),ang(ControlNegative ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br9"),ang(ControlPositive ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br10"),ang(Battery ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br11"),ang(AuxGenField ? -45 : 0,0,0))
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("br12"),ang(EngineRoomLights ? -45 : 0,0,0))
+
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("sw1"),ang(ComptLights ? -35 : 0,0,0))
+
+if(CrankcaseExhauster){
+holoEntity(1):setSubMaterial(3,"models/proppertextures/bulb_offwhite_lit")
+}elseif(!CrankcaseExhauster){
+holoEntity(1):setSubMaterial(3,"models/proppertextures/bulb_offwhite_unlit")
+}
+
+
+if(GaugeLights){
+    holoEntity(1):setColor(vec(255,223,127))
+}elseif(!GaugeLights){
+    holoEntity(1):setColor(vec(180))
+
+}
+
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("needlevolts"),ang(Battery ? -68 : 0,0,0))
+
+if(EngineOn1+AuxGenField){
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("needleamps"),ang(-15-EngineSpeed1*6.85,0,0))
+}else{
+holoEntity(1):setBoneAngRelative(holoEntity(1):boneIndex("needleamps"),ang(0,0,0))
+}
+
+if(SteamGenPositive&SteamGenNegative){
+SteamGenerator==1
+}else{
+SteamGenerator==0
+}
+
